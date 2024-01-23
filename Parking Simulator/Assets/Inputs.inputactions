@@ -1,0 +1,56 @@
+{
+    "name": "Inputs",
+    "maps": [
+        {
+            "name": "Steering Wheel",
+            "id": "5c0c9a1f-1601-450d-b71f-de4ab17a4d9b",
+            "actions": [
+                {
+                    "name": "Steering",
+                    "type": "Button",
+                    "id": "7acc7198-bfb6-44c5-bff8-67dd01f71b5b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a711895f-a091-42c3-8157-0a09d4774795",
+                    "path": "<Joystick>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "93a06832-af66-4798-82d0-6f50168db744",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0e8da56-0bb9-42a7-96b8-5e39bf9a22a8",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
