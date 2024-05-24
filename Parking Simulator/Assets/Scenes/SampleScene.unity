@@ -312,6 +312,9 @@ GameObject:
   - component: {fileID: 1902175356}
   - component: {fileID: 1902175358}
   - component: {fileID: 1902175357}
+  - component: {fileID: 1902175359}
+  - component: {fileID: 1902175361}
+  - component: {fileID: 1902175360}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -385,6 +388,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1902175357}
+        m_TargetAssemblyTypeName: WheelMovement, Assembly-CSharp
+        m_MethodName: Crouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7acc7198-bfb6-44c5-bff8-67dd01f71b5b
     m_ActionName: New action map/New action
   m_NeverAutoSwitchControlSchemes: 0
@@ -392,3 +407,40 @@ MonoBehaviour:
   m_DefaultActionMap: Steering Wheel
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1902175359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902175355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3047a8618a80261439a21993d26653a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1902175360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902175355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b2a979eb8238e449f90487b73fc0ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1902175361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902175355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0534c1a23d5b0064f82cb96f3c447f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usingCallback: 0
