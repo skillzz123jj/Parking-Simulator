@@ -35,6 +35,24 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""wheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""abc6382b-27eb-46f2-9051-0988a9e80f0d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SteeringTest"",
+                    ""type"": ""Value"",
+                    ""id"": ""8d22ba9a-b075-42e0-b26d-6fb6200a0890"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -70,6 +88,50 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Steering"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d656765f-f794-4d31-a3a7-feaeea682cf3"",
+                    ""path"": ""<Logitech G29 Racing Wheel>/plusButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steering"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6a5fc55-a931-4557-9b76-50fb5eeea379"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steering"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8d71cd71-33c3-4026-895e-1766fc9a78dc"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b47ec83-0342-4ec7-a3d1-a7174aa82a98"",
+                    ""path"": ""<Logitech G29 Racing Wheel>/throttleAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SteeringTest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -79,6 +141,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         // Steering Wheel
         m_SteeringWheel = asset.FindActionMap("Steering Wheel", throwIfNotFound: true);
         m_SteeringWheel_Steering = m_SteeringWheel.FindAction("Steering", throwIfNotFound: true);
+        m_SteeringWheel_wheel = m_SteeringWheel.FindAction("wheel", throwIfNotFound: true);
+        m_SteeringWheel_SteeringTest = m_SteeringWheel.FindAction("SteeringTest", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -141,11 +205,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_SteeringWheel;
     private List<ISteeringWheelActions> m_SteeringWheelActionsCallbackInterfaces = new List<ISteeringWheelActions>();
     private readonly InputAction m_SteeringWheel_Steering;
+    private readonly InputAction m_SteeringWheel_wheel;
+    private readonly InputAction m_SteeringWheel_SteeringTest;
     public struct SteeringWheelActions
     {
         private @Inputs m_Wrapper;
         public SteeringWheelActions(@Inputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Steering => m_Wrapper.m_SteeringWheel_Steering;
+        public InputAction @wheel => m_Wrapper.m_SteeringWheel_wheel;
+        public InputAction @SteeringTest => m_Wrapper.m_SteeringWheel_SteeringTest;
         public InputActionMap Get() { return m_Wrapper.m_SteeringWheel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,6 +226,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Steering.started += instance.OnSteering;
             @Steering.performed += instance.OnSteering;
             @Steering.canceled += instance.OnSteering;
+            @wheel.started += instance.OnWheel;
+            @wheel.performed += instance.OnWheel;
+            @wheel.canceled += instance.OnWheel;
+            @SteeringTest.started += instance.OnSteeringTest;
+            @SteeringTest.performed += instance.OnSteeringTest;
+            @SteeringTest.canceled += instance.OnSteeringTest;
         }
 
         private void UnregisterCallbacks(ISteeringWheelActions instance)
@@ -165,6 +239,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Steering.started -= instance.OnSteering;
             @Steering.performed -= instance.OnSteering;
             @Steering.canceled -= instance.OnSteering;
+            @wheel.started -= instance.OnWheel;
+            @wheel.performed -= instance.OnWheel;
+            @wheel.canceled -= instance.OnWheel;
+            @SteeringTest.started -= instance.OnSteeringTest;
+            @SteeringTest.performed -= instance.OnSteeringTest;
+            @SteeringTest.canceled -= instance.OnSteeringTest;
         }
 
         public void RemoveCallbacks(ISteeringWheelActions instance)
@@ -185,5 +265,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     public interface ISteeringWheelActions
     {
         void OnSteering(InputAction.CallbackContext context);
+        void OnWheel(InputAction.CallbackContext context);
+        void OnSteeringTest(InputAction.CallbackContext context);
     }
 }
