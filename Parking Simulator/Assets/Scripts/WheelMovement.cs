@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
-using Inputter;
+
 
 public class WheelMovement : MonoBehaviour
 {
@@ -24,11 +24,16 @@ public class WheelMovement : MonoBehaviour
     }
     public void Crouch(InputAction.CallbackContext context)
 {
-    if (context.performed)
-    {
-        Debug.Log("pressed");
+        float steeringInput = context.ReadValue<float>();
+        if (steeringInput > 0.1f)
+        {
+            // Handle steering input
+        }
+    //    if (context.performed)
+    //{
+    //    Debug.Log("pressed");
+    //}
+       
+
     }
-
-
-}
 }
