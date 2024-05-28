@@ -7,8 +7,9 @@ public class TestG29 : MonoBehaviour
     public float xAxes, GasInput, BreakInput, ClutchInput;
 
     public int CurrentGear;
-      
 
+
+    public static TestG29 testG29;
     void Start()
     {
     
