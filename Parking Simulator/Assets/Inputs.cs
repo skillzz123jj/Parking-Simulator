@@ -28,7 +28,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             ""id"": ""5c0c9a1f-1601-450d-b71f-de4ab17a4d9b"",
             ""actions"": [
                 {
-                    ""name"": ""Steering"",
+                    ""name"": ""DpadDown"",
                     ""type"": ""Button"",
                     ""id"": ""7acc7198-bfb6-44c5-bff8-67dd01f71b5b"",
                     ""expectedControlType"": ""Button"",
@@ -37,99 +37,426 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""wheel"",
+                    ""name"": ""DpadUp"",
                     ""type"": ""Button"",
-                    ""id"": ""abc6382b-27eb-46f2-9051-0988a9e80f0d"",
+                    ""id"": ""810eff6b-adfc-4666-95e7-0fb95b127d42"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""SteeringTest"",
-                    ""type"": ""Value"",
-                    ""id"": ""8d22ba9a-b075-42e0-b26d-6fb6200a0890"",
-                    ""expectedControlType"": ""Axis"",
+                    ""name"": ""DpadLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""6a1e6a19-abe4-4607-8a22-6e180686512c"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DpadRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""f4fd3b80-da8f-42ce-810a-033fbfa03383"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""L1"",
+                    ""type"": ""Button"",
+                    ""id"": ""56050fbd-5721-4a0c-84ff-dcfc4720d157"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""L2"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b938e0f-1d9c-4bb5-ba86-578d67cee7a8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""L3"",
+                    ""type"": ""Button"",
+                    ""id"": ""8679145d-a7b2-4b00-9ab3-0b7d689f1ccd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""R1"",
+                    ""type"": ""Button"",
+                    ""id"": ""297b8d69-10d5-4201-a8a6-8437244bbfea"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""R2"",
+                    ""type"": ""Button"",
+                    ""id"": ""650c67fc-1c71-4263-a9e6-351b6f4eca2f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""R3"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c175446-4fed-4241-9239-ef55f6e0a84a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Plus"",
+                    ""type"": ""Button"",
+                    ""id"": ""3973cb4e-f819-43b9-ae95-609bd7d1eecb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Minus"",
+                    ""type"": ""Button"",
+                    ""id"": ""cc8db32f-c685-4406-b074-8e746b68c2ab"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PS"",
+                    ""type"": ""Button"",
+                    ""id"": ""bed965c0-83ba-44dd-83cc-1c2e78e09f35"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Share"",
+                    ""type"": ""Button"",
+                    ""id"": ""14c4cac8-7845-40e1-811a-324539680623"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""1743650c-ad1e-4716-8e87-049faae2bd14"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Triangle"",
+                    ""type"": ""Button"",
+                    ""id"": ""863c7e07-3768-400b-9fbc-2e132f148186"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Square"",
+                    ""type"": ""Button"",
+                    ""id"": ""67edf388-dec5-4adf-a117-7096c78bab2c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Cross"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e607623-eb6b-4b8f-90e8-edf7c0e60324"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Circle"",
+                    ""type"": ""Button"",
+                    ""id"": ""e70e2fd2-bc16-4f22-9bde-983266ccb3df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Wheel"",
+                    ""type"": ""Button"",
+                    ""id"": ""101bc4fc-f56a-4a07-8fcf-d97f0a202562"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WheelMiddle"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c79a3cf-0b99-43c1-8b08-84061b45b9db"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""a711895f-a091-42c3-8157-0a09d4774795"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""id"": ""3bc6708d-3f73-414b-801d-6462dec37ee8"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""DpadDown"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""93a06832-af66-4798-82d0-6f50168db744"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""id"": ""4ccfe3f5-1fa7-440a-b5df-6d909e97f84d"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""DpadUp"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d0e8da56-0bb9-42a7-96b8-5e39bf9a22a8"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""id"": ""61bae9c2-6fda-4ca9-8988-70ea35668ca5"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""DpadLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d656765f-f794-4d31-a3a7-feaeea682cf3"",
-                    ""path"": ""<Logitech G29 Racing Wheel>/plusButton"",
+                    ""id"": ""3927c847-e1bc-408b-97f6-ed3ebe3d99c3"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""DpadRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c6a5fc55-a931-4557-9b76-50fb5eeea379"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""id"": ""b4edb1d6-3948-41e1-b423-ebe1fe274dfe"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steering"",
+                    ""action"": ""L1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8d71cd71-33c3-4026-895e-1766fc9a78dc"",
+                    ""id"": ""21446f46-43f8-4460-94f8-41ff99de8505"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""L2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b98e5c56-842b-4c12-95c3-213b497a2e2f"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button12"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""L3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90ccf7e2-a24d-409e-babc-b01006d33619"",
                     ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""wheel"",
+                    ""action"": ""R1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1b47ec83-0342-4ec7-a3d1-a7174aa82a98"",
-                    ""path"": ""<Logitech G29 Racing Wheel>/throttleAxis"",
+                    ""id"": ""6c8a1085-4c28-4933-856b-50b9240dc03f"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button7"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SteeringTest"",
+                    ""action"": ""R2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca3b1a4b-bc00-4143-8ea2-6cf8b162d880"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button11"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""500a3050-4305-4219-a58c-a54c318f06a9"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button20"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Plus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a38b20d3-bf73-4f6d-b14d-baded2b66227"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button21"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Minus"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e135231-6ba4-4fef-a8bc-25ed43e5a147"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button25"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PS"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e9eadd59-2d62-499f-9794-bc58bd54ebe7"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Share"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1684947f-83e0-44fc-a4dc-665d9b117dc0"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d969abdc-1beb-48d7-9903-dd977b96eaa4"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Triangle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8147aac9-c6be-40d4-9acd-2449c6ecf249"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Square"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab4f22b2-f4d9-4ed5-b524-00ff8cf9be67"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cross"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""164e715f-46b3-4b09-986a-35fd778f09d4"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Circle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d7bc42a-13a3-4b2a-aaa7-45ff44da8971"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button22"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db69ca58-dcb5-4493-8d19-19a936ab9cd1"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button23"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Wheel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""75fb711c-fc39-4c97-bdba-c8d7e2d31f35"",
+                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button24"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WheelMiddle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -140,9 +467,27 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
 }");
         // Steering Wheel
         m_SteeringWheel = asset.FindActionMap("Steering Wheel", throwIfNotFound: true);
-        m_SteeringWheel_Steering = m_SteeringWheel.FindAction("Steering", throwIfNotFound: true);
-        m_SteeringWheel_wheel = m_SteeringWheel.FindAction("wheel", throwIfNotFound: true);
-        m_SteeringWheel_SteeringTest = m_SteeringWheel.FindAction("SteeringTest", throwIfNotFound: true);
+        m_SteeringWheel_DpadDown = m_SteeringWheel.FindAction("DpadDown", throwIfNotFound: true);
+        m_SteeringWheel_DpadUp = m_SteeringWheel.FindAction("DpadUp", throwIfNotFound: true);
+        m_SteeringWheel_DpadLeft = m_SteeringWheel.FindAction("DpadLeft", throwIfNotFound: true);
+        m_SteeringWheel_DpadRight = m_SteeringWheel.FindAction("DpadRight", throwIfNotFound: true);
+        m_SteeringWheel_L1 = m_SteeringWheel.FindAction("L1", throwIfNotFound: true);
+        m_SteeringWheel_L2 = m_SteeringWheel.FindAction("L2", throwIfNotFound: true);
+        m_SteeringWheel_L3 = m_SteeringWheel.FindAction("L3", throwIfNotFound: true);
+        m_SteeringWheel_R1 = m_SteeringWheel.FindAction("R1", throwIfNotFound: true);
+        m_SteeringWheel_R2 = m_SteeringWheel.FindAction("R2", throwIfNotFound: true);
+        m_SteeringWheel_R3 = m_SteeringWheel.FindAction("R3", throwIfNotFound: true);
+        m_SteeringWheel_Plus = m_SteeringWheel.FindAction("Plus", throwIfNotFound: true);
+        m_SteeringWheel_Minus = m_SteeringWheel.FindAction("Minus", throwIfNotFound: true);
+        m_SteeringWheel_PS = m_SteeringWheel.FindAction("PS", throwIfNotFound: true);
+        m_SteeringWheel_Share = m_SteeringWheel.FindAction("Share", throwIfNotFound: true);
+        m_SteeringWheel_Options = m_SteeringWheel.FindAction("Options", throwIfNotFound: true);
+        m_SteeringWheel_Triangle = m_SteeringWheel.FindAction("Triangle", throwIfNotFound: true);
+        m_SteeringWheel_Square = m_SteeringWheel.FindAction("Square", throwIfNotFound: true);
+        m_SteeringWheel_Cross = m_SteeringWheel.FindAction("Cross", throwIfNotFound: true);
+        m_SteeringWheel_Circle = m_SteeringWheel.FindAction("Circle", throwIfNotFound: true);
+        m_SteeringWheel_Wheel = m_SteeringWheel.FindAction("Wheel", throwIfNotFound: true);
+        m_SteeringWheel_WheelMiddle = m_SteeringWheel.FindAction("WheelMiddle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -204,16 +549,52 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     // Steering Wheel
     private readonly InputActionMap m_SteeringWheel;
     private List<ISteeringWheelActions> m_SteeringWheelActionsCallbackInterfaces = new List<ISteeringWheelActions>();
-    private readonly InputAction m_SteeringWheel_Steering;
-    private readonly InputAction m_SteeringWheel_wheel;
-    private readonly InputAction m_SteeringWheel_SteeringTest;
+    private readonly InputAction m_SteeringWheel_DpadDown;
+    private readonly InputAction m_SteeringWheel_DpadUp;
+    private readonly InputAction m_SteeringWheel_DpadLeft;
+    private readonly InputAction m_SteeringWheel_DpadRight;
+    private readonly InputAction m_SteeringWheel_L1;
+    private readonly InputAction m_SteeringWheel_L2;
+    private readonly InputAction m_SteeringWheel_L3;
+    private readonly InputAction m_SteeringWheel_R1;
+    private readonly InputAction m_SteeringWheel_R2;
+    private readonly InputAction m_SteeringWheel_R3;
+    private readonly InputAction m_SteeringWheel_Plus;
+    private readonly InputAction m_SteeringWheel_Minus;
+    private readonly InputAction m_SteeringWheel_PS;
+    private readonly InputAction m_SteeringWheel_Share;
+    private readonly InputAction m_SteeringWheel_Options;
+    private readonly InputAction m_SteeringWheel_Triangle;
+    private readonly InputAction m_SteeringWheel_Square;
+    private readonly InputAction m_SteeringWheel_Cross;
+    private readonly InputAction m_SteeringWheel_Circle;
+    private readonly InputAction m_SteeringWheel_Wheel;
+    private readonly InputAction m_SteeringWheel_WheelMiddle;
     public struct SteeringWheelActions
     {
         private @Inputs m_Wrapper;
         public SteeringWheelActions(@Inputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Steering => m_Wrapper.m_SteeringWheel_Steering;
-        public InputAction @wheel => m_Wrapper.m_SteeringWheel_wheel;
-        public InputAction @SteeringTest => m_Wrapper.m_SteeringWheel_SteeringTest;
+        public InputAction @DpadDown => m_Wrapper.m_SteeringWheel_DpadDown;
+        public InputAction @DpadUp => m_Wrapper.m_SteeringWheel_DpadUp;
+        public InputAction @DpadLeft => m_Wrapper.m_SteeringWheel_DpadLeft;
+        public InputAction @DpadRight => m_Wrapper.m_SteeringWheel_DpadRight;
+        public InputAction @L1 => m_Wrapper.m_SteeringWheel_L1;
+        public InputAction @L2 => m_Wrapper.m_SteeringWheel_L2;
+        public InputAction @L3 => m_Wrapper.m_SteeringWheel_L3;
+        public InputAction @R1 => m_Wrapper.m_SteeringWheel_R1;
+        public InputAction @R2 => m_Wrapper.m_SteeringWheel_R2;
+        public InputAction @R3 => m_Wrapper.m_SteeringWheel_R3;
+        public InputAction @Plus => m_Wrapper.m_SteeringWheel_Plus;
+        public InputAction @Minus => m_Wrapper.m_SteeringWheel_Minus;
+        public InputAction @PS => m_Wrapper.m_SteeringWheel_PS;
+        public InputAction @Share => m_Wrapper.m_SteeringWheel_Share;
+        public InputAction @Options => m_Wrapper.m_SteeringWheel_Options;
+        public InputAction @Triangle => m_Wrapper.m_SteeringWheel_Triangle;
+        public InputAction @Square => m_Wrapper.m_SteeringWheel_Square;
+        public InputAction @Cross => m_Wrapper.m_SteeringWheel_Cross;
+        public InputAction @Circle => m_Wrapper.m_SteeringWheel_Circle;
+        public InputAction @Wheel => m_Wrapper.m_SteeringWheel_Wheel;
+        public InputAction @WheelMiddle => m_Wrapper.m_SteeringWheel_WheelMiddle;
         public InputActionMap Get() { return m_Wrapper.m_SteeringWheel; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -223,28 +604,136 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_SteeringWheelActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_SteeringWheelActionsCallbackInterfaces.Add(instance);
-            @Steering.started += instance.OnSteering;
-            @Steering.performed += instance.OnSteering;
-            @Steering.canceled += instance.OnSteering;
-            @wheel.started += instance.OnWheel;
-            @wheel.performed += instance.OnWheel;
-            @wheel.canceled += instance.OnWheel;
-            @SteeringTest.started += instance.OnSteeringTest;
-            @SteeringTest.performed += instance.OnSteeringTest;
-            @SteeringTest.canceled += instance.OnSteeringTest;
+            @DpadDown.started += instance.OnDpadDown;
+            @DpadDown.performed += instance.OnDpadDown;
+            @DpadDown.canceled += instance.OnDpadDown;
+            @DpadUp.started += instance.OnDpadUp;
+            @DpadUp.performed += instance.OnDpadUp;
+            @DpadUp.canceled += instance.OnDpadUp;
+            @DpadLeft.started += instance.OnDpadLeft;
+            @DpadLeft.performed += instance.OnDpadLeft;
+            @DpadLeft.canceled += instance.OnDpadLeft;
+            @DpadRight.started += instance.OnDpadRight;
+            @DpadRight.performed += instance.OnDpadRight;
+            @DpadRight.canceled += instance.OnDpadRight;
+            @L1.started += instance.OnL1;
+            @L1.performed += instance.OnL1;
+            @L1.canceled += instance.OnL1;
+            @L2.started += instance.OnL2;
+            @L2.performed += instance.OnL2;
+            @L2.canceled += instance.OnL2;
+            @L3.started += instance.OnL3;
+            @L3.performed += instance.OnL3;
+            @L3.canceled += instance.OnL3;
+            @R1.started += instance.OnR1;
+            @R1.performed += instance.OnR1;
+            @R1.canceled += instance.OnR1;
+            @R2.started += instance.OnR2;
+            @R2.performed += instance.OnR2;
+            @R2.canceled += instance.OnR2;
+            @R3.started += instance.OnR3;
+            @R3.performed += instance.OnR3;
+            @R3.canceled += instance.OnR3;
+            @Plus.started += instance.OnPlus;
+            @Plus.performed += instance.OnPlus;
+            @Plus.canceled += instance.OnPlus;
+            @Minus.started += instance.OnMinus;
+            @Minus.performed += instance.OnMinus;
+            @Minus.canceled += instance.OnMinus;
+            @PS.started += instance.OnPS;
+            @PS.performed += instance.OnPS;
+            @PS.canceled += instance.OnPS;
+            @Share.started += instance.OnShare;
+            @Share.performed += instance.OnShare;
+            @Share.canceled += instance.OnShare;
+            @Options.started += instance.OnOptions;
+            @Options.performed += instance.OnOptions;
+            @Options.canceled += instance.OnOptions;
+            @Triangle.started += instance.OnTriangle;
+            @Triangle.performed += instance.OnTriangle;
+            @Triangle.canceled += instance.OnTriangle;
+            @Square.started += instance.OnSquare;
+            @Square.performed += instance.OnSquare;
+            @Square.canceled += instance.OnSquare;
+            @Cross.started += instance.OnCross;
+            @Cross.performed += instance.OnCross;
+            @Cross.canceled += instance.OnCross;
+            @Circle.started += instance.OnCircle;
+            @Circle.performed += instance.OnCircle;
+            @Circle.canceled += instance.OnCircle;
+            @Wheel.started += instance.OnWheel;
+            @Wheel.performed += instance.OnWheel;
+            @Wheel.canceled += instance.OnWheel;
+            @WheelMiddle.started += instance.OnWheelMiddle;
+            @WheelMiddle.performed += instance.OnWheelMiddle;
+            @WheelMiddle.canceled += instance.OnWheelMiddle;
         }
 
         private void UnregisterCallbacks(ISteeringWheelActions instance)
         {
-            @Steering.started -= instance.OnSteering;
-            @Steering.performed -= instance.OnSteering;
-            @Steering.canceled -= instance.OnSteering;
-            @wheel.started -= instance.OnWheel;
-            @wheel.performed -= instance.OnWheel;
-            @wheel.canceled -= instance.OnWheel;
-            @SteeringTest.started -= instance.OnSteeringTest;
-            @SteeringTest.performed -= instance.OnSteeringTest;
-            @SteeringTest.canceled -= instance.OnSteeringTest;
+            @DpadDown.started -= instance.OnDpadDown;
+            @DpadDown.performed -= instance.OnDpadDown;
+            @DpadDown.canceled -= instance.OnDpadDown;
+            @DpadUp.started -= instance.OnDpadUp;
+            @DpadUp.performed -= instance.OnDpadUp;
+            @DpadUp.canceled -= instance.OnDpadUp;
+            @DpadLeft.started -= instance.OnDpadLeft;
+            @DpadLeft.performed -= instance.OnDpadLeft;
+            @DpadLeft.canceled -= instance.OnDpadLeft;
+            @DpadRight.started -= instance.OnDpadRight;
+            @DpadRight.performed -= instance.OnDpadRight;
+            @DpadRight.canceled -= instance.OnDpadRight;
+            @L1.started -= instance.OnL1;
+            @L1.performed -= instance.OnL1;
+            @L1.canceled -= instance.OnL1;
+            @L2.started -= instance.OnL2;
+            @L2.performed -= instance.OnL2;
+            @L2.canceled -= instance.OnL2;
+            @L3.started -= instance.OnL3;
+            @L3.performed -= instance.OnL3;
+            @L3.canceled -= instance.OnL3;
+            @R1.started -= instance.OnR1;
+            @R1.performed -= instance.OnR1;
+            @R1.canceled -= instance.OnR1;
+            @R2.started -= instance.OnR2;
+            @R2.performed -= instance.OnR2;
+            @R2.canceled -= instance.OnR2;
+            @R3.started -= instance.OnR3;
+            @R3.performed -= instance.OnR3;
+            @R3.canceled -= instance.OnR3;
+            @Plus.started -= instance.OnPlus;
+            @Plus.performed -= instance.OnPlus;
+            @Plus.canceled -= instance.OnPlus;
+            @Minus.started -= instance.OnMinus;
+            @Minus.performed -= instance.OnMinus;
+            @Minus.canceled -= instance.OnMinus;
+            @PS.started -= instance.OnPS;
+            @PS.performed -= instance.OnPS;
+            @PS.canceled -= instance.OnPS;
+            @Share.started -= instance.OnShare;
+            @Share.performed -= instance.OnShare;
+            @Share.canceled -= instance.OnShare;
+            @Options.started -= instance.OnOptions;
+            @Options.performed -= instance.OnOptions;
+            @Options.canceled -= instance.OnOptions;
+            @Triangle.started -= instance.OnTriangle;
+            @Triangle.performed -= instance.OnTriangle;
+            @Triangle.canceled -= instance.OnTriangle;
+            @Square.started -= instance.OnSquare;
+            @Square.performed -= instance.OnSquare;
+            @Square.canceled -= instance.OnSquare;
+            @Cross.started -= instance.OnCross;
+            @Cross.performed -= instance.OnCross;
+            @Cross.canceled -= instance.OnCross;
+            @Circle.started -= instance.OnCircle;
+            @Circle.performed -= instance.OnCircle;
+            @Circle.canceled -= instance.OnCircle;
+            @Wheel.started -= instance.OnWheel;
+            @Wheel.performed -= instance.OnWheel;
+            @Wheel.canceled -= instance.OnWheel;
+            @WheelMiddle.started -= instance.OnWheelMiddle;
+            @WheelMiddle.performed -= instance.OnWheelMiddle;
+            @WheelMiddle.canceled -= instance.OnWheelMiddle;
         }
 
         public void RemoveCallbacks(ISteeringWheelActions instance)
@@ -264,8 +753,26 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     public SteeringWheelActions @SteeringWheel => new SteeringWheelActions(this);
     public interface ISteeringWheelActions
     {
-        void OnSteering(InputAction.CallbackContext context);
+        void OnDpadDown(InputAction.CallbackContext context);
+        void OnDpadUp(InputAction.CallbackContext context);
+        void OnDpadLeft(InputAction.CallbackContext context);
+        void OnDpadRight(InputAction.CallbackContext context);
+        void OnL1(InputAction.CallbackContext context);
+        void OnL2(InputAction.CallbackContext context);
+        void OnL3(InputAction.CallbackContext context);
+        void OnR1(InputAction.CallbackContext context);
+        void OnR2(InputAction.CallbackContext context);
+        void OnR3(InputAction.CallbackContext context);
+        void OnPlus(InputAction.CallbackContext context);
+        void OnMinus(InputAction.CallbackContext context);
+        void OnPS(InputAction.CallbackContext context);
+        void OnShare(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
+        void OnTriangle(InputAction.CallbackContext context);
+        void OnSquare(InputAction.CallbackContext context);
+        void OnCross(InputAction.CallbackContext context);
+        void OnCircle(InputAction.CallbackContext context);
         void OnWheel(InputAction.CallbackContext context);
-        void OnSteeringTest(InputAction.CallbackContext context);
+        void OnWheelMiddle(InputAction.CallbackContext context);
     }
 }

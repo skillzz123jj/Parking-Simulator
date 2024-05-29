@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class TestG29 : MonoBehaviour
+public class WheelInteraction : MonoBehaviour
 {
     LogitechGSDK.LogiControllerPropertiesData properties;
 
@@ -9,7 +9,7 @@ public class TestG29 : MonoBehaviour
     public int CurrentGear;
 
 
-    public static TestG29 testG29;
+    public static WheelInteraction wheelInteractionCS;
     void Start()
     {
     

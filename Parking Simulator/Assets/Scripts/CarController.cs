@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CarController : TestG29
+public class CarController : WheelInteraction
 {
     public Transform frontLeftWheel;
     public Transform frontRightWheel;
@@ -13,7 +13,7 @@ public class CarController : TestG29
     public float wheelSteering;
 
     [SerializeField] float moveSpeed;
-    [SerializeField] TestG29 testG29Script;
+    [SerializeField] WheelInteraction wheelInteractionCS;
      [SerializeField] RectTransform steeringWheelUI;
 
     private Rigidbody rb;
@@ -22,7 +22,7 @@ public class CarController : TestG29
     {
         rb = GetComponent<Rigidbody>();
 
-        float initialSteerAngle = testG29Script.xAxes * maxSteerAngle;
+        float initialSteerAngle = wheelInteractionCS.xAxes * maxSteerAngle;
         steeringWheelUI.localEulerAngles = new Vector3(0, 0, -initialSteerAngle);
 
 
@@ -32,12 +32,12 @@ public class CarController : TestG29
     void Update()
     {
         float steer = maxSteerAngle * Input.GetAxis("Horizontal");
-        float torque = motorTorque * testG29Script.GasInput;//Input.GetAxis("Vertical");
+        float torque = motorTorque * wheelInteractionCS.GasInput;//Input.GetAxis("Vertical");
 
         Steer(steer);
         Drive(torque);
         UpdateWheelPoses();
-        UpdateSteeringWheelUI(testG29Script.xAxes);
+        UpdateSteeringWheelUI(wheelInteractionCS.xAxes);
     }
 
     private void Steer(float steerAngle)
