@@ -728,6 +728,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1029424385018338989, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
   m_PrefabInstance: {fileID: 1275540584}
   m_PrefabAsset: {fileID: 0}
+--- !u!146 &473313372 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 6515560375722041047, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
+  m_PrefabInstance: {fileID: 1275540584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &551852571 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6645616114513181105, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
@@ -766,6 +771,39 @@ MonoBehaviour:
   moveSpeed: 0.02
   wheelInteractionCS: {fileID: 1902175360}
   steeringWheelUI: {fileID: 1915153468}
+--- !u!114 &551852575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551852571}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee79da10e7f0943b2838f771f48acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMotorTorque: 1500
+  maxSteeringAngle: 30
+  frontLeftWheel: {fileID: 1675799644}
+  frontRightWheel: {fileID: 556484079}
+  rearLeftWheel: {fileID: 473313372}
+  rearRightWheel: {fileID: 552805126}
+  frontLeftTransform: {fileID: 1817516359}
+  frontRightTransform: {fileID: 1061940278}
+  rearLeftTransform: {fileID: 468344748}
+  rearRightTransform: {fileID: 949128110}
+  wheelInteractionCS: {fileID: 1902175360}
+--- !u!146 &552805126 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 9178659444073187824, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
+  m_PrefabInstance: {fileID: 1275540584}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &556484079 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 3693936736443218242, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
+  m_PrefabInstance: {fileID: 1275540584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &597060490
 GameObject:
   m_ObjectHideFlags: 0
@@ -6724,6 +6762,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1858005172513079971, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
+      propertyPath: m_Mass
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858005172513079971, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
+      propertyPath: m_Constraints
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 6301142851818038027, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -7140,6 +7186,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!146 &1675799644 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 6088603988529228709, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
+  m_PrefabInstance: {fileID: 1275540584}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1817516359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5001173205807362433, guid: 62010132604e8c94d96b4cb4fe6d3394, type: 3}
@@ -7241,11 +7292,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dea328c59a21d4d98235cc6adc6035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xAxes: 0
-  GasInput: 0
-  BreakInput: 0
-  ClutchInput: 0
-  CurrentGear: 0
 --- !u!114 &1902175360
 MonoBehaviour:
   m_ObjectHideFlags: 0

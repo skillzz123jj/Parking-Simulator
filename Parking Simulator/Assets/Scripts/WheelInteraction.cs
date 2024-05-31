@@ -4,7 +4,7 @@ public class WheelInteraction : MonoBehaviour
 {
     LogitechGSDK.LogiControllerPropertiesData properties;
 
-    public float xAxes, GasInput, BreakInput, ClutchInput;
+    public float xAxes, GasInput, BrakeInput, ClutchInput;
 
     public int CurrentGear;
 
@@ -37,12 +37,12 @@ public class WheelInteraction : MonoBehaviour
             
             if (rec.lRz > 0)
             {
-                BreakInput = 0;
+                BrakeInput = 0;
 
             }
             else if (rec.lRz < 0)
             {
-                BreakInput = rec.lRz / -32768f;
+                BrakeInput = rec.lRz / -32768f;
             }
 
             if (rec.rglSlider[0] > 0)
@@ -52,7 +52,7 @@ public class WheelInteraction : MonoBehaviour
             }
             else if (rec.rglSlider[0] < 0)
             {
-                BreakInput = rec.lRz / -32768f;
+                BrakeInput = rec.lRz / -32768f;
             }
 
         }

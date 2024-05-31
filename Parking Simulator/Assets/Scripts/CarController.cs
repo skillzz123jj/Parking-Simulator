@@ -34,9 +34,9 @@ public class CarController : WheelInteraction
         float steer = maxSteerAngle * Input.GetAxis("Horizontal");
         float torque = motorTorque * wheelInteractionCS.GasInput;//Input.GetAxis("Vertical");
 
-        Steer(steer);
-        Drive(torque);
-        UpdateWheelPoses();
+       // Steer(steer);
+       // Drive(torque);
+       // UpdateWheelPoses();
         UpdateSteeringWheelUI(wheelInteractionCS.xAxes);
     }
 
