@@ -52,13 +52,13 @@ public class WheelInteraction : MonoBehaviour
             }
             else if (rec.rglSlider[0] < 0)
             {
-                BrakeInput = rec.lRz / -32768f;
+                ClutchInput = rec.lRz / -32768f;
             }
 
         }
         else
         {
-            Debug.Log("No Steering Wheel");
+           // Debug.Log("No Steering Wheel");
         }
     }
     // Use this for shutdown 
