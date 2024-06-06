@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Indicators : MonoBehaviour
 {
-    public MeshRenderer leftIndicatorLight;
-    public MeshRenderer rightIndicatorLight;
+    public GameObject leftIndicatorLight;
+    public GameObject rightIndicatorLight;
     private bool leftIndicatorOn = false;
     private bool rightIndicatorOn = false;
     private Coroutine leftCoroutine;
     private Coroutine rightCoroutine;
-
+    [SerializeField] AudioSource indicatorSound;
 
     [SerializeField] List<MeshRenderer> brakelights = new List<MeshRenderer>();
 
@@ -21,15 +21,17 @@ public class Indicators : MonoBehaviour
         {
             if (leftCoroutine != null)
             {
+                indicatorSound.Stop();
                 StopCoroutine(leftCoroutine);
-                leftIndicatorLight.enabled = false;
+                leftIndicatorLight.SetActive(false);
             }
 
             leftIndicatorOn = !leftIndicatorOn;
             rightIndicatorOn = false;
-            rightIndicatorLight.enabled = false; // Ensure the right indicator is off
+            rightIndicatorLight.SetActive(false); // Ensure the right indicator is off
             if (leftIndicatorOn)
             {
+                indicatorSound.Stop();
                 leftCoroutine = StartCoroutine(BlinkIndicator(leftIndicatorLight, () => leftIndicatorOn));
             }
         }
@@ -38,29 +40,34 @@ public class Indicators : MonoBehaviour
         {
             if (rightCoroutine != null)
             {
+                indicatorSound.Stop();
                 StopCoroutine(rightCoroutine);
-                rightIndicatorLight.enabled = false;
+                rightIndicatorLight.SetActive(false);
 
             }
 
             rightIndicatorOn = !rightIndicatorOn;
             leftIndicatorOn = false;
-            leftIndicatorLight.enabled = false; // Ensure the left indicator is off
+            leftIndicatorLight.SetActive(false); // Ensure the left indicator is off
             if (rightIndicatorOn)
             {
+                indicatorSound.Stop();
                 rightCoroutine = StartCoroutine(BlinkIndicator(rightIndicatorLight, () => rightIndicatorOn));
             }
         }
     }
 
-    IEnumerator BlinkIndicator(MeshRenderer indicatorLight, System.Func<bool> isIndicatorOn)
+    IEnumerator BlinkIndicator(GameObject indicatorLight, System.Func<bool> isIndicatorOn)
     {
         while (isIndicatorOn())
         {
-            indicatorLight.enabled = !indicatorLight.enabled;
+            indicatorSound.Play();
+            //indicatorLight.enabled = !indicatorLight.enabled;
+            indicatorLight.SetActive(!indicatorLight.activeSelf);
             yield return new WaitForSeconds(0.5f);
         }
-        indicatorLight.enabled = false;
+        indicatorLight.SetActive(false);
+        indicatorSound.Stop();
     }
 
     void Brakelights()
