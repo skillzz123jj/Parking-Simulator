@@ -20,7 +20,7 @@ public class TESTCarController : MonoBehaviour
     [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
 
-    private void FixedUpdate()
+    private void Update()
     {
         GetInput();
         HandleMotor();
