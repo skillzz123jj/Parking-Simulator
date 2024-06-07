@@ -4,12 +4,12 @@ public class WheelInteraction : MonoBehaviour
 {
     LogitechGSDK.LogiControllerPropertiesData properties;
 
-    public float xAxes, GasInput, BrakeInput, ClutchInput;
+    public static float xAxes, GasInput, BrakeInput, ClutchInput;
 
     public int CurrentGear;
 
 
-    public static WheelInteraction wheelInteractionCS;
+    //public static WheelInteraction wheelInteractionCS;
     void Start()
     {
     

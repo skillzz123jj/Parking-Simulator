@@ -13,10 +13,12 @@ public class CarStates : MonoBehaviour
     [SerializeField] GameObject car;
     [SerializeField] GameObject carLights;
 
+    public string currentState;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentState = "Park";
     }
 
     // Update is called once per frame

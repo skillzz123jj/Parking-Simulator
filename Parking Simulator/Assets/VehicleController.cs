@@ -29,7 +29,12 @@ public class VehicleController : MonoBehaviour
 
     Vector3 previousPosition;
 
-    [SerializeField] WheelInteraction wheelInteractionCS;
+  //  [SerializeField] WheelInteraction wheelInteractionCS;
+
+    [SerializeField] AudioSource engineSound;
+    [SerializeField] AudioClip accelerating;
+    [SerializeField] AudioClip idle;
+
 
 
     private Rigidbody rb;
@@ -97,9 +102,9 @@ public class VehicleController : MonoBehaviour
     {
 
         // Check if the car is stationary and the brake input is applied
-        if (wheelInteractionCS.GasInput > 0)
+        if (WheelInteraction.GasInput > 0)
         {
-            float motor = maxMotorTorque * wheelInteractionCS.GasInput;
+            float motor = maxMotorTorque * WheelInteraction.GasInput;
             frontLeftWheel.motorTorque = -motor;
             frontRightWheel.motorTorque = -motor;
         }
@@ -128,14 +133,24 @@ public class VehicleController : MonoBehaviour
     }
     private void ApplyDrive()
     {
-        if (wheelInteractionCS.GasInput > 0)
+        if (WheelInteraction.GasInput > 0)
         {
-            float motor = maxMotorTorque * wheelInteractionCS.GasInput;
+            float motor = maxMotorTorque * WheelInteraction.GasInput;
+            if (engineSound.clip != accelerating || !engineSound.isPlaying)
+            {
+                engineSound.clip = accelerating;
+                engineSound.Play();
+            }
             frontLeftWheel.motorTorque = motor;
             frontRightWheel.motorTorque = motor;
         }
         else
         {
+            if (engineSound.clip != idle || !engineSound.isPlaying)
+            {
+                engineSound.clip = idle;
+                engineSound.Play();
+            }
             frontLeftWheel.motorTorque = 0;
             frontRightWheel.motorTorque = 0;
         }
@@ -143,15 +158,15 @@ public class VehicleController : MonoBehaviour
 
         //frontLeftWheel.motorTorque = motor;
         //frontRightWheel.motorTorque = motor;
-
     }
+
 
 
     private void ApplyBrake()
     {
-        if (wheelInteractionCS.BrakeInput > 0)
+        if (WheelInteraction.BrakeInput > 0)
         {
-            float brakeForce = brakeTorque * wheelInteractionCS.BrakeInput;
+            float brakeForce = brakeTorque * WheelInteraction.BrakeInput;
             frontLeftWheel.brakeTorque = brakeForce;
             frontRightWheel.brakeTorque = brakeForce;
             rearLeftWheel.brakeTorque = brakeForce;

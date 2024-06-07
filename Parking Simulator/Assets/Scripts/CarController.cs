@@ -13,7 +13,7 @@ public class CarController : WheelInteraction
     public float wheelSteering;
 
     [SerializeField] float moveSpeed;
-    [SerializeField] WheelInteraction wheelInteractionCS;
+  //  [SerializeField] WheelInteraction wheelInteractionCS;
      [SerializeField] RectTransform steeringWheelUI;
 
     private Rigidbody rb;
@@ -22,7 +22,7 @@ public class CarController : WheelInteraction
     {
         rb = GetComponent<Rigidbody>();
 
-        float initialSteerAngle = wheelInteractionCS.xAxes * maxSteerAngle;
+        float initialSteerAngle = WheelInteraction.xAxes * maxSteerAngle;
         steeringWheelUI.localEulerAngles = new Vector3(0, 0, -initialSteerAngle);
 
 
@@ -32,12 +32,12 @@ public class CarController : WheelInteraction
     void Update()
     {
         float steer = maxSteerAngle * Input.GetAxis("Horizontal");
-        float torque = motorTorque * wheelInteractionCS.GasInput;//Input.GetAxis("Vertical");
+        float torque = motorTorque * WheelInteraction.GasInput;//Input.GetAxis("Vertical");
 
        // Steer(steer);
        // Drive(torque);
        // UpdateWheelPoses();
-        UpdateSteeringWheelUI(wheelInteractionCS.xAxes);
+        UpdateSteeringWheelUI(WheelInteraction.xAxes);
     }
 
     private void Steer(float steerAngle)
