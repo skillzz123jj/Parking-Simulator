@@ -14,6 +14,10 @@ public class Indicators : MonoBehaviour
     private Coroutine leftCoroutine;
     private Coroutine rightCoroutine;
     [SerializeField] AudioSource indicatorSound;
+    [SerializeField] AudioSource carHornSource;
+    [SerializeField] AudioClip carHorn;
+
+
 
     [SerializeField] List<MeshRenderer> brakelights = new List<MeshRenderer>();
 
@@ -29,12 +33,14 @@ public class Indicators : MonoBehaviour
         inputActions.Enable();
         inputActions.SteeringWheel.L1.performed += LeftIndicator;
         inputActions.SteeringWheel.R1.performed += RightIndicator;
+        inputActions.SteeringWheel.WheelMiddle.performed += Honk;
     }
 
     void OnDisable()
     {
         inputActions.SteeringWheel.L1.performed -= LeftIndicator;
         inputActions.SteeringWheel.R1.performed -= RightIndicator;
+        inputActions.SteeringWheel.WheelMiddle.performed -= Honk;
         inputActions.Disable();
     }
 
@@ -141,6 +147,11 @@ public class Indicators : MonoBehaviour
         }
         indicatorLight.SetActive(false);
         indicatorSound.Stop();
+    }
+
+    private void Honk(InputAction.CallbackContext context)
+    {
+        carHornSource.PlayOneShot(carHorn);
     }
 
     void Brakelights()

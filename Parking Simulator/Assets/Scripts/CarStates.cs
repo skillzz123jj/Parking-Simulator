@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class CarStates : MonoBehaviour
 {
@@ -13,27 +14,101 @@ public class CarStates : MonoBehaviour
     [SerializeField] GameObject car;
     [SerializeField] GameObject carLights;
 
-    public string currentState;
+    public static string currentState;
 
-    // Start is called before the first frame update
-    void Start()
+    public string[] gears = new string[] { "P", "R", "N", "D" }; // Array of items to navigate through
+    private int currentIndex = 0;
+
+    // Reference to the InputActionAsset
+    public Inputs inputActions;
+
+
+    private void Awake()
     {
-        currentState = "Park";
+        inputActions = new Inputs();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        if (Input.GetKey(KeyCode.L))
+        inputActions.Enable();
+        inputActions.SteeringWheel.DpadUp.performed += ctx => OnNavigateUp();
+        inputActions.SteeringWheel.DpadDown.performed += ctx => OnNavigateDown();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.SteeringWheel.DpadUp.performed -= ctx => OnNavigateUp();
+        inputActions.SteeringWheel.DpadDown.performed -= ctx => OnNavigateDown();
+        inputActions.Disable();
+    }
+
+    private void OnNavigateUp()
+    {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : gears.Length - 1;
+        ChangeGear(gears[currentIndex]);
+    }
+
+    private void OnNavigateDown()
+    {
+        currentIndex = (currentIndex < gears.Length - 1) ? currentIndex + 1 : 0;
+        ChangeGear(gears[currentIndex]);
+    }
+
+    void Start()
+    {
+        currentState = "P"; // Default to Park
+        ChangeGear(currentState); // Initialize the default state
+    }
+
+    void ChangeGear(string state)
+    {
+        currentState = state;
+        print(state);
+
+        // Reset all states
+        pState.color = Color.white;
+        rState.color = Color.white;
+        nState.color = Color.white;
+        dState.color = Color.white;
+
+     //   carLights.SetActive(false);
+
+        switch (state)
         {
-            TurnVehicleOn();
+            case "P":
+                ParkState();
+                break;
+            case "R":
+                ReverseState();
+                break;
+            case "N":
+                NeutralState();
+                break;
+            case "D":
+                DriveState();
+                break;
         }
     }
 
-    void TurnVehicleOn()
+    void ParkState()
     {
-       // car.GetComponent<TESTCarController>().enabled = true;
-        carLights.SetActive(true);
+        // car.GetComponent<TESTCarController>().enabled = true;
+      //  carLights.SetActive(true);
         pState.color = Color.red;
+    }
+
+    private void ReverseState()
+    {
+        rState.color = Color.red;
+    }
+
+    private void NeutralState()
+    {
+        nState.color = Color.red;
+    }
+
+    private void DriveState()
+    {
+        dState.color = Color.red;
     }
 }

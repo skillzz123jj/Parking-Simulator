@@ -18,10 +18,10 @@ public class MoveCamera : MonoBehaviour
         inputActions = new Inputs();
 
         // Register input action callbacks
-        inputActions.SteeringWheel.DpadUp.performed += ctx => SwitchCamera(cameraFront);
-        inputActions.SteeringWheel.DpadDown.performed += ctx => SwitchCamera(cameraBack);
-        inputActions.SteeringWheel.DpadLeft.performed += ctx => SwitchCamera(cameraLeft);
-        inputActions.SteeringWheel.DpadRight.performed += ctx => SwitchCamera(cameraRight);
+        inputActions.SteeringWheel.Triangle.performed += ctx => SwitchCamera(cameraFront);
+        inputActions.SteeringWheel.Cross.performed += ctx => SwitchCamera(cameraBack);
+        inputActions.SteeringWheel.Square.performed += ctx => SwitchCamera(cameraLeft);
+        inputActions.SteeringWheel.Circle.performed += ctx => SwitchCamera(cameraRight);
     }
 
     void Start()

@@ -34,6 +34,8 @@ public class VehicleController : MonoBehaviour
     [SerializeField] AudioSource engineSound;
     [SerializeField] AudioClip accelerating;
     [SerializeField] AudioClip idle;
+    [SerializeField] AudioClip revving;
+
 
 
 
@@ -61,15 +63,19 @@ public class VehicleController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (reverese)
+        if (CarStates.currentState == "R")
         {
             ApplyReverse();
 
         }
-        else
+        else if (CarStates.currentState == "D")
         {
              ApplyDrive();
 
+        }
+        else if (CarStates.currentState == "P" || CarStates.currentState == "N")
+        {
+            RevCar();
         }
         ApplyBrake();
 
@@ -98,6 +104,25 @@ public class VehicleController : MonoBehaviour
         previousPosition = transform.position;
     }
 
+    private void RevCar()
+    {
+        if (WheelInteraction.GasInput > 0)
+        {
+            if (engineSound.clip != revving || !engineSound.isPlaying)
+            {
+                engineSound.clip = revving;
+                engineSound.Play();
+            }
+        }
+        else
+        {
+            if (engineSound.clip != idle || !engineSound.isPlaying)
+            {
+                engineSound.clip = idle;
+                engineSound.Play();
+            }
+        }
+    }
     private void ApplyReverse()
     {
 
