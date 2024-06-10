@@ -11,12 +11,8 @@ public class TESTCarController : MonoBehaviour
 
     // Settings
     [SerializeField] private float motorForce, breakForce, maxSteerAngle;
-
-    // Wheel Colliders
     [SerializeField] private WheelCollider frontLeftWheelCollider, frontRightWheelCollider;
     [SerializeField] private WheelCollider rearLeftWheelCollider, rearRightWheelCollider;
-
-    // Wheels
     [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
 
@@ -26,8 +22,19 @@ public class TESTCarController : MonoBehaviour
         HandleMotor();
         HandleSteering();
         UpdateWheels();
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            FlipCar();
+        }
     }
 
+       private void FlipCar()
+    {
+            Vector3 currentRotation = gameObject.transform.rotation.eulerAngles;
+
+            gameObject.transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
+    }
     private void GetInput()
     {
         // Steering Input

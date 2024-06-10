@@ -45,28 +45,24 @@ public class MoveCamera : MonoBehaviour
         // Debugging key input to ensure the fallback still works
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            Debug.Log("Key Y pressed - Switching to Front Camera");
             previousCamera.Priority = 1;
             cameraFront.Priority = 10;
             previousCamera = cameraFront;
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            Debug.Log("Key J pressed - Switching to Right Camera");
             previousCamera.Priority = 1;
             cameraRight.Priority = 10;
             previousCamera = cameraRight;
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            Debug.Log("Key G pressed - Switching to Left Camera");
             previousCamera.Priority = 1;
             cameraLeft.Priority = 10;
             previousCamera = cameraLeft;
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            Debug.Log("Key H pressed - Switching to Back Camera");
             previousCamera.Priority = 1;
             cameraBack.Priority = 10;
             previousCamera = cameraBack;
@@ -75,7 +71,6 @@ public class MoveCamera : MonoBehaviour
 
     private void SwitchCamera(CinemachineVirtualCamera newCamera)
     {
-        Debug.Log($"Switching camera to {newCamera.name}");
         if (previousCamera != null)
         {
             previousCamera.Priority = 1;

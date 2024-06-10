@@ -12,7 +12,7 @@ public class CarRadio : MonoBehaviour
 
     void Awake()
     {
-        DontDestroyOnLoad(transform.gameObject);
+//        DontDestroyOnLoad(transform.gameObject);
         inputActions = new Inputs();
     }
 
