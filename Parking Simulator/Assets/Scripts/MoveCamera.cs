@@ -12,6 +12,7 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera cameraLeft;
     [SerializeField] CinemachineVirtualCamera cameraRight;
     [SerializeField] CinemachineVirtualCamera previousCamera;
+    [SerializeField] GameObject car;
 
     void Awake()
     {
@@ -22,6 +23,7 @@ public class MoveCamera : MonoBehaviour
         inputActions.SteeringWheel.Cross.performed += ctx => SwitchCamera(cameraBack);
         inputActions.SteeringWheel.Square.performed += ctx => SwitchCamera(cameraLeft);
         inputActions.SteeringWheel.Circle.performed += ctx => SwitchCamera(cameraRight);
+        inputActions.SteeringWheel.R2.performed += ctx => FlipCar();
     }
 
     void Start()
@@ -77,5 +79,12 @@ public class MoveCamera : MonoBehaviour
         }
         newCamera.Priority = 10;
         previousCamera = newCamera;
+    }
+
+    private void FlipCar()
+    {
+        Vector3 currentRotation = car.transform.rotation.eulerAngles;
+
+        car.transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
     }
 }

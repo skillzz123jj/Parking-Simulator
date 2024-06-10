@@ -160,11 +160,11 @@ public class CarLights : MonoBehaviour
     void ReverseLights()
     {
         
-        if (WheelInteraction.GasInput > 0 && CarStates.currentState == "Reverse")
+        if (WheelInteraction.GasInput > 0 && CarStates.currentState == "R")
         {
             foreach (MeshRenderer light in reverseLights)
             {
-                light.enabled = false;
+                light.enabled = true;
             }
 
         }
@@ -172,7 +172,7 @@ public class CarLights : MonoBehaviour
         {
             foreach (MeshRenderer light in reverseLights)
             {
-                light.enabled = true;
+                light.enabled = false;
             }
 
 

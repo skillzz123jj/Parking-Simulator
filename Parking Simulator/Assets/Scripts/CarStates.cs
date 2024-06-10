@@ -16,7 +16,7 @@ public class CarStates : MonoBehaviour
 
     public static string currentState;
 
-    public string[] gears = new string[] { "Park", "Reverse", "Neutral", "Drive" }; // Array of items to navigate through
+    public string[] gears = new string[] { "P", "R", "N", "D" }; // Array of items to navigate through
     private int currentIndex = 0;
 
     // Reference to the InputActionAsset
@@ -52,18 +52,19 @@ public class CarStates : MonoBehaviour
     {
         currentIndex = (currentIndex < gears.Length - 1) ? currentIndex + 1 : 0;
         ChangeGear(gears[currentIndex]);
+        print(gears[currentIndex]);
     }
 
     void Start()
     {
-        currentState = "Park"; // Default to Park
+        currentState = "P"; // Default to Park
         ChangeGear(currentState); // Initialize the default state
     }
 
     void ChangeGear(string state)
     {
         currentState = state;
-        print(state);
+       
 
         // Reset all states
         pState.color = Color.white;
@@ -75,16 +76,16 @@ public class CarStates : MonoBehaviour
 
         switch (state)
         {
-            case "Park":
+            case "P":
                 ParkState();
                 break;
-            case "Reverse":
+            case "R":
                 ReverseState();
                 break;
-            case "Neutral":
+            case "N":
                 NeutralState();
                 break;
-            case "Drive":
+            case "D":
                 DriveState();
                 break;
         }
@@ -100,15 +101,19 @@ public class CarStates : MonoBehaviour
     private void ReverseState()
     {
         rState.color = Color.red;
+   
     }
 
     private void NeutralState()
     {
         nState.color = Color.red;
+      
     }
 
     private void DriveState()
     {
         dState.color = Color.red;
+     
+
     }
 }
