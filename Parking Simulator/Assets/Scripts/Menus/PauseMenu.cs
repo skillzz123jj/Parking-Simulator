@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] PostProcessProfile profile;
     DepthOfField depthOfField;
     [SerializeField] GameObject pauseMenu;
+    [SerializeField] GameObject UIWheel;
+    [SerializeField] GameObject gears;
 
     [SerializeField] GameObject blackOutSquare;
 
@@ -42,8 +44,8 @@ public class PauseMenu : MonoBehaviour
         {
             profile.TryGetSettings(out depthOfField);
         }
-        UnityEngine.Cursor.visible = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         UpdateFocusDistance();
     }
 
@@ -52,13 +54,13 @@ public class PauseMenu : MonoBehaviour
 
         if (pauseMenu != null && pauseMenu.activeSelf)
         {
-            UnityEngine.Cursor.visible = true;
-            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         else
         {
-            UnityEngine.Cursor.visible = false;
-            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
@@ -68,6 +70,8 @@ public class PauseMenu : MonoBehaviour
         {
 
                 pauseMenu.SetActive(true);
+                UIWheel.SetActive(false);
+            gears.SetActive(false);
                 Time.timeScale = 0;
                 UpdateFocusDistance(); 
             
@@ -79,7 +83,9 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenu != null)
         {
                 pauseMenu.SetActive(false);
-                Time.timeScale = 1;
+            UIWheel.SetActive(true);
+            gears.SetActive(true);
+            Time.timeScale = 1;
                 UpdateFocusDistance(); 
             
         }

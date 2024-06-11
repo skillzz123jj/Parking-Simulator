@@ -28,7 +28,7 @@ public class CarLights : MonoBehaviour
 
     private Inputs inputActions;
 
-    void Start()
+    void Awake()
     {
         inputActions = new Inputs();
         car.GetComponent<MeshRenderer> ().material = GameData.carColor;
@@ -46,14 +46,13 @@ public class CarLights : MonoBehaviour
 
     void OnEnable()
     {
-        if (inputActions != null)
-        {
+        
         inputActions.Enable();
         inputActions.SteeringWheel.L1.performed += LeftIndicator;
         inputActions.SteeringWheel.R1.performed += RightIndicator;
         inputActions.SteeringWheel.WheelMiddle.performed += Honk;
 
-        }
+        
 
     }
 
