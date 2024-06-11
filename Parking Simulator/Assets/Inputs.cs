@@ -286,6 +286,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""20ae393c-181e-48fb-ae8a-8631f8595e17"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""L2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""b98e5c56-842b-4c12-95c3-213b497a2e2f"",
                     ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/button12"",
                     ""interactions"": """",

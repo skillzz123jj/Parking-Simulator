@@ -17,6 +17,9 @@ public class CarLights : MonoBehaviour
     [SerializeField] AudioSource carHornSource;
     [SerializeField] AudioClip carHorn;
 
+    [SerializeField] GameObject car;
+    [SerializeField] GameObject underLight;
+
 
 
     [SerializeField] List<MeshRenderer> brakeLights = new List<MeshRenderer>();
@@ -25,17 +28,33 @@ public class CarLights : MonoBehaviour
 
     private Inputs inputActions;
 
-    void Awake()
+    void Start()
     {
         inputActions = new Inputs();
+        car.GetComponent<MeshRenderer> ().material = GameData.carColor;
+        if (GameData.lightsOn)
+        {
+            underLight.SetActive(true);
+            underLight.GetComponent<Light>().color = GameData.underLightColor;
+
+        }
+        else
+        {
+            underLight.SetActive(false);
+        }
     }
 
     void OnEnable()
     {
+        if (inputActions != null)
+        {
         inputActions.Enable();
         inputActions.SteeringWheel.L1.performed += LeftIndicator;
         inputActions.SteeringWheel.R1.performed += RightIndicator;
         inputActions.SteeringWheel.WheelMiddle.performed += Honk;
+
+        }
+
     }
 
     void OnDisable()
