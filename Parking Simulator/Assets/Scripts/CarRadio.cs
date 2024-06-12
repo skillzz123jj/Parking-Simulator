@@ -19,6 +19,13 @@ public class CarRadio : MonoBehaviour
     private float lastInputTime;
     [SerializeField] private float idleTimeToFadeOut = 5.0f;
 
+    private Coroutine fadeOutSliderCoroutine;
+    [SerializeField] private float sliderFadeOutTime = 5.0f; // Time to wait before fading out the slider
+
+    private int currentSongIndex = 0;
+
+    [SerializeField] CanvasGroup sliderCanvasGroup;
+
     void Awake()
     {
         inputActions = new Inputs();
@@ -27,7 +34,7 @@ public class CarRadio : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = soundtrack[Random.Range(0, soundtrack.Length)];
+        audioSource.clip = soundtrack[currentSongIndex];
         audioSource.mute = true; // Mute the audio on startup
         isRadioOn = false; // Set radio off on startup
         radioStatus.text = "Radio Off"; // Display "Radio Off" text
@@ -38,11 +45,9 @@ public class CarRadio : MonoBehaviour
 
     void Update()
     {
-        if (!audioSource.isPlaying)
+        if (!audioSource.isPlaying && isRadioOn)
         {
-            audioSource.clip = soundtrack[Random.Range(0, soundtrack.Length)];
-            audioSource.Play();
-            UpdateSongName();
+            PlayNextSong();
         }
 
         // Check for idle time to start fade out
@@ -78,16 +83,23 @@ public class CarRadio : MonoBehaviour
     void ChangeVolume(float value)
     {
         audioSource.volume = value;
+        StartFadeOutSlider(); // Start fading out the slider after it is used
     }
 
     void IncreaseVolume()
     {
         volumeSlider.value = Mathf.Clamp(volumeSlider.value + 0.1f, 0, 1);
+        sliderCanvasGroup.alpha = 1;
+
+        StartFadeOutSlider(); // Start fading out the slider after it is used
     }
 
     void DecreaseVolume()
     {
         volumeSlider.value = Mathf.Clamp(volumeSlider.value - 0.1f, 0, 1);
+        sliderCanvasGroup.alpha = 1;
+
+        StartFadeOutSlider(); // Start fading out the slider after it is used
     }
 
     private void ToggleRadio()
@@ -116,7 +128,6 @@ public class CarRadio : MonoBehaviour
     {
         if (isRadioOn)
         {
-
             songName.text = audioSource.clip.name;
             songName.alpha = 1.0f;
             StartCoroutine(FadeOutSongName());
@@ -165,6 +176,37 @@ public class CarRadio : MonoBehaviour
 
         songName.alpha = 0;
     }
+
+    private void PlayNextSong()
+    {
+        currentSongIndex = (currentSongIndex + 1) % soundtrack.Length;
+        audioSource.clip = soundtrack[currentSongIndex];
+        audioSource.Play();
+       // UpdateSongName();
+    }
+
+    private void StartFadeOutSlider()
+    {
+        lastInputTime = Time.time; // Reset the last input time to now
+        if (fadeOutSliderCoroutine != null)
+        {
+            StopCoroutine(fadeOutSliderCoroutine);
+        }
+        fadeOutSliderCoroutine = StartCoroutine(FadeOutSlider());
+    }
+
+    private IEnumerator FadeOutSlider()
+    {
+        yield return new WaitForSeconds(sliderFadeOutTime); // Wait for the idle time
+        float startAlpha = volumeSlider.GetComponent<CanvasGroup>().alpha;
+        //sliderCanvasGroup = volumeSlider.GetComponent<CanvasGroup>();
+
+        for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
+        {
+            sliderCanvasGroup.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
+            yield return null;
+        }
+
+        sliderCanvasGroup.alpha = 0;
+    }
 }
-
-

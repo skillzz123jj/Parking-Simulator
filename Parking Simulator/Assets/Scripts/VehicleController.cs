@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using UnityEngine;
 
+
 [RequireComponent(typeof(Rigidbody))]
 public class VehicleController : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class VehicleController : MonoBehaviour
     private float stoppedDurationThreshold = 1.0f; // Time in seconds to consider the car stopped
     private float stoppedTimer = 0f;
 
+    [SerializeField] GameObject instruction;
     Vector3 previousPosition;
 
   //  [SerializeField] WheelInteraction wheelInteractionCS;
@@ -59,10 +61,21 @@ public class VehicleController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isCarMoving && GameData.parked && CarStates.currentState == "P")
+        if (!isCarMoving && GameData.parked)       //&& CarStates.currentState == "P")
         {
-            GameData.levelFinished = true;
+            instruction.SetActive(true);
+
+            if (CarStates.currentState == "P")
+            {
+                GameData.levelFinished = true;
+            }
         }
+        else
+        {
+            instruction.SetActive(false);
+
+        }
+
         if (CarStates.currentState == "R")
         {
             ApplyReverse();
@@ -81,7 +94,7 @@ public class VehicleController : MonoBehaviour
 
 
         ApplySteering();
-        // UpdateWheelPoses();
+        UpdateWheelPoses();
 
         if (Vector3.Distance(transform.position, previousPosition) < stoppedThreshold)
         {
@@ -208,7 +221,7 @@ public class VehicleController : MonoBehaviour
 
     private void ApplySteering()
     {
-        float steering = maxSteeringAngle * steeringInput;//wheelInteractionCS.xAxes;
+        float steering = maxSteeringAngle * WheelInteraction.xAxes;
         frontLeftWheel.steerAngle = steering;
         frontRightWheel.steerAngle = steering;
     }

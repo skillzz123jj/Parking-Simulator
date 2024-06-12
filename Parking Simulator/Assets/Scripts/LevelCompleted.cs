@@ -2,10 +2,23 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelCompleted : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
+    [SerializeField] GameObject wheel;
+    [SerializeField] GameObject gears;
+    [SerializeField] GameObject radio;
+    [SerializeField] GameObject levelFinished;
+    [SerializeField] AudioClip levelFinishedClip;
+    [SerializeField] Button restartButton;
+    [SerializeField] AudioSource wonSource;
+    [SerializeField] GameObject instruction;
+
+    [SerializeField] VehicleController carScript;
+
+
     void Start()
     {
         wheel.SetActive(true);
@@ -14,17 +27,8 @@ public class LevelCompleted : MonoBehaviour
         levelFinished.SetActive(false);
         carScript.enabled = true;
         GameData.menuOpen = false;
-         GameData.parked = false;
+        GameData.parked = false;
     }
-
-    [SerializeField] GameObject wheel;
-    [SerializeField] GameObject gears;
-    [SerializeField] GameObject radio;
-    [SerializeField] GameObject levelFinished;
-
-    [SerializeField] VehicleController carScript;
-
-
 
 
 
@@ -39,6 +43,9 @@ public class LevelCompleted : MonoBehaviour
         gears.SetActive(false);
         radio.SetActive(false);
         levelFinished.SetActive(true);
+           instruction.SetActive(false);
+          wonSource.PlayOneShot(levelFinishedClip);
+          restartButton.Select();
         carScript.enabled = false;
         }
     }

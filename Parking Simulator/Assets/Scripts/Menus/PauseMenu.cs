@@ -14,6 +14,19 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject UIWheel;
     [SerializeField] GameObject gears;
 
+
+    [SerializeField] VehicleController vehicleController;
+    [SerializeField] GameObject radio;
+    [SerializeField] GameObject carRadio;
+    [SerializeField] CarLights carLights;
+    [SerializeField] GameObject carEngineSound;
+    [SerializeField] GameObject indicatorSound;
+    [SerializeField] GameObject instruction;
+
+
+
+    [SerializeField] Button continueButton;
+
     [SerializeField] GameObject blackOutSquare;
 
     private bool fadeToBlackActive = true;
@@ -52,16 +65,16 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
 
-        if (GameData.menuOpen)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
+        //if (GameData.menuOpen)
+        //{
+        //    Cursor.visible = true;
+        //    Cursor.lockState = CursorLockMode.None;
+        //}
+        //else
+        //{
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-        }
+       // }
     }
 
     public void PauseMenuOn(InputAction.CallbackContext context)
@@ -70,8 +83,16 @@ public class PauseMenu : MonoBehaviour
         {
                 GameData.menuOpen = true;
                 pauseMenu.SetActive(true);
+            continueButton.Select();
                 UIWheel.SetActive(false);
             gears.SetActive(false);
+            carEngineSound.SetActive(false);
+            carLights.enabled = false;
+            indicatorSound.SetActive(false);
+            instruction.SetActive(false);
+            radio.SetActive(false);
+            carRadio.SetActive(false);
+            vehicleController.enabled = false;
                 Time.timeScale = 0;
                 UpdateFocusDistance(); 
             
@@ -82,9 +103,21 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenu != null)
         {
-                GameData.menuOpen = false;
-            
-                pauseMenu.SetActive(false);
+         
+          
+      
+            GameData.menuOpen = false;
+
+            carLights.enabled = true;
+            radio.SetActive(true);
+            carRadio.SetActive(true);
+            vehicleController.enabled = true;
+            indicatorSound.SetActive(true);
+
+            carEngineSound.SetActive(true);
+
+
+            pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
             Time.timeScale = 1;
