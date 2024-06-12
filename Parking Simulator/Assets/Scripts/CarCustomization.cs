@@ -25,6 +25,12 @@ public class CarCustomization : MonoBehaviour
             GameData.carColor = defaultMaterial;
         }
        ChangeCarColor(GameData.carColor);
+       if (GameData.lightsOn)
+       {
+         
+            carLight.SetActive(true);
+            carLight.GetComponent<Light>().color = GameData.underLightColor;
+       }
 
     }
 

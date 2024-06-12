@@ -52,7 +52,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
 
-        if (pauseMenu != null && pauseMenu.activeSelf)
+        if (GameData.menuOpen)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
@@ -68,7 +68,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenu != null)
         {
-
+                GameData.menuOpen = true;
                 pauseMenu.SetActive(true);
                 UIWheel.SetActive(false);
             gears.SetActive(false);
@@ -82,6 +82,8 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenu != null)
         {
+                GameData.menuOpen = false;
+            
                 pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
@@ -103,6 +105,8 @@ public class PauseMenu : MonoBehaviour
     public void Quit(int scene)
     {
         Time.timeScale = 1;
+      
+
         StartCoroutine(LoadSceneCoroutine(scene));
 
     }

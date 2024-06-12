@@ -8,6 +8,11 @@ public class GameData : MonoBehaviour
     public static Material carColor;
     public static Color underLightColor;
     public static bool lightsOn;
+
+    public static bool parked;
+
+    public static bool levelFinished;
+    public static bool menuOpen;
        void Start()
     {
         if (this == null)

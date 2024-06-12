@@ -35,10 +35,6 @@ public class VehicleController : MonoBehaviour
     [SerializeField] AudioClip accelerating;
     [SerializeField] AudioClip idle;
     [SerializeField] AudioClip revving;
-
-
-
-
     private Rigidbody rb;
 
     private float motorInput;
@@ -63,6 +59,10 @@ public class VehicleController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!isCarMoving && GameData.parked && CarStates.currentState == "P")
+        {
+            GameData.levelFinished = true;
+        }
         if (CarStates.currentState == "R")
         {
             ApplyReverse();
@@ -81,7 +81,7 @@ public class VehicleController : MonoBehaviour
 
 
         ApplySteering();
-        UpdateWheelPoses();
+        // UpdateWheelPoses();
 
         if (Vector3.Distance(transform.position, previousPosition) < stoppedThreshold)
         {
