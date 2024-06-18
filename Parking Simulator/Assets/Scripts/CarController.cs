@@ -23,7 +23,7 @@ public class CarController : WheelInteraction
         rb = GetComponent<Rigidbody>();
 
         float initialSteerAngle = WheelInteraction.xAxes * maxSteerAngle;
-        steeringWheelUI.localEulerAngles = new Vector3(0, 0, -initialSteerAngle);
+    //    steeringWheelUI.localEulerAngles = new Vector3(0, 0, -initialSteerAngle);
 
 
 

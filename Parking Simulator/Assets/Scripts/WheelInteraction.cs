@@ -32,6 +32,7 @@ public class WheelInteraction : MonoBehaviour
             else if (rec.lY < 0)
             {
                 GasInput = rec.lY / -32768f;
+                print("gas");
 
             }
             

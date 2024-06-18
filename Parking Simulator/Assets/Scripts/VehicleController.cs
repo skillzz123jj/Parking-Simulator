@@ -72,7 +72,11 @@ public class VehicleController : MonoBehaviour
         }
         else
         {
+            if (instruction != null)
+            {
+
             instruction.SetActive(false);
+            }
 
         }
 
