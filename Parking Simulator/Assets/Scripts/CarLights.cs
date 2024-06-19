@@ -7,8 +7,8 @@ using UnityEngine.InputSystem;
 
 public class CarLights : MonoBehaviour
 {
-    public GameObject leftIndicatorLight;
-    public GameObject rightIndicatorLight;
+    public MeshRenderer leftIndicatorLight;
+    public MeshRenderer rightIndicatorLight;
     private bool leftIndicatorOn = false;
     private bool rightIndicatorOn = false;
     private Coroutine leftCoroutine;
@@ -20,10 +20,21 @@ public class CarLights : MonoBehaviour
     [SerializeField] GameObject car;
     [SerializeField] GameObject underLight;
 
+    [SerializeField] Material indicatorOnMaterial;
+    [SerializeField] Material indicatorOffMaterial;
+
+    [SerializeField] Material reverseOnMaterial;
+    [SerializeField] Material reverseOffMaterial;
+
+    [SerializeField] Material brakeOnMaterial;
+    [SerializeField] Material brakeOffMaterial;
+
+    [SerializeField] MeshRenderer brakeLights;
+    [SerializeField] MeshRenderer reverseLights;
 
 
-    [SerializeField] List<MeshRenderer> brakeLights = new List<MeshRenderer>();
-    [SerializeField] List<MeshRenderer> reverseLights = new List<MeshRenderer>();
+    //[SerializeField] List<MeshRenderer> brakeLights = new List<MeshRenderer>();
+    //  [SerializeField] List<MeshRenderer> reverseLights = new List<MeshRenderer>();
 
 
     private Inputs inputActions;
@@ -31,7 +42,7 @@ public class CarLights : MonoBehaviour
     void Awake()
     {
         inputActions = new Inputs();
-        car.GetComponent<MeshRenderer> ().material = GameData.carColor;
+     //   car.GetComponent<MeshRenderer> ().material = GameData.carColor;
         if (GameData.lightsOn)
         {
             underLight.SetActive(true);
@@ -76,12 +87,12 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(leftCoroutine);
-                leftIndicatorLight.SetActive(false);
+             //   leftIndicatorLight.SetActive(false);
             }
 
             leftIndicatorOn = !leftIndicatorOn;
             rightIndicatorOn = false;
-            rightIndicatorLight.SetActive(false); // Ensure the right indicator is off
+          //  rightIndicatorLight.SetActive(false); // Ensure the right indicator is off
             if (leftIndicatorOn)
             {
                 indicatorSound.Stop();
@@ -95,13 +106,13 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(rightCoroutine);
-                rightIndicatorLight.SetActive(false);
+          //      rightIndicatorLight.SetActive(false);
 
             }
 
             rightIndicatorOn = !rightIndicatorOn;
             leftIndicatorOn = false;
-            leftIndicatorLight.SetActive(false); // Ensure the left indicator is off
+        //    leftIndicatorLight.SetActive(false); // Ensure the left indicator is off
             if (rightIndicatorOn)
             {
                 indicatorSound.Stop();
@@ -118,12 +129,15 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(leftCoroutine);
-                leftIndicatorLight.SetActive(false);
+                // leftIndicatorLight.SetActive(false);
+                leftIndicatorLight.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
             }
 
             leftIndicatorOn = !leftIndicatorOn;
             rightIndicatorOn = false;
-            rightIndicatorLight.SetActive(false); // Ensure the right indicator is off
+            //  rightIndicatorLight.SetActive(false); // Ensure the right indicator is off
+            rightIndicatorLight.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
+
             if (leftIndicatorOn)
             {
                 indicatorSound.Stop();
@@ -142,13 +156,17 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(rightCoroutine);
-                rightIndicatorLight.SetActive(false);
+            //    rightIndicatorLight.SetActive(false);
+                rightIndicatorLight.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
+
 
             }
 
             rightIndicatorOn = !rightIndicatorOn;
             leftIndicatorOn = false;
-            leftIndicatorLight.SetActive(false); // Ensure the left indicator is off
+ //           leftIndicatorLight.SetActive(false); // Ensure the left indicator is off
+            leftIndicatorLight.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
+
             if (rightIndicatorOn)
             {
                 indicatorSound.Stop();
@@ -157,16 +175,27 @@ public class CarLights : MonoBehaviour
         }
 
     }
-    IEnumerator BlinkIndicator(GameObject indicatorLight, System.Func<bool> isIndicatorOn)
+    IEnumerator BlinkIndicator(MeshRenderer indicator, System.Func<bool> isIndicatorOn)
     {
+        
         while (isIndicatorOn())
         {
             indicatorSound.Play();
             //indicatorLight.enabled = !indicatorLight.enabled;
-            indicatorLight.SetActive(!indicatorLight.activeSelf);
+//            indicatorLight.SetActive(!indicatorLight.activeSelf);
+
+            if (indicator.sharedMaterial == indicatorOffMaterial)
+            {
+                indicator.sharedMaterial = indicatorOnMaterial;
+            }
+            else
+            {
+                indicator.sharedMaterial = indicatorOffMaterial;
+            }
             yield return new WaitForSeconds(0.5f);
         }
-        indicatorLight.SetActive(false);
+   //     indicatorLight.SetActive(false);
+        indicator.sharedMaterial = indicatorOffMaterial;
         indicatorSound.Stop();
     }
 
@@ -178,20 +207,33 @@ public class CarLights : MonoBehaviour
     void ReverseLights()
     {
         
+        //if (WheelInteraction.GasInput > 0 && CarStates.currentState == "R")
+        //{
+        //    foreach (MeshRenderer light in reverseLights)
+        //    {
+        //        light.enabled = true;
+        //    }
+
+        //}
+        //else
+        //{
+        //    foreach (MeshRenderer light in reverseLights)
+        //    {
+        //        light.enabled = false;
+        //    }
+
+
+        //}
+
         if (WheelInteraction.GasInput > 0 && CarStates.currentState == "R")
         {
-            foreach (MeshRenderer light in reverseLights)
-            {
-                light.enabled = true;
-            }
+            reverseLights.GetComponent<MeshRenderer>().sharedMaterial = reverseOnMaterial;
 
         }
         else
         {
-            foreach (MeshRenderer light in reverseLights)
-            {
-                light.enabled = false;
-            }
+            reverseLights.GetComponent<MeshRenderer>().sharedMaterial = reverseOffMaterial;
+
 
 
         }
@@ -202,20 +244,33 @@ public class CarLights : MonoBehaviour
         // float direction = Input.GetAxis("Vertical");
 
 
+        //if (WheelInteraction.BrakeInput > 0)
+        //{
+        //    foreach (MeshRenderer light in brakeLights)
+        //    {
+        //        light.enabled = false;
+        //    }
+
+        //}
+        //else
+        //{
+        //    foreach (MeshRenderer light in brakeLights)
+        //    {
+        //        light.enabled = true;
+        //    }
+
+
+        //}
+
         if (WheelInteraction.BrakeInput > 0)
         {
-            foreach (MeshRenderer light in brakeLights)
-            {
-                light.enabled = false;
-            }
+            brakeLights.GetComponent<MeshRenderer>().sharedMaterial = brakeOnMaterial;
 
         }
         else
         {
-            foreach (MeshRenderer light in brakeLights)
-            {
-                light.enabled = true;
-            }
+            brakeLights.GetComponent<MeshRenderer>().sharedMaterial = brakeOffMaterial;
+
 
 
         }
