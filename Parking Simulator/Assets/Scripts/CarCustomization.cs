@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class CarCustomization : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class CarCustomization : MonoBehaviour
     [SerializeField] GameObject carLight;
     [SerializeField] GameObject colorObject;
     [SerializeField] GameObject lightObject;
+    [SerializeField] List<MeshRenderer> wheelMeshes = new List<MeshRenderer>();
+    [SerializeField] Material carBodyMaterial;
+    [SerializeField] Material wheelMaterial;
+
 
     [SerializeField] Material defaultMaterial;
 
@@ -24,7 +29,7 @@ public class CarCustomization : MonoBehaviour
         {
             GameData.carColor = defaultMaterial;
         }
-       ChangeCarColor(GameData.carColor);
+       //ChangeCarColor(GameData.carColor);
        if (GameData.lightsOn)
        {
          
@@ -40,13 +45,22 @@ public class CarCustomization : MonoBehaviour
         
     }
 
-    public void ChangeCarColor(Material color)
+    public void ChangeCarColor(Image colorImage)
     {
-        carBody.GetComponent<MeshRenderer> ().material = color;
-        GameData.carColor = color;
+       // carBody.GetComponent<MeshRenderer>().material = color;
+      //  GameData.carColor = color;
+      carBodyMaterial.color = colorImage.color;
     }
 
-       public void ChangeCarLight(Image colorImage)
+    public void ChangeRimColor(Image colorImage)
+    {
+        // carBody.GetComponent<MeshRenderer>().material = color;
+        //  GameData.carColor = color;
+   
+        wheelMaterial.color = colorImage.color;
+    }
+
+    public void ChangeCarLight(Image colorImage)
     {
         GameData.lightsOn = true;
         carLight.SetActive(true);

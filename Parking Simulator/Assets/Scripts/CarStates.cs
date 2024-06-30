@@ -33,12 +33,21 @@ public class CarStates : MonoBehaviour
         inputActions.Enable();
         inputActions.SteeringWheel.DpadUp.performed += ctx => OnNavigateUp();
         inputActions.SteeringWheel.DpadDown.performed += ctx => OnNavigateDown();
+        inputActions.Keyboard.Park.performed += ctx => ChangeGear("P");
+        inputActions.Keyboard.Reverse.performed += ctx => ChangeGear("R");
+        inputActions.Keyboard.Neutral.performed += ctx => ChangeGear("N");
+        inputActions.Keyboard.Drive.performed += ctx => ChangeGear("D");
+
     }
 
     private void OnDisable()
     {
         inputActions.SteeringWheel.DpadUp.performed -= ctx => OnNavigateUp();
         inputActions.SteeringWheel.DpadDown.performed -= ctx => OnNavigateDown();
+        inputActions.Keyboard.Park.performed -= ctx => ChangeGear("P");
+        inputActions.Keyboard.Reverse.performed -= ctx => ChangeGear("R");
+        inputActions.Keyboard.Neutral.performed -= ctx => ChangeGear("N");
+        inputActions.Keyboard.Drive.performed -= ctx => ChangeGear("D");
         inputActions.Disable();
     }
 
@@ -71,8 +80,6 @@ public class CarStates : MonoBehaviour
         rState.color = Color.white;
         nState.color = Color.white;
         dState.color = Color.white;
-
-     //   carLights.SetActive(false);
 
         switch (state)
         {

@@ -452,7 +452,7 @@
             ]
         },
         {
-            "name": "UI1",
+            "name": "UI",
             "id": "7243d230-20cf-4e6e-911a-da9011206b1a",
             "actions": [
                 {
@@ -979,14 +979,41 @@
             ]
         },
         {
-            "name": "UI",
-            "id": "08475cc1-ad6b-491e-8732-df8ed4d085bb",
+            "name": "Keyboard",
+            "id": "216a5df7-53bb-47e4-98a9-4d0ef7d15ecf",
             "actions": [
                 {
-                    "name": "New action",
-                    "type": "PassThrough",
-                    "id": "9c3581f2-0801-4b6d-a191-5528e1136744",
-                    "expectedControlType": "Vector2",
+                    "name": "Park",
+                    "type": "Button",
+                    "id": "24e5690b-b4f0-45d2-ae10-6628c76bfad2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reverse",
+                    "type": "Button",
+                    "id": "8466ee0f-bbd4-4238-a7a6-83613ade2a7d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Neutral",
+                    "type": "Button",
+                    "id": "4a170662-d52d-452e-863e-dd7cebfa8941",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drive",
+                    "type": "Button",
+                    "id": "fa8ce9e4-fad8-4518-952c-1df8c1d86fcc",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -994,59 +1021,48 @@
             ],
             "bindings": [
                 {
-                    "name": "Wheel",
-                    "id": "91ca40f6-75ad-485a-8bb9-da2fd8d651fe",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "e50db1b6-8cd3-459c-a2fe-9cd677d08125",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
-                    "isComposite": true,
+                    "action": "Park",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "6ca15e29-5b32-4028-9cdf-7d0f6d404d99",
-                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/hat/up",
+                    "name": "",
+                    "id": "db24bad6-8d81-4d5c-8823-f94436cc8f80",
+                    "path": "<Keyboard>/2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Reverse",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "21fc8dcf-d7cf-43b8-9e80-5155e216bf95",
-                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/hat/down",
+                    "name": "",
+                    "id": "03241c34-1dd2-4a89-9fae-70b6a0738856",
+                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Neutral",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "left",
-                    "id": "8ea43477-6bd9-4388-889e-f65a7b08db2e",
-                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/hat/left",
+                    "name": "",
+                    "id": "c3b39e7d-7084-4ecb-a94e-ead4e06f1766",
+                    "path": "<Keyboard>/4",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Drive",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "9a5709a2-67dd-45ad-851f-90c49df928bf",
-                    "path": "<HID::Logitech G29 Driving Force Racing Wheel>/hat/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 }
             ]
         }

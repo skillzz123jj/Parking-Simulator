@@ -474,7 +474,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""UI1"",
+            ""name"": ""UI"",
             ""id"": ""7243d230-20cf-4e6e-911a-da9011206b1a"",
             ""actions"": [
                 {
@@ -1001,14 +1001,41 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""UI"",
-            ""id"": ""08475cc1-ad6b-491e-8732-df8ed4d085bb"",
+            ""name"": ""Keyboard"",
+            ""id"": ""216a5df7-53bb-47e4-98a9-4d0ef7d15ecf"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""9c3581f2-0801-4b6d-a191-5528e1136744"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Park"",
+                    ""type"": ""Button"",
+                    ""id"": ""24e5690b-b4f0-45d2-ae10-6628c76bfad2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reverse"",
+                    ""type"": ""Button"",
+                    ""id"": ""8466ee0f-bbd4-4238-a7a6-83613ade2a7d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Neutral"",
+                    ""type"": ""Button"",
+                    ""id"": ""4a170662-d52d-452e-863e-dd7cebfa8941"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drive"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa8ce9e4-fad8-4518-952c-1df8c1d86fcc"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -1016,59 +1043,48 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Wheel"",
-                    ""id"": ""91ca40f6-75ad-485a-8bb9-da2fd8d651fe"",
-                    ""path"": ""2DVector"",
+                    ""name"": """",
+                    ""id"": ""e50db1b6-8cd3-459c-a2fe-9cd677d08125"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": true,
+                    ""action"": ""Park"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""6ca15e29-5b32-4028-9cdf-7d0f6d404d99"",
-                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/up"",
+                    ""name"": """",
+                    ""id"": ""db24bad6-8d81-4d5c-8823-f94436cc8f80"",
+                    ""path"": ""<Keyboard>/2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Reverse"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""21fc8dcf-d7cf-43b8-9e80-5155e216bf95"",
-                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/down"",
+                    ""name"": """",
+                    ""id"": ""03241c34-1dd2-4a89-9fae-70b6a0738856"",
+                    ""path"": ""<Keyboard>/3"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Neutral"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""8ea43477-6bd9-4388-889e-f65a7b08db2e"",
-                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/left"",
+                    ""name"": """",
+                    ""id"": ""c3b39e7d-7084-4ecb-a94e-ead4e06f1766"",
+                    ""path"": ""<Keyboard>/4"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Drive"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""9a5709a2-67dd-45ad-851f-90c49df928bf"",
-                    ""path"": ""<HID::Logitech G29 Driving Force Racing Wheel>/hat/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1098,21 +1114,24 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_SteeringWheel_Circle = m_SteeringWheel.FindAction("Circle", throwIfNotFound: true);
         m_SteeringWheel_Wheel = m_SteeringWheel.FindAction("Wheel", throwIfNotFound: true);
         m_SteeringWheel_WheelMiddle = m_SteeringWheel.FindAction("WheelMiddle", throwIfNotFound: true);
-        // UI1
-        m_UI1 = asset.FindActionMap("UI1", throwIfNotFound: true);
-        m_UI1_Navigate = m_UI1.FindAction("Navigate", throwIfNotFound: true);
-        m_UI1_Submit = m_UI1.FindAction("Submit", throwIfNotFound: true);
-        m_UI1_Cancel = m_UI1.FindAction("Cancel", throwIfNotFound: true);
-        m_UI1_Point = m_UI1.FindAction("Point", throwIfNotFound: true);
-        m_UI1_Click = m_UI1.FindAction("Click", throwIfNotFound: true);
-        m_UI1_ScrollWheel = m_UI1.FindAction("ScrollWheel", throwIfNotFound: true);
-        m_UI1_MiddleClick = m_UI1.FindAction("MiddleClick", throwIfNotFound: true);
-        m_UI1_RightClick = m_UI1.FindAction("RightClick", throwIfNotFound: true);
-        m_UI1_TrackedDevicePosition = m_UI1.FindAction("TrackedDevicePosition", throwIfNotFound: true);
-        m_UI1_TrackedDeviceOrientation = m_UI1.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
-        m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
+        m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
+        m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
+        m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
+        m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
+        m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
+        m_UI_MiddleClick = m_UI.FindAction("MiddleClick", throwIfNotFound: true);
+        m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
+        m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
+        m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Keyboard
+        m_Keyboard = asset.FindActionMap("Keyboard", throwIfNotFound: true);
+        m_Keyboard_Park = m_Keyboard.FindAction("Park", throwIfNotFound: true);
+        m_Keyboard_Reverse = m_Keyboard.FindAction("Reverse", throwIfNotFound: true);
+        m_Keyboard_Neutral = m_Keyboard.FindAction("Neutral", throwIfNotFound: true);
+        m_Keyboard_Drive = m_Keyboard.FindAction("Drive", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1377,42 +1396,42 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     }
     public SteeringWheelActions @SteeringWheel => new SteeringWheelActions(this);
 
-    // UI1
-    private readonly InputActionMap m_UI1;
-    private List<IUI1Actions> m_UI1ActionsCallbackInterfaces = new List<IUI1Actions>();
-    private readonly InputAction m_UI1_Navigate;
-    private readonly InputAction m_UI1_Submit;
-    private readonly InputAction m_UI1_Cancel;
-    private readonly InputAction m_UI1_Point;
-    private readonly InputAction m_UI1_Click;
-    private readonly InputAction m_UI1_ScrollWheel;
-    private readonly InputAction m_UI1_MiddleClick;
-    private readonly InputAction m_UI1_RightClick;
-    private readonly InputAction m_UI1_TrackedDevicePosition;
-    private readonly InputAction m_UI1_TrackedDeviceOrientation;
-    public struct UI1Actions
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_Navigate;
+    private readonly InputAction m_UI_Submit;
+    private readonly InputAction m_UI_Cancel;
+    private readonly InputAction m_UI_Point;
+    private readonly InputAction m_UI_Click;
+    private readonly InputAction m_UI_ScrollWheel;
+    private readonly InputAction m_UI_MiddleClick;
+    private readonly InputAction m_UI_RightClick;
+    private readonly InputAction m_UI_TrackedDevicePosition;
+    private readonly InputAction m_UI_TrackedDeviceOrientation;
+    public struct UIActions
     {
         private @Inputs m_Wrapper;
-        public UI1Actions(@Inputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Navigate => m_Wrapper.m_UI1_Navigate;
-        public InputAction @Submit => m_Wrapper.m_UI1_Submit;
-        public InputAction @Cancel => m_Wrapper.m_UI1_Cancel;
-        public InputAction @Point => m_Wrapper.m_UI1_Point;
-        public InputAction @Click => m_Wrapper.m_UI1_Click;
-        public InputAction @ScrollWheel => m_Wrapper.m_UI1_ScrollWheel;
-        public InputAction @MiddleClick => m_Wrapper.m_UI1_MiddleClick;
-        public InputAction @RightClick => m_Wrapper.m_UI1_RightClick;
-        public InputAction @TrackedDevicePosition => m_Wrapper.m_UI1_TrackedDevicePosition;
-        public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI1_TrackedDeviceOrientation;
-        public InputActionMap Get() { return m_Wrapper.m_UI1; }
+        public UIActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
+        public InputAction @Submit => m_Wrapper.m_UI_Submit;
+        public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
+        public InputAction @Point => m_Wrapper.m_UI_Point;
+        public InputAction @Click => m_Wrapper.m_UI_Click;
+        public InputAction @ScrollWheel => m_Wrapper.m_UI_ScrollWheel;
+        public InputAction @MiddleClick => m_Wrapper.m_UI_MiddleClick;
+        public InputAction @RightClick => m_Wrapper.m_UI_RightClick;
+        public InputAction @TrackedDevicePosition => m_Wrapper.m_UI_TrackedDevicePosition;
+        public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UI1Actions set) { return set.Get(); }
-        public void AddCallbacks(IUI1Actions instance)
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
         {
-            if (instance == null || m_Wrapper.m_UI1ActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_UI1ActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
             @Navigate.started += instance.OnNavigate;
             @Navigate.performed += instance.OnNavigate;
             @Navigate.canceled += instance.OnNavigate;
@@ -1445,7 +1464,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.canceled += instance.OnTrackedDeviceOrientation;
         }
 
-        private void UnregisterCallbacks(IUI1Actions instance)
+        private void UnregisterCallbacks(IUIActions instance)
         {
             @Navigate.started -= instance.OnNavigate;
             @Navigate.performed -= instance.OnNavigate;
@@ -1479,52 +1498,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @TrackedDeviceOrientation.canceled -= instance.OnTrackedDeviceOrientation;
         }
 
-        public void RemoveCallbacks(IUI1Actions instance)
-        {
-            if (m_Wrapper.m_UI1ActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IUI1Actions instance)
-        {
-            foreach (var item in m_Wrapper.m_UI1ActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_UI1ActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public UI1Actions @UI1 => new UI1Actions(this);
-
-    // UI
-    private readonly InputActionMap m_UI;
-    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
-    private readonly InputAction m_UI_Newaction;
-    public struct UIActions
-    {
-        private @Inputs m_Wrapper;
-        public UIActions(@Inputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
-        public InputActionMap Get() { return m_Wrapper.m_UI; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
-        public void AddCallbacks(IUIActions instance)
-        {
-            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
-        }
-
-        private void UnregisterCallbacks(IUIActions instance)
-        {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
-        }
-
         public void RemoveCallbacks(IUIActions instance)
         {
             if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
@@ -1540,6 +1513,76 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Keyboard
+    private readonly InputActionMap m_Keyboard;
+    private List<IKeyboardActions> m_KeyboardActionsCallbackInterfaces = new List<IKeyboardActions>();
+    private readonly InputAction m_Keyboard_Park;
+    private readonly InputAction m_Keyboard_Reverse;
+    private readonly InputAction m_Keyboard_Neutral;
+    private readonly InputAction m_Keyboard_Drive;
+    public struct KeyboardActions
+    {
+        private @Inputs m_Wrapper;
+        public KeyboardActions(@Inputs wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Park => m_Wrapper.m_Keyboard_Park;
+        public InputAction @Reverse => m_Wrapper.m_Keyboard_Reverse;
+        public InputAction @Neutral => m_Wrapper.m_Keyboard_Neutral;
+        public InputAction @Drive => m_Wrapper.m_Keyboard_Drive;
+        public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(KeyboardActions set) { return set.Get(); }
+        public void AddCallbacks(IKeyboardActions instance)
+        {
+            if (instance == null || m_Wrapper.m_KeyboardActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_KeyboardActionsCallbackInterfaces.Add(instance);
+            @Park.started += instance.OnPark;
+            @Park.performed += instance.OnPark;
+            @Park.canceled += instance.OnPark;
+            @Reverse.started += instance.OnReverse;
+            @Reverse.performed += instance.OnReverse;
+            @Reverse.canceled += instance.OnReverse;
+            @Neutral.started += instance.OnNeutral;
+            @Neutral.performed += instance.OnNeutral;
+            @Neutral.canceled += instance.OnNeutral;
+            @Drive.started += instance.OnDrive;
+            @Drive.performed += instance.OnDrive;
+            @Drive.canceled += instance.OnDrive;
+        }
+
+        private void UnregisterCallbacks(IKeyboardActions instance)
+        {
+            @Park.started -= instance.OnPark;
+            @Park.performed -= instance.OnPark;
+            @Park.canceled -= instance.OnPark;
+            @Reverse.started -= instance.OnReverse;
+            @Reverse.performed -= instance.OnReverse;
+            @Reverse.canceled -= instance.OnReverse;
+            @Neutral.started -= instance.OnNeutral;
+            @Neutral.performed -= instance.OnNeutral;
+            @Neutral.canceled -= instance.OnNeutral;
+            @Drive.started -= instance.OnDrive;
+            @Drive.performed -= instance.OnDrive;
+            @Drive.canceled -= instance.OnDrive;
+        }
+
+        public void RemoveCallbacks(IKeyboardActions instance)
+        {
+            if (m_Wrapper.m_KeyboardActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IKeyboardActions instance)
+        {
+            foreach (var item in m_Wrapper.m_KeyboardActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_KeyboardActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public KeyboardActions @Keyboard => new KeyboardActions(this);
     public interface ISteeringWheelActions
     {
         void OnDpadDown(InputAction.CallbackContext context);
@@ -1564,7 +1607,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnWheel(InputAction.CallbackContext context);
         void OnWheelMiddle(InputAction.CallbackContext context);
     }
-    public interface IUI1Actions
+    public interface IUIActions
     {
         void OnNavigate(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
@@ -1577,8 +1620,11 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
     }
-    public interface IUIActions
+    public interface IKeyboardActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnPark(InputAction.CallbackContext context);
+        void OnReverse(InputAction.CallbackContext context);
+        void OnNeutral(InputAction.CallbackContext context);
+        void OnDrive(InputAction.CallbackContext context);
     }
 }

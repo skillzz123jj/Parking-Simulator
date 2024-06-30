@@ -49,8 +49,12 @@ public class TESTCarController : MonoBehaviour
 
     private void HandleMotor()
     {
-        frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
-        frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+        if (CarStates.currentState == "D" && verticalInput > 0 || CarStates.currentState == "R" && verticalInput < 0)
+        {
+            frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
+            frontRightWheelCollider.motorTorque = verticalInput * motorForce;
+       
+        }
         currentbreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
     }

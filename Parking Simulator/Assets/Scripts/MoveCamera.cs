@@ -14,6 +14,16 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera previousCamera;
     [SerializeField] GameObject car;
 
+    [Header("RotateCamera")]
+    public float turnSpeed = 5.0f;
+    public GameObject player;
+
+    private Transform playerTransform;
+    private Vector3 offset;
+    [SerializeField] float yOffset;
+    [SerializeField] float zOffset;
+    [SerializeField] CinemachineVirtualCamera rotateCamera;
+
     void Awake()
     {
         inputActions = new Inputs();
@@ -29,6 +39,16 @@ public class MoveCamera : MonoBehaviour
     void Start()
     {
         previousCamera = cameraBack;
+        playerTransform = player.transform;
+        offset = new Vector3(playerTransform.position.x, playerTransform.position.y + yOffset, playerTransform.position.z + zOffset);
+    }
+
+
+    void FixedUpdate()
+    {
+        offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
+        rotateCamera.transform.position = playerTransform.position + offset;
+        rotateCamera.transform.LookAt(playerTransform.position);
     }
 
     void OnEnable()

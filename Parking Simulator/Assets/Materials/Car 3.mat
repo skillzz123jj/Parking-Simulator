@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wall
+  m_Name: Car 3
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 2100000, guid: d4b5d17cce5f98846a872bb84a1f865b, type: 2}
+  m_Parent: {fileID: 2100000, guid: 817bc8496754ed34eb988851682b7dcf, type: 2}
   m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _NORMALMAP
@@ -25,23 +25,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 5cdba4b4fef84824c85f56a4c2fa369e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 50f349723b8fd984d8c19229ce5d0dd9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DetailAlbedoMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 0, y: 0}
-        m_Offset: {x: 0, y: 0}
-    - _EmissionMap:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 8, y: 3}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 53b6c4e39afaa6d47b20232dde081fed, type: 3}
-        m_Scale: {x: 8, y: 3}
-        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Glossiness: 1
+    - _Metallic: 1
     m_Colors:
+    - _Color: {r: 0.34509805, g: 0.35686275, b: 0.37647063, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
