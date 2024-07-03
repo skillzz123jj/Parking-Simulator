@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
 
+
 public class CarCustomization : MonoBehaviour
 {
     [SerializeField] GameObject carBody;
@@ -22,19 +23,19 @@ public class CarCustomization : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-       
-       if (GameData.carColor == null)
-        {
-            GameData.carColor = defaultMaterial;
-        }
-       //ChangeCarColor(GameData.carColor);
+
+       // if (GameData.carColor == null)
+       // {
+       //     GameData.carColor = Color.blue;
+       // }
+       ////ChangeCarColor(GameData.carColor);
        if (GameData.lightsOn)
        {
          
             carLight.SetActive(true);
-            carLight.GetComponent<Light>().color = GameData.underLightColor;
+            carLight.GetComponent<Light>().color = GameData.lightColor;
        }
 
     }
@@ -48,14 +49,14 @@ public class CarCustomization : MonoBehaviour
     public void ChangeCarColor(Image colorImage)
     {
        // carBody.GetComponent<MeshRenderer>().material = color;
-      //  GameData.carColor = color;
+      GameData.carColor = colorImage.color;
       carBodyMaterial.color = colorImage.color;
     }
 
     public void ChangeRimColor(Image colorImage)
     {
         // carBody.GetComponent<MeshRenderer>().material = color;
-        //  GameData.carColor = color;
+         GameData.wheelColor = colorImage.color;
    
         wheelMaterial.color = colorImage.color;
     }
@@ -65,8 +66,20 @@ public class CarCustomization : MonoBehaviour
         GameData.lightsOn = true;
         carLight.SetActive(true);
         Color color = colorImage.color;
-        GameData.underLightColor = color;
+        GameData.lightColor = color;
         carLight.GetComponent<Light>().color = color;
+      
+    }
+
+    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor)
+    {
+        print("i was called");
+        carBodyMaterial.color = carBody;
+        wheelMaterial.color = wheelColor;
+        carLight.GetComponent<Light>().color = lightColor;
+  
+
+
     }
 
     public void SettingChange()

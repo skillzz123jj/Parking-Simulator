@@ -5,9 +5,11 @@ using UnityEngine;
 public class GameData : MonoBehaviour
 {
 
-    public static Material carColor;
-    public static Color underLightColor;
+    public static Color carColor;
+    public static Color lightColor;
+    public static Color wheelColor;
     public static bool lightsOn;
+    public static string carModel;
 
     public static bool parked;
 

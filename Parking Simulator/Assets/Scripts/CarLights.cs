@@ -47,7 +47,7 @@ public class CarLights : MonoBehaviour
         if (GameData.lightsOn)
         {
             underLight.SetActive(true);
-            underLight.GetComponent<Light>().color = GameData.underLightColor;
+            underLight.GetComponent<Light>().color = GameData.lightColor;
 
         }
         else
