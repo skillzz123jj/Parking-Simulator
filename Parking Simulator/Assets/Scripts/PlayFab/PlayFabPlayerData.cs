@@ -1,12 +1,12 @@
 using PlayFab.ClientModels;
 using System.Collections.Generic;
 using UnityEngine;
-//using External.RimuruDevUtils.Helpers.Colors;
-using PlayFab; // Import the correct namespace
+using PlayFab; 
 
-public class PlayFabPlayerData : MonoBehaviour
+public class PlayFabPlayerData
 {
-    [SerializeField] CarCustomization carCustomization;
+    public delegate void DataReceivedHandler();
+    public event DataReceivedHandler OnDataReceivedEvent;
 
     public static Dictionary<string, int> levelsCompleted = new Dictionary<string, int>
     {
@@ -18,6 +18,7 @@ public class PlayFabPlayerData : MonoBehaviour
     public static Dictionary<string, string> carData = new Dictionary<string, string>
     {
         {"CarModel", "Car"},
+        {"CarTexture", "Metallic"},
         {"CarColor", "E2EAF4"},
         {"CarLights", "FE9900"},
         {"WheelColor", "EFC3CA"}
@@ -60,11 +61,6 @@ public class PlayFabPlayerData : MonoBehaviour
             string levelsCompletedJson = result.Data["LevelsCompleted"].Value;
            levelsCompleted = JsonUtility.FromJson<Serialization<string, int>>(levelsCompletedJson).ToDictionary();
 
-            // Use the levelsCompleted dictionary in your game
-            foreach (var level in levelsCompleted)
-            {
-                Debug.Log("Level: " + level.Key + ", Score: " + level.Value);
-            }
         }
         else
         {
@@ -77,28 +73,21 @@ public class PlayFabPlayerData : MonoBehaviour
             string carDataJson = result.Data["CarData"].Value;
             carData = JsonUtility.FromJson<Serialization<string, string>>(carDataJson).ToDictionary();
 
-            // Use the carData dictionary in your game
-            foreach (var level in carData)
-            {
-                Debug.Log("CarComponent: " + level.Key + ", Color: " + level.Value);
-            }
-            print(External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarColor"]));
-            print(carData["CarColor"]);
             GameData.carColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarColor"]);
             GameData.lightColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarLights"]);
             GameData.wheelColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["WheelColor"]);
+            GameData.carTexture = carData["CarTexture"];
 
-            print(GameData.carColor);
-            //carCustomization.CarInitialization(
-            //    External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarColor"]),
-            //    External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarLights"]),
-            //    External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["WheelColor"])
-            //);
         }
         else
         {
             Debug.Log("No car data found.");
         }
+        OnDataReceivedEvent?.Invoke();
+        Debug.Log("Data successfully fetched.");
+        GameData.dataFetched = true;
+    
+
     }
 
     void OnError(PlayFabError error)

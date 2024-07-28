@@ -8,14 +8,27 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject blackOutSquare;
 
     private bool fadeToBlackActive = true;
+    private Coroutine runningCoroutine;
 
     private void Start()
     {
-        // Subscribe to the scene change event
+    
+        runningCoroutine = StartCoroutine(CheckConditionCoroutine());
         SceneManager.activeSceneChanged += OnSceneChanged;
 
     }
+    IEnumerator CheckConditionCoroutine()
+    {
+        blackOutSquare.GetComponent<Image>().color = new Color(0, 0, 0, 1);
 
+        while (!GameData.dataFetched)
+        {
+            yield return null;
+        }
+
+        // Coroutine stops when shouldRun becomes false
+        yield return StartCoroutine(SceneTransition(false));
+    }
 
     private void OnDestroy()
     {
@@ -51,6 +64,7 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
 
     public IEnumerator SceneTransition(bool fadeToBlack = true, int fadeSpeed = 5)
     {

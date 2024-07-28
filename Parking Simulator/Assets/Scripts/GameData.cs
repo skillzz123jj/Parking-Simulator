@@ -8,8 +8,10 @@ public class GameData : MonoBehaviour
     public static Color carColor;
     public static Color lightColor;
     public static Color wheelColor;
+    public static string carTexture;
     public static bool lightsOn;
     public static string carModel;
+    public static bool dataFetched;
 
     public static bool parked;
 

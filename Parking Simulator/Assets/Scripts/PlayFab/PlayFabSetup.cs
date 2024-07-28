@@ -1,34 +1,30 @@
 using PlayFab;
 using PlayFab.ClientModels;
-using System.Collections.Generic;
 using static External.RimuruDevUtils.Helpers.Colors.ColorUtility;
 using UnityEngine;
+using TMPro;
 
 public class PlayFabSetup : MonoBehaviour
 {
-
-    //public static Dictionary<string, int> levelsCompleted = new Dictionary<string, int>
-    //{
-    //    {"Level1", 0},
-    //    {"Level2", 0},
-    //    {"Level3", 0}
-    //};
-
-    //public static Dictionary<string, string> carData = new Dictionary<string, string>
-    //{
-    //    {"CarModel", "Car"},
-    //    {"CarColor", "E2EAF4"},
-    //    {"CarLights", "FE9900"},
-    //    {"WheelColor", "EFC3CA"}
-    //};
-
     [SerializeField] CarCustomization carCustomization;
-
+    PlayFabPlayerData playerData;
+    [SerializeField] GameObject connectionStatus;
+    bool wasConnected;
     void Start()
     {
-        LoginWithDeviceID();
+       // LoginWithDeviceID();
+        playerData = new PlayFabPlayerData();
+        playerData.OnDataReceivedEvent += OnDataLoaded;
+        wasConnected = Application.internetReachability != NetworkReachability.NotReachable;
+        if (wasConnected)
+        {
+            LoginWithDeviceID();
+        }
+        else
+        {
+            connectionStatus.SetActive(true);
+        }
 
-      
     }
 
     void LoginWithDeviceID()
@@ -46,35 +42,23 @@ public class PlayFabSetup : MonoBehaviour
     {
         Debug.Log("ID: " + result.PlayFabId);
         PlayerPrefs.SetString("PlayFabId", result.PlayFabId);
+        connectionStatus.SetActive(false);
+
         LoadGameData();
     }
 
     void OnLoginFailure(PlayFabError error)
     {
         Debug.LogError("Error: " + error.GenerateErrorReport());
+        connectionStatus.SetActive(true);
+
     }
 
     void SaveGameData()
     {
-        //    Dictionary<string, int> levelsCompleted = new Dictionary<string, int>
-        //{
-        //    {"Level1", 0},
-        //    {"Level2", 0},
-        //    {"Level3", 0}
-        //};
-        //  levelsCompleted
         ConvertDataToJSON();
         PlayFabPlayerData playerData = new PlayFabPlayerData();
         playerData.SavePlayerData(PlayFabPlayerData.levelsCompleted, PlayFabPlayerData.carData);
-
-        foreach (var level in PlayFabPlayerData.levelsCompleted)
-        {
-            print("Level: " + level.Key + "Score: " + level.Value);
-        }
-        foreach (var level in PlayFabPlayerData.carData)
-        {
-            print("CarComponent: " + level.Key + "Value: " + level.Value);
-        }
 
     }
     public void ConvertDataToJSON()
@@ -82,6 +66,7 @@ public class PlayFabSetup : MonoBehaviour
         PlayFabPlayerData.carData["CarColor"] = ColorToHex(GameData.carColor);
         PlayFabPlayerData.carData["CarLights"] = ColorToHex(GameData.lightColor);
         PlayFabPlayerData.carData["WheelColor"] = ColorToHex(GameData.wheelColor);
+        PlayFabPlayerData.carData["CarTexture"] = GameData.carTexture;
 
 
     }
@@ -95,25 +80,19 @@ public class PlayFabSetup : MonoBehaviour
     }
     public void LoadGameData()
     {
-        PlayFabPlayerData playerData = new PlayFabPlayerData();
+       
         playerData.GetPlayerData();
-       // UpdateGameData();
-        foreach (var level in PlayFabPlayerData.levelsCompleted)
-        {
-            print("Level: " + level.Key + "Score: " + level.Value);
-        }
-        foreach (var level in PlayFabPlayerData.carData)
-        {
-            print("CarComponent: " + level.Key + "Value: " + level.Value);
-        }
 
-    //    UpdateGameData();
-      //  carCustomization.CarInitialization(HexToColor(carData["CarColor"]), HexToColor(carData["CarLights"]), HexToColor(carData["WheelColor"]));
     }
 
+
+    void OnDataLoaded()
+    {
+        UpdateGameData();
+        carCustomization.CarInitialization(GameData.carColor, GameData.lightColor, GameData.wheelColor, GameData.carTexture);
+    }
     void UpdateGameData()
     {
-      //  Dictionary<string, string> carData = playFabSetup.carData;
 
         string carColorHex = PlayFabPlayerData.carData.ContainsKey("CarColor") ? PlayFabPlayerData.carData["CarColor"] : "#FF0000FF"; // Default to red if not found
         GameData.carColor = HexToColor(carColorHex);
@@ -124,57 +103,30 @@ public class PlayFabSetup : MonoBehaviour
         string wheelColorHex = PlayFabPlayerData.carData.ContainsKey("WheelColor") ? PlayFabPlayerData.carData["WheelColor"] : "#FFFFFFFF"; // Default to white if not found
         GameData.wheelColor = HexToColor(wheelColorHex);
 
+        string carTexture = PlayFabPlayerData.carData.ContainsKey("CarTexture") ? PlayFabPlayerData.carData["CarTexture"] : "Metallic"; // Default to white if not found
+        GameData.carTexture = carTexture;
+
         Debug.Log("GameData updated with car data.");
     }
 
-    // Helper method to convert hexadecimal color string to Color
-    //public static Color HexToColor(string hex)
-    //{
-    //    if (hex.StartsWith("#"))
-    //    {
-    //        hex = hex.Substring(1);
-    //    }
-
-    //    Color color = new Color();
-    //    if (ColorUtility.TryParseHtmlString("#" + hex, out color))
-    //    {
-    //        return color;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Invalid hexadecimal color string: " + hex);
-    //        return Color.white; // Default color if conversion fails
-    //    }
-    //}
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        bool isConnected = Application.internetReachability != NetworkReachability.NotReachable;
+
+        if (isConnected && !wasConnected)
         {
-            PlayFabPlayerData.levelsCompleted["Level1"] += 1;
-            SaveGameData();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            PlayFabPlayerData.levelsCompleted["Level2"] += 1;
-            SaveGameData();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            PlayFabPlayerData.levelsCompleted["Level3"] += 1;
-            SaveGameData();
-        }
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            LoadGameData();
-            carCustomization.CarInitialization(
-             GameData.carColor, GameData.lightColor, GameData.wheelColor
-             
-         ); 
+            // Connection was restored
+            connectionStatus.SetActive(false);
+            LoginWithDeviceID();
         }
 
+        if (!isConnected && wasConnected)
+        {
+            // Connection was lost
+            connectionStatus.SetActive(true);
+        }
 
-
+        wasConnected = isConnected;
     }
 }
 

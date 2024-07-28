@@ -36,7 +36,6 @@ namespace External.RimuruDevUtils.Helpers.Colors
         /// </example>
         public static Color HexToColor(string hex)
         {
-            Debug.Log(hex +  " hex");
             if (string.IsNullOrWhiteSpace(hex) || IsIncorrectFormat(hex))
             {
                 Debug.LogWarning("Invalid or empty hexadecimal string. Returning white color.");
