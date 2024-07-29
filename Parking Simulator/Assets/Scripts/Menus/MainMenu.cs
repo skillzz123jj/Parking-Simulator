@@ -13,7 +13,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
     
-        runningCoroutine = StartCoroutine(CheckConditionCoroutine());
+       // runningCoroutine = StartCoroutine(CheckConditionCoroutine());
+        StartCoroutine(CheckConditionCoroutine());
         SceneManager.activeSceneChanged += OnSceneChanged;
 
     }
@@ -21,13 +22,11 @@ public class MainMenu : MonoBehaviour
     {
         blackOutSquare.GetComponent<Image>().color = new Color(0, 0, 0, 1);
 
-        while (!GameData.dataFetched)
-        {
-            yield return null;
-        }
+       
 
         // Coroutine stops when shouldRun becomes false
-        yield return StartCoroutine(SceneTransition(false));
+        yield return new WaitForSeconds(3);
+        StartCoroutine(SceneTransition(false));
     }
 
     private void OnDestroy()

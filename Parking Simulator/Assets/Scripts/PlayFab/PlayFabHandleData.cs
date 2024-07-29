@@ -2,9 +2,9 @@ using PlayFab;
 using PlayFab.ClientModels;
 using static External.RimuruDevUtils.Helpers.Colors.ColorUtility;
 using UnityEngine;
-using TMPro;
+using System.Net;
 
-public class PlayFabSetup : MonoBehaviour
+public class PlayFabHandleData : MonoBehaviour
 {
     [SerializeField] CarCustomization carCustomization;
     PlayFabPlayerData playerData;
@@ -12,19 +12,8 @@ public class PlayFabSetup : MonoBehaviour
     bool wasConnected;
     void Start()
     {
-       // LoginWithDeviceID();
         playerData = new PlayFabPlayerData();
         playerData.OnDataReceivedEvent += OnDataLoaded;
-        wasConnected = Application.internetReachability != NetworkReachability.NotReachable;
-        if (wasConnected)
-        {
-            LoginWithDeviceID();
-        }
-        else
-        {
-            connectionStatus.SetActive(true);
-        }
-
     }
 
     void LoginWithDeviceID()
@@ -54,14 +43,14 @@ public class PlayFabSetup : MonoBehaviour
 
     }
 
-    void SaveGameData()
+    public void SaveGameData()
     {
-        ConvertDataToJSON();
+        ConvertDataToJSONFormat();
         PlayFabPlayerData playerData = new PlayFabPlayerData();
         playerData.SavePlayerData(PlayFabPlayerData.levelsCompleted, PlayFabPlayerData.carData);
 
     }
-    public void ConvertDataToJSON()
+    public void ConvertDataToJSONFormat()
     {
         PlayFabPlayerData.carData["CarColor"] = ColorToHex(GameData.carColor);
         PlayFabPlayerData.carData["CarLights"] = ColorToHex(GameData.lightColor);
@@ -111,22 +100,34 @@ public class PlayFabSetup : MonoBehaviour
 
     private void Update()
     {
-        bool isConnected = Application.internetReachability != NetworkReachability.NotReachable;
-
-        if (isConnected && !wasConnected)
+        if (IsInternetConnected())
         {
-            // Connection was restored
+            if (!wasConnected)
+            {
+                connectionStatus.SetActive(false);
+                wasConnected = true;
+                LoginWithDeviceID();
+            }
             connectionStatus.SetActive(false);
-            LoginWithDeviceID();
-        }
 
-        if (!isConnected && wasConnected)
+        }
+        else
         {
-            // Connection was lost
             connectionStatus.SetActive(true);
         }
+    }
 
-        wasConnected = isConnected;
+    static bool IsInternetConnected()
+    {
+        try
+        {
+            Dns.GetHostEntry("www.google.com"); 
+            return true;
+        }
+        catch
+        {
+            return false; 
+        }
     }
 }
 
