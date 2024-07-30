@@ -23,21 +23,6 @@ public class CarCustomization : MonoBehaviour
     [SerializeField] TMP_Text text;
 
     bool changeLights;
-    void Start()
-    {
-       if (GameData.lightsOn)
-       {
-            carLight.SetActive(true);
-            carLight.GetComponent<Light>().color = GameData.lightColor;
-       }
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void ChangeCarMaterial(string carTexture)
     {
@@ -48,7 +33,9 @@ public class CarCustomization : MonoBehaviour
     public void ChangeCarColor(Image colorImage)
     {
       GameData.carColor = colorImage.color;
-      carBodyMaterial.color = colorImage.color;
+        metallicMaterial.color = colorImage.color;
+        matteMaterial.color = colorImage.color;
+    //  carBodyMaterial.color = colorImage.color;
     }
 
     public void ChangeRimColor(Image colorImage)

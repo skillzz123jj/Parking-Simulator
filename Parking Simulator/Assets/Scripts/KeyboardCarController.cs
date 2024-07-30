@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TESTCarController : MonoBehaviour
+public class KeyboardCarController : MonoBehaviour
 {
     private float horizontalInput, verticalInput;
     private float currentSteerAngle, currentbreakForce;
@@ -55,7 +52,13 @@ public class TESTCarController : MonoBehaviour
             frontRightWheelCollider.motorTorque = verticalInput * motorForce;
        
         }
+        else
+        {
+            frontLeftWheelCollider.motorTorque = 0;
+            frontRightWheelCollider.motorTorque = 0;
+        }
         currentbreakForce = isBreaking ? breakForce : 0f;
+        
         ApplyBreaking();
     }
 

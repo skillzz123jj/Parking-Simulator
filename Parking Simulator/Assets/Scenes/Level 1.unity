@@ -1490,7 +1490,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &614789374
 Transform:
   m_ObjectHideFlags: 0
@@ -2267,7 +2267,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
   m_Lens:
-    FieldOfView: 72
+    FieldOfView: 60
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -2293,14 +2293,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936946125}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.003002043, y: 0.00000023581904, z: 0.00007855249, w: 0.99999547}
-  m_LocalPosition: {x: 17.67, y: 3.37, z: 3.49}
+  m_LocalRotation: {x: -0.069491304, y: -0.14932048, z: -0.02998487, w: 0.9858881}
+  m_LocalPosition: {x: 18.61, y: 0.67, z: 3.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1849471120}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -0.344, y: 0, z: 0.009}
+  m_LocalEulerAnglesHint: {x: -8.394, y: -17.062, z: -2.223}
 --- !u!1 &962088915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3001,7 +3001,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 72
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3027,8 +3027,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099343161}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0030020433, y: 0.00000023581906, z: 0.0000785525, w: 0.9999955}
-  m_LocalPosition: {x: 17.67, y: 3.37, z: 3.49}
+  m_LocalRotation: {x: -0.069491304, y: -0.14932048, z: -0.02998487, w: 0.9858881}
+  m_LocalPosition: {x: 18.61, y: 0.67, z: 3.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3281,7 +3281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.15, z: -7.3}
+  m_FollowOffset: {x: 0, y: 5, z: 10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -3504,7 +3504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.15, z: 7.3}
+  m_FollowOffset: {x: 0, y: 5, z: 10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 0
@@ -3674,7 +3674,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 6.23, y: 2.77, z: -0.17}
+  m_FollowOffset: {x: 0, y: 5, z: 10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -4082,7 +4082,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: -6.23, y: 2.77, z: -0.17}
+  m_FollowOffset: {x: 0, y: 5, z: 10}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -4729,8 +4729,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1676127114}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000014901161, y: 0.9897628, z: -0.14272222, w: 0.00000020861626}
-  m_LocalPosition: {x: 4.182434, y: 0.13856936, z: 11.486292}
+  m_LocalRotation: {x: -5.9506833e-10, y: 0.973249, z: -0.22975296, w: -0.000000002520763}
+  m_LocalPosition: {x: 3.1937342, y: 4.0785694, z: 14.879454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5214,13 +5214,13 @@ MonoBehaviour:
   cameraBack: {fileID: 1134978618}
   cameraLeft: {fileID: 2098148021}
   cameraRight: {fileID: 494321860}
+  rotateCamera: {fileID: 936946126}
   previousCamera: {fileID: 0}
   car: {fileID: 6631692322989169666}
   turnSpeed: 5
   player: {fileID: 6631692322989169666}
   yOffset: 5
   zOffset: 10
-  rotateCamera: {fileID: 936946126}
 --- !u!1 &1849471119
 GameObject:
   m_ObjectHideFlags: 3
@@ -5268,9 +5268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 0, z: -10}
+  m_FollowOffset: {x: 0, y: 5, z: 10}
   m_XDamping: 1
-  m_YDamping: 1
+  m_YDamping: 0
   m_ZDamping: 1
   m_AngularDampingMode: 0
   m_PitchDamping: 0
@@ -6021,14 +6021,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098148019}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14878166, y: 0.68220305, z: -0.1447772, w: 0.70107245}
-  m_LocalPosition: {x: -3.0362654, y: 1.8485692, z: 4.709455}
+  m_LocalRotation: {x: -0.0000000096833634, y: 0.973249, z: -0.22975297, w: -0.000000041019376}
+  m_LocalPosition: {x: 3.1937342, y: 4.0785694, z: 14.879454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1357812387}
   m_Father: {fileID: 1806052522}
-  m_LocalEulerAnglesHint: {x: 23.963, y: 66.4, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2098148021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6674,7 +6674,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 4370361801766350435, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
-  - {fileID: -6922793697723135513, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
+  - {fileID: 2100000, guid: f4f65e25134c3de4a891d35be0efdaf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7143,7 +7143,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -6198341833473452922, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
-  - {fileID: 4874126678125670354, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
+  - {fileID: 2100000, guid: f4f65e25134c3de4a891d35be0efdaf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8007,7 +8007,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -5893457009136419862, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
-  - {fileID: -6478536213147159724, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
+  - {fileID: 2100000, guid: f4f65e25134c3de4a891d35be0efdaf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8336,7 +8336,7 @@ GameObject:
   - component: {fileID: 14984920124853937}
   - component: {fileID: 8315102578305046133}
   - component: {fileID: 8315102578305046134}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8375,6 +8375,7 @@ GameObject:
   - component: {fileID: 6631692322989169668}
   - component: {fileID: 6631692322989169667}
   - component: {fileID: 6631692322989169671}
+  - component: {fileID: 6631692322989169672}
   m_Layer: 0
   m_Name: Car2
   m_TagString: Untagged
@@ -8497,6 +8498,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d37d0ea1b9a8629448e8da448620fae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6631692322989169672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631692322989169666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a588b932ed9215c4eb7e52ed5c393400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 8315102578305046133}
+  wheels: {fileID: 2100000, guid: f4f65e25134c3de4a891d35be0efdaf9, type: 2}
+  underLight: {fileID: 614789377}
+  metallicMaterial: {fileID: 2100000, guid: 9b8794792fdd2424e98f1e3ee6ca5424, type: 2}
+  matteMaterial: {fileID: 2100000, guid: 90b8ead4fb1e1e04c9e704dd6ccbb77a, type: 2}
 --- !u!4 &6635828328623574409
 Transform:
   m_ObjectHideFlags: 0
@@ -8852,7 +8870,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: -1689427552055582659, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
-  - {fileID: -3846018093981099296, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
+  - {fileID: 2100000, guid: f4f65e25134c3de4a891d35be0efdaf9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9120,7 +9138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9bd47793fec2dc64b91d74be1594db16, type: 2}
+  - {fileID: 2100000, guid: 9b8794792fdd2424e98f1e3ee6ca5424, type: 2}
   - {fileID: -1580535799172915004, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
   - {fileID: 8992934318045909824, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
   - {fileID: 2100000, guid: d4b5d17cce5f98846a872bb84a1f865b, type: 2}

@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+
 using UnityEngine;
 
 public class LevelSelection : MonoBehaviour
 {
     [SerializeField] GameObject[] levels;
-    [SerializeField] GameObject startLevel;
     private int currentIndex = 0;
 
     // Start is called before the first frame update
@@ -42,5 +43,10 @@ public class LevelSelection : MonoBehaviour
         currentIndex = (currentIndex < levels.Length - 1) ? currentIndex + 1 : 0;
         // Activate the new current level
         levels[currentIndex].SetActive(true);
+    }
+
+    public void ChangeScene()
+    {
+        SceneManager.LoadScene(currentIndex + 1);
     }
 }

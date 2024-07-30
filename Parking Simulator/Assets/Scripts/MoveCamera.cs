@@ -11,6 +11,7 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera cameraBack;
     [SerializeField] CinemachineVirtualCamera cameraLeft;
     [SerializeField] CinemachineVirtualCamera cameraRight;
+    [SerializeField] CinemachineVirtualCamera rotateCamera;
     [SerializeField] CinemachineVirtualCamera previousCamera;
     [SerializeField] GameObject car;
 
@@ -22,7 +23,6 @@ public class MoveCamera : MonoBehaviour
     private Vector3 offset;
     [SerializeField] float yOffset;
     [SerializeField] float zOffset;
-    [SerializeField] CinemachineVirtualCamera rotateCamera;
 
     void Awake()
     {
@@ -40,9 +40,15 @@ public class MoveCamera : MonoBehaviour
     {
         previousCamera = cameraBack;
         playerTransform = player.transform;
-        offset = new Vector3(playerTransform.position.x, playerTransform.position.y + yOffset, playerTransform.position.z + zOffset);
-    }
+        offset = new Vector3(0, yOffset, zOffset);
 
+        // Set initial camera offsets
+        SetCameraOffset(cameraFront, offset);
+        SetCameraOffset(cameraBack, offset);
+        SetCameraOffset(cameraLeft, offset);
+        SetCameraOffset(cameraRight, offset);
+        SetCameraOffset(rotateCamera, offset);
+    }
 
     void FixedUpdate()
     {
@@ -67,27 +73,19 @@ public class MoveCamera : MonoBehaviour
         // Debugging key input to ensure the fallback still works
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            previousCamera.Priority = 1;
-            cameraFront.Priority = 10;
-            previousCamera = cameraFront;
+            SwitchCamera(cameraFront);
         }
         if (Input.GetKeyDown(KeyCode.J))
         {
-            previousCamera.Priority = 1;
-            cameraRight.Priority = 10;
-            previousCamera = cameraRight;
+            SwitchCamera(cameraRight);
         }
         if (Input.GetKeyDown(KeyCode.G))
         {
-            previousCamera.Priority = 1;
-            cameraLeft.Priority = 10;
-            previousCamera = cameraLeft;
+            SwitchCamera(cameraLeft);
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-            previousCamera.Priority = 1;
-            cameraBack.Priority = 10;
-            previousCamera = cameraBack;
+            SwitchCamera(cameraBack);
         }
     }
 
@@ -101,10 +99,19 @@ public class MoveCamera : MonoBehaviour
         previousCamera = newCamera;
     }
 
+    private void SetCameraOffset(CinemachineVirtualCamera cam, Vector3 offset)
+    {
+        var transposer = cam.GetCinemachineComponent<CinemachineTransposer>();
+        if (transposer != null)
+        {
+            transposer.m_FollowOffset = offset;
+        }
+    }
+
     private void FlipCar()
     {
         Vector3 currentRotation = car.transform.rotation.eulerAngles;
-
         car.transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
     }
 }
+
