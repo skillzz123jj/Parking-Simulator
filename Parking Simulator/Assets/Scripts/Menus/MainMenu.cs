@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     {
     
        // runningCoroutine = StartCoroutine(CheckConditionCoroutine());
-        StartCoroutine(CheckConditionCoroutine());
+      //  StartCoroutine(CheckConditionCoroutine());
         SceneManager.activeSceneChanged += OnSceneChanged;
 
     }

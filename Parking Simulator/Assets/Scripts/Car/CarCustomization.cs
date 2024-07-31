@@ -22,6 +22,10 @@ public class CarCustomization : MonoBehaviour
 
     [SerializeField] TMP_Text text;
 
+    [SerializeField] Button matteButton;
+    [SerializeField] Button metallicButton;
+
+
     bool changeLights;
 
     public void ChangeCarMaterial(string carTexture)
@@ -66,7 +70,16 @@ public class CarCustomization : MonoBehaviour
         carBodyMaterial.color = carBody;
         wheelMaterial.color = wheelColor;
         carLight.GetComponent<Light>().color = lightColor;
-       GameData.dataFetched = true;
+        carBodyMaterial = carTexture == "Metallic" ? metallicMaterial : matteMaterial;
+        if (carTexture == "Matte")
+        {
+            matteButton.onClick.Invoke();
+        }
+        else
+        {
+            metallicButton.onClick.Invoke();
+        }
+        GameData.dataFetched = true;
  
     }
 
