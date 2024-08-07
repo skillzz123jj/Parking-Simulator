@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-
 
 public class CarCustomization : MonoBehaviour
 {
@@ -14,6 +12,10 @@ public class CarCustomization : MonoBehaviour
     [SerializeField] List<MeshRenderer> wheelMeshes = new List<MeshRenderer>();
     [SerializeField] Material carBodyMaterial;
     [SerializeField] Material wheelMaterial;
+
+    [SerializeField] GameObject familyCar;
+    [SerializeField] GameObject pickupTruck;
+
 
     [SerializeField] Material matteMaterial;
     [SerializeField] Material metallicMaterial;
@@ -64,8 +66,18 @@ public class CarCustomization : MonoBehaviour
     }
 
 
-    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture)
+    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture, string carModel)
     {
+        if (carModel == "FamilyCar")
+        {
+            familyCar.SetActive(true);
+            pickupTruck.SetActive(false);
+        }
+        else
+        {
+            pickupTruck.SetActive(true);
+            familyCar.SetActive(false);
+        }
         ChangeCarMaterial(carTexture);
         carBodyMaterial.color = carBody;
         wheelMaterial.color = wheelColor;

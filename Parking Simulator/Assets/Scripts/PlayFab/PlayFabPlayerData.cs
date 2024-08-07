@@ -17,7 +17,7 @@ public class PlayFabPlayerData
 
     public static Dictionary<string, string> carData = new Dictionary<string, string>
     {
-        {"CarModel", "Car"},
+        {"CarModel", "FamilyCar"},
         {"CarTexture", "Metallic"},
         {"CarColor", "E2EAF4"},
         {"CarLights", "FE9900"},
@@ -77,6 +77,7 @@ public class PlayFabPlayerData
             GameData.lightColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarLights"]);
             GameData.wheelColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["WheelColor"]);
             GameData.carTexture = carData["CarTexture"];
+            GameData.carModel = carData["CarModel"];
 
         }
         else

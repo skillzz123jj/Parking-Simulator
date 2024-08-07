@@ -56,6 +56,7 @@ public class PlayFabHandleData : MonoBehaviour
         PlayFabPlayerData.carData["CarLights"] = ColorToHex(GameData.lightColor);
         PlayFabPlayerData.carData["WheelColor"] = ColorToHex(GameData.wheelColor);
         PlayFabPlayerData.carData["CarTexture"] = GameData.carTexture;
+        PlayFabPlayerData.carData["CarModel"] = GameData.carModel;
 
 
     }
@@ -78,22 +79,25 @@ public class PlayFabHandleData : MonoBehaviour
     void OnDataLoaded()
     {
         UpdateGameData();
-        carCustomization.CarInitialization(GameData.carColor, GameData.lightColor, GameData.wheelColor, GameData.carTexture);
+        carCustomization.CarInitialization(GameData.carColor, GameData.lightColor, GameData.wheelColor, GameData.carTexture, GameData.carModel);
     }
     void UpdateGameData()
     {
 
-        string carColorHex = PlayFabPlayerData.carData.ContainsKey("CarColor") ? PlayFabPlayerData.carData["CarColor"] : "#FF0000FF"; // Default to red if not found
+        string carColorHex = PlayFabPlayerData.carData.ContainsKey("CarColor") ? PlayFabPlayerData.carData["CarColor"] : "#FF0000FF"; //Default to red if not found
         GameData.carColor = HexToColor(carColorHex);
 
-        string lightsColorHex = PlayFabPlayerData.carData.ContainsKey("CarLights") ? PlayFabPlayerData.carData["CarLights"] : "#00FF00FF"; // Default to green if not found
+        string lightsColorHex = PlayFabPlayerData.carData.ContainsKey("CarLights") ? PlayFabPlayerData.carData["CarLights"] : "#00FF00FF"; //Default to green if not found
         GameData.lightColor = HexToColor(lightsColorHex);
 
-        string wheelColorHex = PlayFabPlayerData.carData.ContainsKey("WheelColor") ? PlayFabPlayerData.carData["WheelColor"] : "#FFFFFFFF"; // Default to white if not found
+        string wheelColorHex = PlayFabPlayerData.carData.ContainsKey("WheelColor") ? PlayFabPlayerData.carData["WheelColor"] : "#FFFFFFFF"; //Default to white if not found
         GameData.wheelColor = HexToColor(wheelColorHex);
 
-        string carTexture = PlayFabPlayerData.carData.ContainsKey("CarTexture") ? PlayFabPlayerData.carData["CarTexture"] : "Metallic"; // Default to white if not found
+        string carTexture = PlayFabPlayerData.carData.ContainsKey("CarTexture") ? PlayFabPlayerData.carData["CarTexture"] : "Metallic"; //Default to metallic if not found
         GameData.carTexture = carTexture;
+
+        string carModel = PlayFabPlayerData.carData.ContainsKey("CarModel") ? PlayFabPlayerData.carData["CarModel"] : "FamilyCar"; //Default to family car if not found
+        GameData.carModel = carModel;
 
         Debug.Log("GameData updated with car data.");
     }

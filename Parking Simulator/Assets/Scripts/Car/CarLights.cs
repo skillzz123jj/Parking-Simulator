@@ -39,16 +39,6 @@ public class CarLights : MonoBehaviour
     void Awake()
     {
         inputActions = new Inputs();
-        if (GameData.lightsOn)
-        {
-            underLight.SetActive(true);
-            underLight.GetComponent<Light>().color = GameData.lightColor;
-
-        }
-        else
-        {
-            underLight.SetActive(false);
-        }
     }
 
     void OnEnable()
