@@ -10,6 +10,7 @@ public class GameData : MonoBehaviour
     public static Color wheelColor;
     public static string carTexture;
     public static bool lightsOn;
+    public static string rainbowOn;
     public static string carModel;
     public static bool dataFetched;
 
@@ -30,10 +31,5 @@ public class GameData : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
 }

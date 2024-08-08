@@ -16,6 +16,7 @@ public class CarCustomization : MonoBehaviour
     [SerializeField] GameObject familyCar;
     [SerializeField] GameObject pickupTruck;
 
+    [SerializeField] ChangeUnderLight enableRainbowLight;
 
     [SerializeField] Material matteMaterial;
     [SerializeField] Material metallicMaterial;
@@ -41,7 +42,6 @@ public class CarCustomization : MonoBehaviour
       GameData.carColor = colorImage.color;
         metallicMaterial.color = colorImage.color;
         matteMaterial.color = colorImage.color;
-    //  carBodyMaterial.color = colorImage.color;
     }
 
     public void ChangeRimColor(Image colorImage)
@@ -52,8 +52,9 @@ public class CarCustomization : MonoBehaviour
 
     public void ChangeCarLight(Image colorImage)
     {
+        enableRainbowLight.enabled = false;
+        GameData.rainbowOn = "Disabled";
         GameData.lightsOn = true;
-        carLight.SetActive(true);
         Color color = colorImage.color;
         GameData.lightColor = color;
         carLight.GetComponent<Light>().color = color;
@@ -66,7 +67,7 @@ public class CarCustomization : MonoBehaviour
     }
 
 
-    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture, string carModel)
+    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture, string carModel, string rainbowOn)
     {
         if (carModel == "FamilyCar")
         {
@@ -82,6 +83,8 @@ public class CarCustomization : MonoBehaviour
         carBodyMaterial.color = carBody;
         wheelMaterial.color = wheelColor;
         carLight.GetComponent<Light>().color = lightColor;
+        ChangeUnderLight isRainbowEnabled = carLight.GetComponent<ChangeUnderLight>();
+        isRainbowEnabled.enabled = GameData.rainbowOn == "Enabled";
         carBodyMaterial = carTexture == "Metallic" ? metallicMaterial : matteMaterial;
         if (carTexture == "Matte")
         {
@@ -95,20 +98,11 @@ public class CarCustomization : MonoBehaviour
  
     }
 
-    public void SettingChange()
+    public void RainbowLight()
     {
-        changeLights = !changeLights;
-
-        text.text = changeLights ? "Change color" : "Change lights";
-
-        lightObject.SetActive(changeLights);
-        colorObject.SetActive(!changeLights);
-    }
-
-    public void CloseLights()
-    {
-        GameData.lightsOn = false;
-        carLight.SetActive(false);
+        GameData.rainbowOn = "Enabled";
+        GameData.lightsOn = true;
+        enableRainbowLight.enabled = true;
     }
 
 }

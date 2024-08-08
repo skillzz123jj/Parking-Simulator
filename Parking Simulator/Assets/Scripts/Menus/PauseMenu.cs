@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] VehicleController vehicleController;
     [SerializeField] GameObject radio;
     [SerializeField] GameObject carRadio;
-    [SerializeField] CarLights carLights;
+  //  [SerializeField] CarLights carLights;
     [SerializeField] GameObject carEngineSound;
     [SerializeField] GameObject indicatorSound;
     [SerializeField] GameObject instruction;
@@ -57,8 +57,6 @@ public class PauseMenu : MonoBehaviour
         {
             profile.TryGetSettings(out depthOfField);
         }
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
         UpdateFocusDistance();
     }
 
@@ -72,8 +70,8 @@ public class PauseMenu : MonoBehaviour
         //}
         //else
         //{
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+          //  Cursor.lockState = CursorLockMode.Locked;
        // }
     }
 
@@ -87,13 +85,13 @@ public class PauseMenu : MonoBehaviour
                 UIWheel.SetActive(false);
             gears.SetActive(false);
             carEngineSound.SetActive(false);
-            carLights.enabled = false;
+          //  carLights.enabled = false;
             indicatorSound.SetActive(false);
             instruction.SetActive(false);
             radio.SetActive(false);
             carRadio.SetActive(false);
             vehicleController.enabled = false;
-                Time.timeScale = 0;
+              //  Time.timeScale = 0;
                 UpdateFocusDistance(); 
             
         }
@@ -108,7 +106,7 @@ public class PauseMenu : MonoBehaviour
       
             GameData.menuOpen = false;
 
-            carLights.enabled = true;
+    //        carLights.enabled = true;
             radio.SetActive(true);
             carRadio.SetActive(true);
             vehicleController.enabled = true;
@@ -120,7 +118,7 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
-            Time.timeScale = 1;
+        //    Time.timeScale = 1;
                 UpdateFocusDistance(); 
             
         }
@@ -137,7 +135,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit(int scene)
     {
-        Time.timeScale = 1;
+     //   Time.timeScale = 1;
       
 
         StartCoroutine(LoadSceneCoroutine(scene));

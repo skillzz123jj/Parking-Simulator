@@ -4,25 +4,27 @@ using System.Collections.Generic;
 
 public class ChangeUnderLight : MonoBehaviour
 {
-   
-    private Light lightComponent;
+    [SerializeField] Light lightComponent;
+    private Coroutine colorCycleCoroutine;  // Reference to the running coroutine
 
     public List<Color> colors;
-
     public float transitionDuration = 2.0f;
 
-    void Start()
-    {
-      
-        lightComponent = GetComponent<Light>();
 
-        if (colors.Count > 1)
+    private void OnEnable()
+    {
+        if (colorCycleCoroutine == null) 
         {
-            StartCoroutine(CycleColors());
+            colorCycleCoroutine = StartCoroutine(CycleColors());
         }
-        else
+    }
+
+    private void OnDisable()
+    {
+        if (colorCycleCoroutine != null)  
         {
-            Debug.LogError("Please assign at least two colors to the colors list.");
+            StopCoroutine(colorCycleCoroutine);
+            colorCycleCoroutine = null;
         }
     }
 
@@ -33,7 +35,6 @@ public class ChangeUnderLight : MonoBehaviour
 
         while (true)
         {
-         
             Color currentColor = colors[currentColorIndex];
             Color nextColor = colors[(currentColorIndex + 1) % colorCount];
 
@@ -52,8 +53,8 @@ public class ChangeUnderLight : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             Color currentColor = Color.Lerp(initialColor, targetColor, elapsedTime / duration);
-
             lightComponent.color = currentColor;
+
             yield return null;
         }
 

@@ -18,9 +18,6 @@ public class CarLights : MonoBehaviour
     [SerializeField] GameObject car;
     [SerializeField] GameObject underLight;
 
-    [SerializeField] GameObject leftIndicatorLight;
-    [SerializeField] GameObject rightIndicatorLight;
-
 
     [SerializeField] Material indicatorOnMaterial;
     [SerializeField] Material indicatorOffMaterial;
@@ -72,17 +69,15 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(leftCoroutine);
-                leftIndicatorLight.SetActive(false);
                 leftIndicatorLightMesh.sharedMaterial = indicatorOffMaterial;
             }
 
             leftIndicatorOn = !leftIndicatorOn;
             rightIndicatorOn = false;
-            rightIndicatorLight.SetActive(false); 
             if (leftIndicatorOn)
             {
                 indicatorSound.Stop();
-                leftCoroutine = StartCoroutine(BlinkIndicator(leftIndicatorLight, leftIndicatorLightMesh, () => leftIndicatorOn));
+                leftCoroutine = StartCoroutine(BlinkIndicator(leftIndicatorLightMesh, () => leftIndicatorOn));
             }
         }
 
@@ -92,19 +87,16 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(rightCoroutine);
-                rightIndicatorLight.SetActive(false);
                 rightIndicatorLightMesh.sharedMaterial = indicatorOffMaterial;
-
 
             }
 
             rightIndicatorOn = !rightIndicatorOn;
             leftIndicatorOn = false;
-            leftIndicatorLight.SetActive(false);
             if (rightIndicatorOn)
             {
                 indicatorSound.Stop();
-                rightCoroutine = StartCoroutine(BlinkIndicator(rightIndicatorLight, rightIndicatorLightMesh, () => rightIndicatorOn));
+                rightCoroutine = StartCoroutine(BlinkIndicator(rightIndicatorLightMesh, () => rightIndicatorOn));
             }
         }
     }
@@ -117,19 +109,17 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(leftCoroutine);
-                leftIndicatorLight.SetActive(false);
                 leftIndicatorLightMesh.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
             }
 
             leftIndicatorOn = !leftIndicatorOn;
             rightIndicatorOn = false;
-            rightIndicatorLight.SetActive(false); 
             rightIndicatorLightMesh.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
 
             if (leftIndicatorOn)
             {
                 indicatorSound.Stop();
-                leftCoroutine = StartCoroutine(BlinkIndicator(leftIndicatorLight, leftIndicatorLightMesh, () => leftIndicatorOn));
+                leftCoroutine = StartCoroutine(BlinkIndicator(leftIndicatorLightMesh, () => leftIndicatorOn));
             }
         }
 
@@ -144,50 +134,41 @@ public class CarLights : MonoBehaviour
             {
                 indicatorSound.Stop();
                 StopCoroutine(rightCoroutine);
-                rightIndicatorLight.SetActive(false);
                 rightIndicatorLightMesh.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
-
 
             }
 
             rightIndicatorOn = !rightIndicatorOn;
             leftIndicatorOn = false;
-            leftIndicatorLight.SetActive(false); 
             leftIndicatorLightMesh.GetComponent<MeshRenderer>().material = indicatorOffMaterial;
 
             if (rightIndicatorOn)
             {
                 indicatorSound.Stop();
-                rightCoroutine = StartCoroutine(BlinkIndicator(rightIndicatorLight, rightIndicatorLightMesh, () => rightIndicatorOn));
+                rightCoroutine = StartCoroutine(BlinkIndicator(rightIndicatorLightMesh, () => rightIndicatorOn));
             }
         }
 
     }
-    IEnumerator BlinkIndicator(GameObject indicatorLight, MeshRenderer indicatorMesh, System.Func<bool> isIndicatorOn)
+    IEnumerator BlinkIndicator(MeshRenderer indicatorMesh, System.Func<bool> isIndicatorOn)
     {
         
         while (isIndicatorOn())
         {
             indicatorSound.Play();
-            //indicatorLight.enabled = !indicatorLight.enabled;
-            //            indicatorLight.SetActive(!indicatorLight.activeSelf);
 
             if (indicatorMesh.sharedMaterial == indicatorOffMaterial)
             {
                 indicatorMesh.sharedMaterial = indicatorOnMaterial;
-                indicatorLight.SetActive(true);
             }
             else
             {
                 indicatorMesh.sharedMaterial = indicatorOffMaterial;
-                indicatorLight.SetActive(false);
 
             }
             yield return new WaitForSeconds(0.5f);
         }
-     //  indicatorLight.SetActive(false);
         indicatorMesh.sharedMaterial = indicatorOffMaterial;
-        indicatorLight.SetActive(false);
         indicatorSound.Stop();
     }
 

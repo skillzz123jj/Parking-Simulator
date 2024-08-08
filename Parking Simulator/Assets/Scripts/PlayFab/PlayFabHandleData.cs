@@ -57,6 +57,8 @@ public class PlayFabHandleData : MonoBehaviour
         PlayFabPlayerData.carData["WheelColor"] = ColorToHex(GameData.wheelColor);
         PlayFabPlayerData.carData["CarTexture"] = GameData.carTexture;
         PlayFabPlayerData.carData["CarModel"] = GameData.carModel;
+        PlayFabPlayerData.carData["RainbowLight"] = GameData.rainbowOn;
+
 
 
     }
@@ -79,7 +81,7 @@ public class PlayFabHandleData : MonoBehaviour
     void OnDataLoaded()
     {
         UpdateGameData();
-        carCustomization.CarInitialization(GameData.carColor, GameData.lightColor, GameData.wheelColor, GameData.carTexture, GameData.carModel);
+        carCustomization.CarInitialization(GameData.carColor, GameData.lightColor, GameData.wheelColor, GameData.carTexture, GameData.carModel, GameData.rainbowOn);
     }
     void UpdateGameData()
     {
@@ -98,6 +100,9 @@ public class PlayFabHandleData : MonoBehaviour
 
         string carModel = PlayFabPlayerData.carData.ContainsKey("CarModel") ? PlayFabPlayerData.carData["CarModel"] : "FamilyCar"; //Default to family car if not found
         GameData.carModel = carModel;
+
+        string isRainbowEnabled = PlayFabPlayerData.carData.ContainsKey("CarModel") ? PlayFabPlayerData.carData["RainbowLight"] : "Disabled"; //Default to off if not found
+        GameData.rainbowOn = isRainbowEnabled;
 
         Debug.Log("GameData updated with car data.");
     }

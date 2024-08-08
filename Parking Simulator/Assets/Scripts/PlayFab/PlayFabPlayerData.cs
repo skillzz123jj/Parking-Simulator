@@ -21,6 +21,7 @@ public class PlayFabPlayerData
         {"CarTexture", "Metallic"},
         {"CarColor", "E2EAF4"},
         {"CarLights", "FE9900"},
+        {"RainbowLight", "Disabled"},
         {"WheelColor", "EFC3CA"}
     };
 
@@ -78,6 +79,7 @@ public class PlayFabPlayerData
             GameData.wheelColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["WheelColor"]);
             GameData.carTexture = carData["CarTexture"];
             GameData.carModel = carData["CarModel"];
+            GameData.rainbowOn = carData["RainbowLight"];
 
         }
         else

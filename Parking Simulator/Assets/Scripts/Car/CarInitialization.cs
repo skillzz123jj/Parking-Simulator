@@ -4,7 +4,7 @@ public class CarInitialization : MonoBehaviour
 {
     [SerializeField] MeshRenderer body;
     [SerializeField] Material wheels;
-    [SerializeField] Light underLight;
+    [SerializeField] GameObject underLight;
     [SerializeField] Material metallicMaterial;
     [SerializeField] Material matteMaterial;
     [SerializeField] string carType;
@@ -15,14 +15,15 @@ public class CarInitialization : MonoBehaviour
         if (GameData.carModel == carType)
         {
             body.material = GameData.carTexture == "Metallic" ? metallicMaterial : matteMaterial;
+            ChangeUnderLight isRainbowEnabled = underLight.GetComponent<ChangeUnderLight>();
+            isRainbowEnabled.enabled = GameData.rainbowOn == "Enabled";
             body.material.color = GameData.carColor;
             wheels.color = GameData.wheelColor;
-            underLight.color = GameData.lightColor;
+            underLight.GetComponent<Light>().color = GameData.lightColor;
         }
         else
         {
             gameObject.SetActive(false);
-            Debug.Log("Im not chosen");
         }
     
 
