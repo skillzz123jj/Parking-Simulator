@@ -1,33 +1,39 @@
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+public class GameData
 {
-    [Header("Car data")]
-    public static Color carColor;
-    public static Color lightColor;
-    public static Color wheelColor;
-    public static bool lightsOn;
-    public static string carTexture;
-    public static string rainbowOn;
-    public static string carModel;
+    // Singleton instance
+    private static GameData instance;
 
-    [Header("Progress data")]
-    public static bool dataFetched;
-    public static bool parked;
-    public static bool levelFinished;
-    public static bool menuOpen;
+    // Car data
+    public Color CarColor { get; set; }
+    public Color LightColor { get; set; }
+    public Color WheelColor { get; set; }
+    public bool LightsOn { get; set; }
+    public string CarTexture { get; set; }
+    public string RainbowOn { get; set; }
+    public string CarModel { get; set; }
 
-    public static GameData Instance { get; private set; }
-    private void Awake()
+    // Progress data
+    public bool DataFetched { get; set; }
+    public bool Parked { get; set; }
+    public bool LevelFinished { get; set; }
+    public bool MenuOpen { get; set; }
+
+    // Private constructor to prevent instantiation
+    private GameData() { }
+
+    // Public method to access the instance
+    public static GameData Instance
     {
-        if (Instance == null)
+        get
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); 
-        }
-        else
-        {
-            Destroy(gameObject); 
+            if (instance == null)
+            {
+                instance = new GameData();
+            }
+            return instance;
         }
     }
 }
+

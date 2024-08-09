@@ -31,8 +31,6 @@ public class VehicleController : MonoBehaviour
     [SerializeField] GameObject instruction;
     Vector3 previousPosition;
 
-  //  [SerializeField] WheelInteraction wheelInteractionCS;
-
     [SerializeField] AudioSource engineSound;
     [SerializeField] AudioClip accelerating;
     [SerializeField] AudioClip idle;
@@ -61,13 +59,13 @@ public class VehicleController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isCarMoving && GameData.parked)       //&& CarStates.currentState == "P")
+        if (!isCarMoving && GameData.Instance.Parked)       //&& CarStates.currentState == "P")
         {
             instruction.SetActive(true);
 
             if (CarStates.currentState == "P")
             {
-                GameData.levelFinished = true;
+                GameData.Instance.LevelFinished = true;
             }
         }
         else

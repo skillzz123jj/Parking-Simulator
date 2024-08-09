@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class ChangeUnderLight : MonoBehaviour
 {
     [SerializeField] Light lightComponent;
-    private Coroutine colorCycleCoroutine;  // Reference to the running coroutine
+    private Coroutine colorCycleCoroutine;  
 
     public List<Color> colors;
     public float transitionDuration = 2.0f;

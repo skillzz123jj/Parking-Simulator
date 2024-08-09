@@ -8516,18 +8516,16 @@ MonoBehaviour:
   carLight: {fileID: 45318135}
   colorObject: {fileID: 1227820962}
   lightObject: {fileID: 1942876759}
-  wheelMeshes: []
   carBodyMaterial: {fileID: 2100000, guid: 9b8794792fdd2424e98f1e3ee6ca5424, type: 2}
   wheelMaterial: {fileID: 2100000, guid: a84d45497a6e23248aa9393e727177fa, type: 2}
-  familyCar: {fileID: 8392819617715102592}
-  pickupTruck: {fileID: 948676040026093662}
-  enableRainbowLight: {fileID: 45318137}
   matteMaterial: {fileID: 2100000, guid: 90b8ead4fb1e1e04c9e704dd6ccbb77a, type: 2}
   metallicMaterial: {fileID: 2100000, guid: 9b8794792fdd2424e98f1e3ee6ca5424, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 104696f8b5f23d24586d858b68916bdc, type: 2}
-  text: {fileID: 0}
+  familyCar: {fileID: 8392819617715102592}
+  pickupTruck: {fileID: 948676040026093662}
   matteButton: {fileID: 1021540536}
   metallicButton: {fileID: 1261353930}
+  rainbowLight: {fileID: 45318137}
 --- !u!4 &737078083
 Transform:
   m_ObjectHideFlags: 0

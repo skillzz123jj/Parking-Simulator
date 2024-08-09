@@ -74,12 +74,12 @@ public class PlayFabPlayerData
             string carDataJson = result.Data["CarData"].Value;
             carData = JsonUtility.FromJson<Serialization<string, string>>(carDataJson).ToDictionary();
 
-            GameData.carColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarColor"]);
-            GameData.lightColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarLights"]);
-            GameData.wheelColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["WheelColor"]);
-            GameData.carTexture = carData["CarTexture"];
-            GameData.carModel = carData["CarModel"];
-            GameData.rainbowOn = carData["RainbowLight"];
+            GameData.Instance.CarColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarColor"]);
+            GameData.Instance.LightColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["CarLights"]);
+            GameData.Instance.WheelColor = External.RimuruDevUtils.Helpers.Colors.ColorUtility.HexToColor(carData["WheelColor"]);
+            GameData.Instance.CarTexture = carData["CarTexture"];
+            GameData.Instance.CarModel = carData["CarModel"];
+            GameData.Instance.RainbowOn = carData["RainbowLight"];
 
         }
         else
@@ -88,7 +88,7 @@ public class PlayFabPlayerData
         }
         OnDataReceivedEvent?.Invoke();
         Debug.Log("Data successfully fetched.");
-        GameData.dataFetched = true;
+        GameData.Instance.DataFetched = true;
     
 
     }

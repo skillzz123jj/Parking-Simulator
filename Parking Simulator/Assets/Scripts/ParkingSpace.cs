@@ -11,7 +11,7 @@ public class ParkingSpace : MonoBehaviour
     {
         if (collisionCount >= 4) {
             gameObject.GetComponent<MeshRenderer>().material = greenPaint;
-            GameData.parked = true;
+            GameData.Instance.Parked = true;
         }
         else
         {
@@ -31,7 +31,7 @@ public class ParkingSpace : MonoBehaviour
     {
         if (coll.tag == "Wheel") {
             collisionCount--;
-            GameData.parked = false;
+            GameData.Instance.Parked = false;
         }
     }
 }

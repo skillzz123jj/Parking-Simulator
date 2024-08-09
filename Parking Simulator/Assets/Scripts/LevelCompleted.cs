@@ -1,12 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelCompleted : MonoBehaviour
 {
-   
     [SerializeField] GameObject wheel;
     [SerializeField] GameObject gears;
     [SerializeField] GameObject radio;
@@ -17,8 +13,6 @@ public class LevelCompleted : MonoBehaviour
     [SerializeField] GameObject instruction;
 
     [SerializeField] VehicleController carScript;
-
-
     void Start()
     {
         wheel.SetActive(true);
@@ -26,27 +20,24 @@ public class LevelCompleted : MonoBehaviour
         radio.SetActive(true);
         levelFinished.SetActive(false);
         carScript.enabled = true;
-        GameData.menuOpen = false;
-        GameData.parked = false;
+        GameData.Instance.MenuOpen = false;
+        GameData.Instance.Parked = false;
     }
 
-
-
-    // Update is called once per frame
     void Update()
     {
-        if (GameData.levelFinished)
+        if (GameData.Instance.LevelFinished)
         {
-        GameData.levelFinished = false;
-        GameData.menuOpen = true;
-        wheel.SetActive(false);
-        gears.SetActive(false);
-        radio.SetActive(false);
-        levelFinished.SetActive(true);
-           instruction.SetActive(false);
-          wonSource.PlayOneShot(levelFinishedClip);
-          restartButton.Select();
-        carScript.enabled = false;
+            GameData.Instance.LevelFinished = false;
+            GameData.Instance.MenuOpen = true;
+            wheel.SetActive(false);
+            gears.SetActive(false);
+            radio.SetActive(false);
+            levelFinished.SetActive(true);
+            instruction.SetActive(false);
+            wonSource.PlayOneShot(levelFinishedClip);
+            restartButton.Select();
+            carScript.enabled = false;
         }
     }
 }

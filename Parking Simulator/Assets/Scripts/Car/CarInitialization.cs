@@ -11,14 +11,14 @@ public class CarInitialization : MonoBehaviour
 
     void Start()
     {
-        if (GameData.carModel == carType)
+        if (GameData.Instance.CarModel == carType)
         {
-            body.material = GameData.carTexture == "Metallic" ? metallicMaterial : matteMaterial;
+            body.material = GameData.Instance.CarTexture == "Metallic" ? metallicMaterial : matteMaterial;
             ChangeUnderLight isRainbowEnabled = underLight.GetComponent<ChangeUnderLight>();
-            isRainbowEnabled.enabled = GameData.rainbowOn == "Enabled";
-            body.material.color = GameData.carColor;
-            wheels.color = GameData.wheelColor;
-            underLight.GetComponent<Light>().color = GameData.lightColor;
+            isRainbowEnabled.enabled = GameData.Instance.RainbowOn == "Enabled";
+            body.material.color = GameData.Instance.CarColor;
+            wheels.color = GameData.Instance.WheelColor;
+            underLight.GetComponent<Light>().color = GameData.Instance.LightColor;
             gameObject.SetActive(true);
         }
         else

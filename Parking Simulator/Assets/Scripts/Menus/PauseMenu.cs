@@ -60,26 +60,11 @@ public class PauseMenu : MonoBehaviour
         UpdateFocusDistance();
     }
 
-    void Update()
-    {
-
-        //if (GameData.menuOpen)
-        //{
-        //    Cursor.visible = true;
-        //    Cursor.lockState = CursorLockMode.None;
-        //}
-        //else
-        //{
-        //    Cursor.visible = false;
-          //  Cursor.lockState = CursorLockMode.Locked;
-       // }
-    }
-
     public void PauseMenuOn(InputAction.CallbackContext context)
     {
         if (pauseMenu != null)
         {
-                GameData.menuOpen = true;
+                GameData.Instance.MenuOpen = true;
                 pauseMenu.SetActive(true);
             continueButton.Select();
                 UIWheel.SetActive(false);
@@ -101,26 +86,16 @@ public class PauseMenu : MonoBehaviour
     {
         if (pauseMenu != null)
         {
-         
-          
-      
-            GameData.menuOpen = false;
-
-    //        carLights.enabled = true;
+            GameData.Instance.MenuOpen = false;
             radio.SetActive(true);
             carRadio.SetActive(true);
             vehicleController.enabled = true;
             indicatorSound.SetActive(true);
-
             carEngineSound.SetActive(true);
-
-
             pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
-        //    Time.timeScale = 1;
-                UpdateFocusDistance(); 
-            
+            UpdateFocusDistance();            
         }
     }
 
@@ -135,11 +110,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Quit(int scene)
     {
-     //   Time.timeScale = 1;
-      
-
         StartCoroutine(LoadSceneCoroutine(scene));
-
     }
 
     private IEnumerator LoadSceneCoroutine(int sceneIndex)

@@ -52,15 +52,12 @@ public class PlayFabHandleData : MonoBehaviour
     }
     public void ConvertDataToJSONFormat()
     {
-        PlayFabPlayerData.carData["CarColor"] = ColorToHex(GameData.carColor);
-        PlayFabPlayerData.carData["CarLights"] = ColorToHex(GameData.lightColor);
-        PlayFabPlayerData.carData["WheelColor"] = ColorToHex(GameData.wheelColor);
-        PlayFabPlayerData.carData["CarTexture"] = GameData.carTexture;
-        PlayFabPlayerData.carData["CarModel"] = GameData.carModel;
-        PlayFabPlayerData.carData["RainbowLight"] = GameData.rainbowOn;
-
-
-
+        PlayFabPlayerData.carData["CarColor"] = ColorToHex(GameData.Instance.CarColor);
+        PlayFabPlayerData.carData["CarLights"] = ColorToHex(GameData.Instance.LightColor);
+        PlayFabPlayerData.carData["WheelColor"] = ColorToHex(GameData.Instance.WheelColor);
+        PlayFabPlayerData.carData["CarTexture"] = GameData.Instance.CarTexture;
+        PlayFabPlayerData.carData["CarModel"] = GameData.Instance.CarModel;
+        PlayFabPlayerData.carData["RainbowLight"] = GameData.Instance.RainbowOn;
     }
     public static string ColorToHex(Color color)
     {
@@ -81,28 +78,28 @@ public class PlayFabHandleData : MonoBehaviour
     void OnDataLoaded()
     {
         UpdateGameData();
-        carCustomization.CarInitialization(GameData.carColor, GameData.lightColor, GameData.wheelColor, GameData.carTexture, GameData.carModel, GameData.rainbowOn);
+        carCustomization.CarInitialization(GameData.Instance.CarColor, GameData.Instance.LightColor, GameData.Instance.WheelColor, GameData.Instance.CarTexture, GameData.Instance.CarModel, GameData.Instance.RainbowOn);
     }
     void UpdateGameData()
     {
 
         string carColorHex = PlayFabPlayerData.carData.ContainsKey("CarColor") ? PlayFabPlayerData.carData["CarColor"] : "#FF0000FF"; //Default to red if not found
-        GameData.carColor = HexToColor(carColorHex);
+        GameData.Instance.CarColor = HexToColor(carColorHex);
 
         string lightsColorHex = PlayFabPlayerData.carData.ContainsKey("CarLights") ? PlayFabPlayerData.carData["CarLights"] : "#00FF00FF"; //Default to green if not found
-        GameData.lightColor = HexToColor(lightsColorHex);
+        GameData.Instance.LightColor = HexToColor(lightsColorHex);
 
         string wheelColorHex = PlayFabPlayerData.carData.ContainsKey("WheelColor") ? PlayFabPlayerData.carData["WheelColor"] : "#FFFFFFFF"; //Default to white if not found
-        GameData.wheelColor = HexToColor(wheelColorHex);
+        GameData.Instance.WheelColor = HexToColor(wheelColorHex);
 
         string carTexture = PlayFabPlayerData.carData.ContainsKey("CarTexture") ? PlayFabPlayerData.carData["CarTexture"] : "Metallic"; //Default to metallic if not found
-        GameData.carTexture = carTexture;
+        GameData.Instance.CarTexture = carTexture;
 
         string carModel = PlayFabPlayerData.carData.ContainsKey("CarModel") ? PlayFabPlayerData.carData["CarModel"] : "FamilyCar"; //Default to family car if not found
-        GameData.carModel = carModel;
+        GameData.Instance.CarModel = carModel;
 
         string isRainbowEnabled = PlayFabPlayerData.carData.ContainsKey("CarModel") ? PlayFabPlayerData.carData["RainbowLight"] : "Disabled"; //Default to off if not found
-        GameData.rainbowOn = isRainbowEnabled;
+        GameData.Instance.RainbowOn = isRainbowEnabled;
 
         Debug.Log("GameData updated with car data.");
     }

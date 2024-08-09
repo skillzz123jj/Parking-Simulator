@@ -36,18 +36,18 @@ public class CarCustomization : MonoBehaviour
     {
         carBodyMaterial = carTexture == "Metallic" ? metallicMaterial : matteMaterial;
         currentCarBody.GetComponent<MeshRenderer>().material = carBodyMaterial;
-        GameData.carTexture = carTexture;
+        GameData.Instance.CarTexture = carTexture;
     }
     public void ChangeCarColor(Image colorImage)
     {
-      GameData.carColor = colorImage.color;
+      GameData.Instance.CarColor = colorImage.color;
         metallicMaterial.color = colorImage.color;
         matteMaterial.color = colorImage.color;
     }
 
     public void ChangeRimColor(Image colorImage)
     {
-         GameData.wheelColor = colorImage.color;
+         GameData.Instance.WheelColor = colorImage.color;
         wheelMaterial.color = colorImage.color;
     }
 
@@ -60,19 +60,19 @@ public class CarCustomization : MonoBehaviour
     {
 
         rainbowLight.enabled = false;
-        GameData.rainbowOn = "Disabled";
+        GameData.Instance.RainbowOn = "Disabled";
 
         yield return null;
 
-        GameData.lightsOn = true;
+        GameData.Instance.LightsOn = true;
         Color color = colorImage.color;
-        GameData.lightColor = color;
+        GameData.Instance.LightColor = color;
         carLight.GetComponent<Light>().color = color;
     }
 
     public void ChangeCar(string carModel)
     {
-        GameData.carModel = carModel;
+        GameData.Instance.CarModel = carModel;
         currentCarBody = carModel == "FamilyCar" ? familyCarBody : pickupTruckBody;
         if (carModel == "FamilyCar")
         {
@@ -94,7 +94,7 @@ public class CarCustomization : MonoBehaviour
         wheelMaterial.color = wheelColor;
         carLight.GetComponent<Light>().color = lightColor;
         ChangeUnderLight isRainbowEnabled = carLight.GetComponent<ChangeUnderLight>();
-        isRainbowEnabled.enabled = GameData.rainbowOn == "Enabled";
+        isRainbowEnabled.enabled = GameData.Instance.RainbowOn == "Enabled";
         carBodyMaterial = carTexture == "Metallic" ? metallicMaterial : matteMaterial;
         if (carTexture == "Matte")
         {
@@ -104,13 +104,13 @@ public class CarCustomization : MonoBehaviour
         {
             metallicButton.onClick.Invoke();
         }
-        GameData.dataFetched = true;
+        GameData.Instance.DataFetched = true;
     }
 
     public void RainbowLight()
     {
-        GameData.rainbowOn = "Enabled";
-        GameData.lightsOn = true;
+        GameData.Instance.RainbowOn = "Enabled";
+        GameData.Instance.LightsOn = true;
         rainbowLight.enabled = true;
     }
 
