@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
@@ -16,10 +14,9 @@ public class CarStates : MonoBehaviour
 
     public static string currentState;
 
-    public string[] gears = new string[] { "P", "R", "N", "D" }; // Array of items to navigate through
+    public string[] gears = new string[] { "P", "R", "N", "D" }; 
     private int currentIndex = 0;
 
-    // Reference to the InputActionAsset
     public Inputs inputActions;
 
 
@@ -31,23 +28,25 @@ public class CarStates : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Enable();
-        inputActions.SteeringWheel.DpadUp.performed += ctx => OnNavigateUp();
-        inputActions.SteeringWheel.DpadDown.performed += ctx => OnNavigateDown();
-        inputActions.Keyboard.Park.performed += ctx => ChangeGear("P");
-        inputActions.Keyboard.Reverse.performed += ctx => ChangeGear("R");
-        inputActions.Keyboard.Neutral.performed += ctx => ChangeGear("N");
-        inputActions.Keyboard.Drive.performed += ctx => ChangeGear("D");
-
+        inputActions.SteeringWheel.DpadUp.performed += _ => OnNavigateUp();
+        inputActions.SteeringWheel.DpadDown.performed += _ => OnNavigateDown();
+        inputActions.Keyboard.Park.performed += _ => ChangeGear("P");
+        inputActions.Keyboard.Reverse.performed += _ => ChangeGear("R");
+        inputActions.Keyboard.Neutral.performed += _ => ChangeGear("N");
+        inputActions.Keyboard.Drive.performed += _ => ChangeGear("D");
+        inputActions.Keyboard.Scroll.performed += OnMouseScroll;
     }
 
     private void OnDisable()
     {
-        inputActions.SteeringWheel.DpadUp.performed -= ctx => OnNavigateUp();
-        inputActions.SteeringWheel.DpadDown.performed -= ctx => OnNavigateDown();
-        inputActions.Keyboard.Park.performed -= ctx => ChangeGear("P");
-        inputActions.Keyboard.Reverse.performed -= ctx => ChangeGear("R");
-        inputActions.Keyboard.Neutral.performed -= ctx => ChangeGear("N");
-        inputActions.Keyboard.Drive.performed -= ctx => ChangeGear("D");
+        inputActions.SteeringWheel.DpadUp.performed -= _ => OnNavigateUp();
+        inputActions.SteeringWheel.DpadDown.performed -= _ => OnNavigateDown();
+        inputActions.Keyboard.Park.performed -= _ => ChangeGear("P");
+        inputActions.Keyboard.Reverse.performed -= _ => ChangeGear("R");
+        inputActions.Keyboard.Neutral.performed -= _ => ChangeGear("N");
+        inputActions.Keyboard.Drive.performed -= _ => ChangeGear("D");
+        inputActions.Keyboard.Scroll.performed -= OnMouseScroll;
+
         inputActions.Disable();
     }
 
@@ -61,21 +60,31 @@ public class CarStates : MonoBehaviour
     {
         currentIndex = (currentIndex < gears.Length - 1) ? currentIndex + 1 : 0;
         ChangeGear(gears[currentIndex]);
-        print(gears[currentIndex]);
     }
 
+    private void OnMouseScroll(InputAction.CallbackContext ctx)
+    {
+        float scrollValue = ctx.ReadValue<float>();
+
+        if (scrollValue > 0)
+        {
+            OnNavigateUp();
+        }
+        else if (scrollValue < 0)
+        {
+            OnNavigateDown();
+        }
+    }
     void Start()
     {
-        currentState = "P"; // Default to Park
-        ChangeGear(currentState); // Initialize the default state
+        currentState = "P"; 
+        ChangeGear(currentState); 
     }
 
     void ChangeGear(string state)
     {
         currentState = state;
        
-
-        // Reset all states
         pState.color = Color.white;
         rState.color = Color.white;
         nState.color = Color.white;
@@ -100,8 +109,6 @@ public class CarStates : MonoBehaviour
 
     void ParkState()
     {
-        // car.GetComponent<TESTCarController>().enabled = true;
-      //  carLights.SetActive(true);
         pState.color = Color.red;
     }
 

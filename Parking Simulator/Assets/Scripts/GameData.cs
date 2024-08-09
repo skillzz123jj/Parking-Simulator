@@ -1,35 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameData : MonoBehaviour
 {
-
+    [Header("Car data")]
     public static Color carColor;
     public static Color lightColor;
     public static Color wheelColor;
-    public static string carTexture;
     public static bool lightsOn;
+    public static string carTexture;
     public static string rainbowOn;
     public static string carModel;
+
+    [Header("Progress data")]
     public static bool dataFetched;
-
     public static bool parked;
-
     public static bool levelFinished;
     public static bool menuOpen;
-       void Start()
+
+    public static GameData Instance { get; private set; }
+    private void Awake()
     {
-        if (this == null)
+        if (Instance == null)
         {
-            DontDestroyOnLoad(gameObject);
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
-
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
-
-
 }

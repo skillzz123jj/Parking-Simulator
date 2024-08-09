@@ -2695,30 +2695,6 @@ MonoBehaviour:
           m_StringArgument: PickupTruck
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8392819617715102592}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 948676040026093662}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &209069358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8535,7 +8511,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d6c853bffc630444b262dd0ffec40b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carBody: {fileID: 8100227587366779577}
+  familyCarBody: {fileID: 8100227587366779577}
+  pickupTruckBody: {fileID: 665087154517156199}
   carLight: {fileID: 45318135}
   colorObject: {fileID: 1227820962}
   lightObject: {fileID: 1942876759}
@@ -20091,30 +20068,6 @@ MonoBehaviour:
           m_StringArgument: FamilyCar
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 8392819617715102592}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 948676040026093662}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1923184978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22726,9 +22679,9 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 9b8794792fdd2424e98f1e3ee6ca5424, type: 2}
   - {fileID: -4018286686147086024, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
-  - {fileID: 2100000, guid: 947a9fec64534ca4a87cbec8f42772be, type: 2}
+  - {fileID: 6250737263651371806, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
   - {fileID: 9123614611121201505, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
-  - {fileID: -4973734387028869240, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
+  - {fileID: 6250737263651371806, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
   - {fileID: -355951837792919524, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
   - {fileID: 2100000, guid: d4b5d17cce5f98846a872bb84a1f865b, type: 2}
   m_StaticBatchInfo:
@@ -23494,7 +23447,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 9b8794792fdd2424e98f1e3ee6ca5424, type: 2}
-  - {fileID: -1580535799172915004, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
+  - {fileID: 6250737263651371806, guid: cd678f6446c4ea140a3f29ef8888e18f, type: 3}
   - {fileID: 8992934318045909824, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}
   - {fileID: 2100000, guid: d4b5d17cce5f98846a872bb84a1f865b, type: 2}
   - {fileID: -355951837792919524, guid: 7b5b41fcb7e252d4f801f6d8bafac6f0, type: 3}

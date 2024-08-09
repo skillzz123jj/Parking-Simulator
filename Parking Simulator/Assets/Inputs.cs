@@ -1039,6 +1039,15 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""81a55c7a-45ef-4173-8f62-2bf937e82a81"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1083,6 +1092,17 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Drive"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d59ba63-3e2c-4966-a22b-d846aa68476c"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1132,6 +1152,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Keyboard_Reverse = m_Keyboard.FindAction("Reverse", throwIfNotFound: true);
         m_Keyboard_Neutral = m_Keyboard.FindAction("Neutral", throwIfNotFound: true);
         m_Keyboard_Drive = m_Keyboard.FindAction("Drive", throwIfNotFound: true);
+        m_Keyboard_Scroll = m_Keyboard.FindAction("Scroll", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1521,6 +1542,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Reverse;
     private readonly InputAction m_Keyboard_Neutral;
     private readonly InputAction m_Keyboard_Drive;
+    private readonly InputAction m_Keyboard_Scroll;
     public struct KeyboardActions
     {
         private @Inputs m_Wrapper;
@@ -1529,6 +1551,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @Reverse => m_Wrapper.m_Keyboard_Reverse;
         public InputAction @Neutral => m_Wrapper.m_Keyboard_Neutral;
         public InputAction @Drive => m_Wrapper.m_Keyboard_Drive;
+        public InputAction @Scroll => m_Wrapper.m_Keyboard_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1550,6 +1573,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Drive.started += instance.OnDrive;
             @Drive.performed += instance.OnDrive;
             @Drive.canceled += instance.OnDrive;
+            @Scroll.started += instance.OnScroll;
+            @Scroll.performed += instance.OnScroll;
+            @Scroll.canceled += instance.OnScroll;
         }
 
         private void UnregisterCallbacks(IKeyboardActions instance)
@@ -1566,6 +1592,9 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Drive.started -= instance.OnDrive;
             @Drive.performed -= instance.OnDrive;
             @Drive.canceled -= instance.OnDrive;
+            @Scroll.started -= instance.OnScroll;
+            @Scroll.performed -= instance.OnScroll;
+            @Scroll.canceled -= instance.OnScroll;
         }
 
         public void RemoveCallbacks(IKeyboardActions instance)
@@ -1626,5 +1655,6 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnReverse(InputAction.CallbackContext context);
         void OnNeutral(InputAction.CallbackContext context);
         void OnDrive(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
     }
 }

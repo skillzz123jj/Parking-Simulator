@@ -1,40 +1,41 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
+using System.Collections;
 
 public class CarCustomization : MonoBehaviour
 {
-    [SerializeField] GameObject carBody;
-    [SerializeField] GameObject carLight;
-    [SerializeField] GameObject colorObject;
-    [SerializeField] GameObject lightObject;
-    [SerializeField] List<MeshRenderer> wheelMeshes = new List<MeshRenderer>();
-    [SerializeField] Material carBodyMaterial;
-    [SerializeField] Material wheelMaterial;
+    [Header("Car Bodies")]
+    [SerializeField] private GameObject familyCarBody;
+    [SerializeField] private GameObject pickupTruckBody;
+    private GameObject currentCarBody;
 
-    [SerializeField] GameObject familyCar;
-    [SerializeField] GameObject pickupTruck;
+    [Header("Car Parts")]
+    [SerializeField] private GameObject carLight;
+    [SerializeField] private GameObject colorObject;
+    [SerializeField] private GameObject lightObject;
 
-    [SerializeField] ChangeUnderLight enableRainbowLight;
+    [Header("Materials")]
+    [SerializeField] private Material carBodyMaterial;
+    [SerializeField] private Material wheelMaterial;
+    [SerializeField] private Material matteMaterial;
+    [SerializeField] private Material metallicMaterial;
+    [SerializeField] private Material defaultMaterial;
 
-    [SerializeField] Material matteMaterial;
-    [SerializeField] Material metallicMaterial;
+    [Header("Cars")]
+    [SerializeField] private GameObject familyCar;
+    [SerializeField] private GameObject pickupTruck;
 
-    [SerializeField] Material defaultMaterial;
+    [Header("UI Elements")]
+    [SerializeField] private Button matteButton;
+    [SerializeField] private Button metallicButton;
 
-    [SerializeField] TMP_Text text;
-
-    [SerializeField] Button matteButton;
-    [SerializeField] Button metallicButton;
-
-
-    bool changeLights;
+    [Header("Lighting")]
+    [SerializeField] private ChangeUnderLight rainbowLight;
 
     public void ChangeCarMaterial(string carTexture)
     {
         carBodyMaterial = carTexture == "Metallic" ? metallicMaterial : matteMaterial;
-        carBody.GetComponent<MeshRenderer>().material = carBodyMaterial;
+        currentCarBody.GetComponent<MeshRenderer>().material = carBodyMaterial;
         GameData.carTexture = carTexture;
     }
     public void ChangeCarColor(Image colorImage)
@@ -52,23 +53,27 @@ public class CarCustomization : MonoBehaviour
 
     public void ChangeCarLight(Image colorImage)
     {
-        enableRainbowLight.enabled = false;
+        StartCoroutine(DisableRainbowLightAndChangeColor(colorImage));
+    }
+
+    private IEnumerator DisableRainbowLightAndChangeColor(Image colorImage)
+    {
+
+        rainbowLight.enabled = false;
         GameData.rainbowOn = "Disabled";
+
+        yield return null;
+
         GameData.lightsOn = true;
         Color color = colorImage.color;
         GameData.lightColor = color;
         carLight.GetComponent<Light>().color = color;
-      
     }
 
-    public void ChangeCar(string car)
+    public void ChangeCar(string carModel)
     {
-        GameData.carModel = car;
-    }
-
-
-    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture, string carModel, string rainbowOn)
-    {
+        GameData.carModel = carModel;
+        currentCarBody = carModel == "FamilyCar" ? familyCarBody : pickupTruckBody;
         if (carModel == "FamilyCar")
         {
             familyCar.SetActive(true);
@@ -79,6 +84,11 @@ public class CarCustomization : MonoBehaviour
             pickupTruck.SetActive(true);
             familyCar.SetActive(false);
         }
+    }
+
+    public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture, string carModel, string rainbowOn)
+    {
+        ChangeCar(carModel);
         ChangeCarMaterial(carTexture);
         carBodyMaterial.color = carBody;
         wheelMaterial.color = wheelColor;
@@ -95,14 +105,13 @@ public class CarCustomization : MonoBehaviour
             metallicButton.onClick.Invoke();
         }
         GameData.dataFetched = true;
- 
     }
 
     public void RainbowLight()
     {
         GameData.rainbowOn = "Enabled";
         GameData.lightsOn = true;
-        enableRainbowLight.enabled = true;
+        rainbowLight.enabled = true;
     }
 
 }
