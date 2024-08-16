@@ -1048,6 +1048,24 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftIndicator"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc83733a-f96b-427b-9f85-63b39335a0bd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RightIndicator"",
+                    ""type"": ""Button"",
+                    ""id"": ""ffcbfcf4-438a-4771-9765-7d0d4e7197c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1105,6 +1123,28 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""Scroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5cc20eda-4292-4107-bd84-9032ca777540"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeftIndicator"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54bffc20-f35f-4a2a-89c5-d6da69f515a8"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightIndicator"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1153,6 +1193,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Keyboard_Neutral = m_Keyboard.FindAction("Neutral", throwIfNotFound: true);
         m_Keyboard_Drive = m_Keyboard.FindAction("Drive", throwIfNotFound: true);
         m_Keyboard_Scroll = m_Keyboard.FindAction("Scroll", throwIfNotFound: true);
+        m_Keyboard_LeftIndicator = m_Keyboard.FindAction("LeftIndicator", throwIfNotFound: true);
+        m_Keyboard_RightIndicator = m_Keyboard.FindAction("RightIndicator", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1543,6 +1585,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Neutral;
     private readonly InputAction m_Keyboard_Drive;
     private readonly InputAction m_Keyboard_Scroll;
+    private readonly InputAction m_Keyboard_LeftIndicator;
+    private readonly InputAction m_Keyboard_RightIndicator;
     public struct KeyboardActions
     {
         private @Inputs m_Wrapper;
@@ -1552,6 +1596,8 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @Neutral => m_Wrapper.m_Keyboard_Neutral;
         public InputAction @Drive => m_Wrapper.m_Keyboard_Drive;
         public InputAction @Scroll => m_Wrapper.m_Keyboard_Scroll;
+        public InputAction @LeftIndicator => m_Wrapper.m_Keyboard_LeftIndicator;
+        public InputAction @RightIndicator => m_Wrapper.m_Keyboard_RightIndicator;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1576,6 +1622,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Scroll.started += instance.OnScroll;
             @Scroll.performed += instance.OnScroll;
             @Scroll.canceled += instance.OnScroll;
+            @LeftIndicator.started += instance.OnLeftIndicator;
+            @LeftIndicator.performed += instance.OnLeftIndicator;
+            @LeftIndicator.canceled += instance.OnLeftIndicator;
+            @RightIndicator.started += instance.OnRightIndicator;
+            @RightIndicator.performed += instance.OnRightIndicator;
+            @RightIndicator.canceled += instance.OnRightIndicator;
         }
 
         private void UnregisterCallbacks(IKeyboardActions instance)
@@ -1595,6 +1647,12 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @Scroll.started -= instance.OnScroll;
             @Scroll.performed -= instance.OnScroll;
             @Scroll.canceled -= instance.OnScroll;
+            @LeftIndicator.started -= instance.OnLeftIndicator;
+            @LeftIndicator.performed -= instance.OnLeftIndicator;
+            @LeftIndicator.canceled -= instance.OnLeftIndicator;
+            @RightIndicator.started -= instance.OnRightIndicator;
+            @RightIndicator.performed -= instance.OnRightIndicator;
+            @RightIndicator.canceled -= instance.OnRightIndicator;
         }
 
         public void RemoveCallbacks(IKeyboardActions instance)
@@ -1656,5 +1714,7 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnNeutral(InputAction.CallbackContext context);
         void OnDrive(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
+        void OnLeftIndicator(InputAction.CallbackContext context);
+        void OnRightIndicator(InputAction.CallbackContext context);
     }
 }

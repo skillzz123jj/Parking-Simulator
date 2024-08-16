@@ -13,7 +13,7 @@ public class KeyboardCarController : MonoBehaviour
     [SerializeField] private Transform frontLeftWheelTransform, frontRightWheelTransform;
     [SerializeField] private Transform rearLeftWheelTransform, rearRightWheelTransform;
 
-    private void Update()
+    private void FixedUpdate()
     {
         GetInput();
         HandleMotor();

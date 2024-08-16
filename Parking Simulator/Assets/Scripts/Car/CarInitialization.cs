@@ -23,7 +23,7 @@ public class CarInitialization : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false);
+          //  gameObject.SetActive(false);
         }
     }
 }

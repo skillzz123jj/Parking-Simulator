@@ -44,6 +44,8 @@ public class CarLights : MonoBehaviour
         inputActions.Enable();
         inputActions.SteeringWheel.L1.performed += LeftIndicator;
         inputActions.SteeringWheel.R1.performed += RightIndicator;
+        inputActions.Keyboard.LeftIndicator.performed += LeftIndicator;
+        inputActions.Keyboard.RightIndicator.performed += RightIndicator;
         inputActions.SteeringWheel.WheelMiddle.performed += Honk;
 
     }
@@ -52,6 +54,8 @@ public class CarLights : MonoBehaviour
     {
         inputActions.SteeringWheel.L1.performed -= LeftIndicator;
         inputActions.SteeringWheel.R1.performed -= RightIndicator;
+        inputActions.Keyboard.LeftIndicator.performed -= LeftIndicator;
+        inputActions.Keyboard.RightIndicator.performed += RightIndicator;
         inputActions.SteeringWheel.WheelMiddle.performed -= Honk;
         inputActions.Disable();
     }
@@ -62,43 +66,6 @@ public class CarLights : MonoBehaviour
         ReverseLights();
         verticalInput = Input.GetAxis("Vertical");
 
-
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            if (leftCoroutine != null)
-            {
-                indicatorSound.Stop();
-                StopCoroutine(leftCoroutine);
-                leftIndicatorLightMesh.sharedMaterial = indicatorOffMaterial;
-            }
-
-            leftIndicatorOn = !leftIndicatorOn;
-            rightIndicatorOn = false;
-            if (leftIndicatorOn)
-            {
-                indicatorSound.Stop();
-                leftCoroutine = StartCoroutine(BlinkIndicator(leftIndicatorLightMesh, () => leftIndicatorOn));
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (rightCoroutine != null)
-            {
-                indicatorSound.Stop();
-                StopCoroutine(rightCoroutine);
-                rightIndicatorLightMesh.sharedMaterial = indicatorOffMaterial;
-
-            }
-
-            rightIndicatorOn = !rightIndicatorOn;
-            leftIndicatorOn = false;
-            if (rightIndicatorOn)
-            {
-                indicatorSound.Stop();
-                rightCoroutine = StartCoroutine(BlinkIndicator(rightIndicatorLightMesh, () => rightIndicatorOn));
-            }
-        }
     }
     private void LeftIndicator(InputAction.CallbackContext context)
     {
