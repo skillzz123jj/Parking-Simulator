@@ -1242,7 +1242,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9.084595, y: -80.7}
-  m_SizeDelta: {x: 212.45, y: 30}
+  m_SizeDelta: {x: 229, y: 39.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295737669
 MonoBehaviour:
@@ -1332,8 +1332,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5a072a82b804b4f458b2fc2608d93768, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3247,8 +3247,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a0dbee1276005ce49ba32d843c766e36, type: 2}
+  m_sharedMaterial: {fileID: 2896414695315625537, guid: a0dbee1276005ce49ba32d843c766e36, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3278,7 +3278,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3397,8 +3397,6 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 2057421879224297550}
   rearLeftWheelTransform: {fileID: 7935513920263872850}
   rearRightWheelTransform: {fileID: 1279509348763340401}
-  isCarMoving: 0
-  instruction: {fileID: 0}
 --- !u!114 &658249557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6855,8 +6853,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Restart level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a0dbee1276005ce49ba32d843c766e36, type: 2}
+  m_sharedMaterial: {fileID: 2896414695315625537, guid: a0dbee1276005ce49ba32d843c766e36, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6886,7 +6884,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -8515,7 +8513,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9.084595, y: -157}
-  m_SizeDelta: {x: 212.45, y: 30}
+  m_SizeDelta: {x: 229, y: 39.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1648267669
 MonoBehaviour:
@@ -8605,8 +8603,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5a072a82b804b4f458b2fc2608d93768, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -9690,8 +9688,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Next level
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a0dbee1276005ce49ba32d843c766e36, type: 2}
+  m_sharedMaterial: {fileID: 2896414695315625537, guid: a0dbee1276005ce49ba32d843c766e36, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9721,7 +9719,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -11064,7 +11062,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 9.084595, y: -7.4}
-  m_SizeDelta: {x: 212.45, y: 30}
+  m_SizeDelta: {x: 229, y: 39.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2017593064
 MonoBehaviour:
@@ -11130,8 +11128,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 5a072a82b804b4f458b2fc2608d93768, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -11621,7 +11619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098148019}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.000000009683363, y: 0.973249, z: -0.22975297, w: 0.000000041019373}
+  m_LocalRotation: {x: -1.0862069e-15, y: 0.973249, z: -0.22975293, w: 1.5666107e-15}
   m_LocalPosition: {x: 3.1937342, y: 4.0785694, z: 14.879454}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12754,8 +12752,6 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 3316992659823922390}
   rearLeftWheelTransform: {fileID: 8946660040984265119}
   rearRightWheelTransform: {fileID: 5666261586726179006}
-  isCarMoving: 0
-  instruction: {fileID: 0}
 --- !u!82 &919132148502324781
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13298,8 +13294,6 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 4035197176236325624}
   rearLeftWheelTransform: {fileID: 4995076800221590500}
   rearRightWheelTransform: {fileID: 4229780303224954055}
-  isCarMoving: 0
-  instruction: {fileID: 0}
 --- !u!114 &2047303766251605572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15142,8 +15136,6 @@ MonoBehaviour:
   frontRightWheelTransform: {fileID: 8995320384505164290}
   rearLeftWheelTransform: {fileID: 1042646721688746782}
   rearRightWheelTransform: {fileID: 8185600803081409597}
-  isCarMoving: 0
-  instruction: {fileID: 1574436876}
 --- !u!114 &6631692322989169668
 MonoBehaviour:
   m_ObjectHideFlags: 0
