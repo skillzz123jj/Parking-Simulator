@@ -11,6 +11,10 @@ public class CarInitialization : MonoBehaviour
 
     void Start()
     {
+        if (GameData.Instance.CarModel  == null)
+        {
+            GameData.Instance.CarModel = "FamilyCar";
+        }
         if (GameData.Instance.CarModel == carType)
         {
             body.material = GameData.Instance.CarTexture == "Metallic" ? metallicMaterial : matteMaterial;

@@ -18,7 +18,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] VehicleController vehicleController;
     [SerializeField] GameObject radio;
     [SerializeField] GameObject carRadio;
-  //  [SerializeField] CarLights carLights;
     [SerializeField] GameObject carEngineSound;
     [SerializeField] GameObject indicatorSound;
     [SerializeField] GameObject instruction;
@@ -108,7 +107,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Quit(int scene)
+    public void ChangeScene(int scene)
     {
         StartCoroutine(LoadSceneCoroutine(scene));
     }

@@ -5,11 +5,12 @@ public class WheelInteraction : MonoBehaviour
     LogitechGSDK.LogiControllerPropertiesData properties;
 
     public static float xAxes, GasInput, BrakeInput, ClutchInput;
+    public float wheelSteering;
 
-    public int CurrentGear;
+    [SerializeField] RectTransform steeringWheelRect;
+    [SerializeField] GameObject steeringWheelUI;
 
 
-    //public static WheelInteraction wheelInteractionCS;
     void Start()
     {
     
@@ -23,6 +24,9 @@ public class WheelInteraction : MonoBehaviour
             LogitechGSDK.DIJOYSTATE2ENGINES rec;
             rec = LogitechGSDK.LogiGetStateUnity(0);
 
+            UpdateSteeringWheelUI(xAxes);
+            steeringWheelUI.SetActive(true);
+
             xAxes = rec.lX / 32768f;
 
             if (rec.lY > 0)
@@ -32,8 +36,7 @@ public class WheelInteraction : MonoBehaviour
             else if (rec.lY < 0)
             {
                 GasInput = rec.lY / -32768f;
-                print("gas");
-
+  
             }
             
             if (rec.lRz > 0)
@@ -59,7 +62,17 @@ public class WheelInteraction : MonoBehaviour
         }
         else
         {
-           // Debug.Log("No Steering Wheel");
+            steeringWheelUI.SetActive(false);
+
+        }
+    }
+
+    private void UpdateSteeringWheelUI(float steeringInput)
+    {
+        if (steeringWheelUI != null)
+        {
+            float uiRotationAngle = wheelSteering * steeringInput;
+            steeringWheelRect.localEulerAngles = new Vector3(0, 0, -uiRotationAngle); // Rotate around the Z-axis
         }
     }
     // Use this for shutdown 

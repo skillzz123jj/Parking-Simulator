@@ -74,6 +74,7 @@ public class CarCustomization : MonoBehaviour
     {
         GameData.Instance.CarModel = carModel;
         currentCarBody = carModel == "FamilyCar" ? familyCarBody : pickupTruckBody;
+        ChangeCarMaterial(GameData.Instance.CarTexture);
         if (carModel == "FamilyCar")
         {
             familyCar.SetActive(true);
@@ -84,6 +85,7 @@ public class CarCustomization : MonoBehaviour
             pickupTruck.SetActive(true);
             familyCar.SetActive(false);
         }
+        
     }
 
     public void CarInitialization(Color carBody, Color lightColor, Color wheelColor, string carTexture, string carModel, string rainbowOn)
