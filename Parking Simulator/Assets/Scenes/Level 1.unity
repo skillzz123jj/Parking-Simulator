@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -882,11 +882,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216456025}
   m_CullTransparentMesh: 1
---- !u!4 &230204488 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-  m_PrefabInstance: {fileID: 561423864}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &231295477
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,63 +2670,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 558798812}
   m_CullTransparentMesh: 1
---- !u!1001 &561423864
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1979206169}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.412655
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.33
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.7866373
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
-      propertyPath: m_Name
-      value: rock_1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 17e3e588b4ca2094589ef5c168749fa9, type: 3}
 --- !u!1 &566402829
 GameObject:
   m_ObjectHideFlags: 0
@@ -11347,7 +11285,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 230204488}
   - {fileID: 2085304233}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12225,7 +12162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109269734}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000000068471717, y: 0.973249, z: -0.22975294, w: 0.000000029005083}
+  m_LocalRotation: {x: -5.0309986e-23, y: 0.973249, z: -0.22975291, w: 1.7763568e-15}
   m_LocalPosition: {x: 3.773734, y: 4.634125, z: 15.990566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
