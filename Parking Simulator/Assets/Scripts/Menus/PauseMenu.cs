@@ -75,7 +75,6 @@ public class PauseMenu : MonoBehaviour
             radio.SetActive(false);
             carRadio.SetActive(false);
             vehicleController.enabled = false;
-              //  Time.timeScale = 0;
                 UpdateFocusDistance(); 
             
         }
@@ -94,6 +93,8 @@ public class PauseMenu : MonoBehaviour
             pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
+
+
             UpdateFocusDistance();            
         }
     }
