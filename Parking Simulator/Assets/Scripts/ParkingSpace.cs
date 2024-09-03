@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ParkingSpace : MonoBehaviour
 {
-    public int collisionCount;
+    [SerializeField] int collisionCount;
     [SerializeField] Material whitePaint;
     [SerializeField] Material greenPaint;
 

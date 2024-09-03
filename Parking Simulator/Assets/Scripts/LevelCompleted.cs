@@ -8,11 +8,11 @@ public class LevelCompleted : MonoBehaviour
     [SerializeField] GameObject radio;
     [SerializeField] GameObject levelFinished;
     [SerializeField] AudioClip levelFinishedClip;
-    [SerializeField] Button restartButton;
+    [SerializeField] Button nextLevelButton;
     [SerializeField] AudioSource wonSource;
     [SerializeField] GameObject instruction;
 
-   // [SerializeField] VehicleController carScript;
+
     void Start()
     {
         wheel.SetActive(true);
@@ -21,6 +21,7 @@ public class LevelCompleted : MonoBehaviour
         levelFinished.SetActive(false);
         GameData.Instance.MenuOpen = false;
         GameData.Instance.Parked = false;
+        GameData.Instance.LevelFinished = false;
     }
 
     void Update()
@@ -33,10 +34,10 @@ public class LevelCompleted : MonoBehaviour
             gears.SetActive(false);
             radio.SetActive(false);
             levelFinished.SetActive(true);
-            instruction.SetActive(false);
+            Destroy(instruction);
             wonSource.PlayOneShot(levelFinishedClip);
-            restartButton.Select();
-           // carScript.enabled = false;
+            nextLevelButton.Select();
+
         }
     }
 }
