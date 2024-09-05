@@ -79,6 +79,8 @@ public class PlayFabHandleData : MonoBehaviour
     {
         UpdateGameData();
         carCustomization.CarInitialization(GameData.Instance.CarColor, GameData.Instance.LightColor, GameData.Instance.WheelColor, GameData.Instance.CarTexture, GameData.Instance.CarModel, GameData.Instance.RainbowOn);
+        GameData.Instance.DataFetched = true;
+
     }
     void UpdateGameData()
     {
@@ -106,6 +108,10 @@ public class PlayFabHandleData : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SaveGameData();
+        }
         if (IsInternetConnected())
         {
             if (!wasConnected)

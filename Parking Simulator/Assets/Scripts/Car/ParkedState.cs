@@ -21,7 +21,11 @@ public class ParkedState : MonoBehaviour
     {
         if (!isCarMoving && GameData.Instance.Parked)      
         {
-            instruction.SetActive(true);
+            if (instruction != null)
+            {
+
+                instruction.SetActive(true);
+            }
 
             if (CarStates.currentState == "P")
             {

@@ -106,7 +106,6 @@ public class CarCustomization : MonoBehaviour
         {
             metallicButton.onClick.Invoke();
         }
-        GameData.Instance.DataFetched = true;
     }
 
     public void RainbowLight()

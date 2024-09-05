@@ -15,7 +15,6 @@ public class LevelCompleted : MonoBehaviour
 
     void Start()
     {
-        wheel.SetActive(true);
         gears.SetActive(true);
         radio.SetActive(true);
         levelFinished.SetActive(false);

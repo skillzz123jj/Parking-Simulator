@@ -11,8 +11,11 @@ public class PlayFabPlayerData
     public static Dictionary<string, int> levelsCompleted = new Dictionary<string, int>
     {
         {"Level1", 0},
-        {"Level2", 0},
-        {"Level3", 0}
+        {"Level2", -1},
+        {"Level3", -1},
+        {"Level4", -1},
+        {"Level5", -1}
+
     };
 
     public static Dictionary<string, string> carData = new Dictionary<string, string>
@@ -60,7 +63,7 @@ public class PlayFabPlayerData
         {
             // Deserialize the JSON string back to a dictionary
             string levelsCompletedJson = result.Data["LevelsCompleted"].Value;
-           levelsCompleted = JsonUtility.FromJson<Serialization<string, int>>(levelsCompletedJson).ToDictionary();
+            //levelsCompleted = JsonUtility.FromJson<Serialization<string, int>>(levelsCompletedJson).ToDictionary();
 
         }
         else
