@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,13 +11,6 @@ public class InitializeLevels : MonoBehaviour
     [SerializeField] Sprite starOutlineSprite;
     [SerializeField] GameObject lockedState;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (GameData.Instance.DataFetched == true)
@@ -26,16 +20,29 @@ public class InitializeLevels : MonoBehaviour
                 ShowScore(PlayFabPlayerData.levelsCompleted[gameObject.name]);
                 lockedState.SetActive(false);
             }
+            else
+            {
+                ShowScore(PlayFabPlayerData.levelsCompleted[gameObject.name]);
+                lockedState.SetActive(true);
+
+            }
         }
         
     }
 
     private void ShowScore(int score)
     {
+        foreach (var star in stars)
+        {
+            star.GetComponent<Image>().sprite = starOutlineSprite;
+
+        }
         for (int i = 0; i < score; i++)
         {
             GameObject star = stars[i];
             star.GetComponent<Image>().sprite = starSprite;
         }
     }
+
+
 }

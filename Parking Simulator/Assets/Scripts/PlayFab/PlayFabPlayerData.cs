@@ -63,7 +63,7 @@ public class PlayFabPlayerData
         {
             // Deserialize the JSON string back to a dictionary
             string levelsCompletedJson = result.Data["LevelsCompleted"].Value;
-            //levelsCompleted = JsonUtility.FromJson<Serialization<string, int>>(levelsCompletedJson).ToDictionary();
+            levelsCompleted = JsonUtility.FromJson<Serialization<string, int>>(levelsCompletedJson).ToDictionary();
 
         }
         else

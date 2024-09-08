@@ -4737,7 +4737,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658249553}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cee79da10e7f0943b2838f771f48acf, type: 3}
   m_Name: 
@@ -14277,7 +14277,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 352fcb901457fc644892928b2fceadc8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5e46d8e353dc334aac3d0285d678e97, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16408,7 +16408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2109269734}
   serializedVersion: 2
-  m_LocalRotation: {x: 5.0309986e-23, y: 0.973249, z: -0.22975291, w: -1.7763568e-15}
+  m_LocalRotation: {x: 0.0000000068471717, y: 0.973249, z: -0.22975294, w: 0.000000029005083}
   m_LocalPosition: {x: 3.773734, y: 4.634125, z: 15.990566}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18972,6 +18972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6287959271867156152}
   - component: {fileID: 6631692322989169670}
+  - component: {fileID: 6631692322989169676}
   - component: {fileID: 6631692322989169667}
   - component: {fileID: 6631692322989169671}
   - component: {fileID: 6631692322989169672}
@@ -19122,6 +19123,33 @@ MonoBehaviour:
   starOutlineSprite: {fileID: 21300000, guid: f32a16b0f4d237e438df77d35611d39f, type: 3}
   timeToFinishLevel: 30
   score: 3
+--- !u!114 &6631692322989169676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6631692322989169666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cee79da10e7f0943b2838f771f48acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxMotorTorque: 1500
+  maxSteeringAngle: 30
+  brakeTorque: 3000
+  frontLeftWheel: {fileID: 252966180}
+  frontRightWheel: {fileID: 962088919}
+  rearLeftWheel: {fileID: 791564517}
+  rearRightWheel: {fileID: 585400483}
+  frontLeftTransform: {fileID: 4996397603345552434}
+  frontRightTransform: {fileID: 8995320384505164290}
+  rearLeftTransform: {fileID: 1042646721688746782}
+  rearRightTransform: {fileID: 8185600803081409597}
+  engineSound: {fileID: 1148751565}
+  accelerating: {fileID: 8300000, guid: eacdae646517d4545b19dd32aa33aad8, type: 3}
+  idle: {fileID: 8300000, guid: 203f4643860e70a409b4a72c46b70325, type: 3}
+  revving: {fileID: 8300000, guid: 668bb8b0658cd154ca0a40e5a62d8a0a, type: 3}
 --- !u!23 &6692835728184105816
 MeshRenderer:
   m_ObjectHideFlags: 0

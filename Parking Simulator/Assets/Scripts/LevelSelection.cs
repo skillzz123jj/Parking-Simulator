@@ -1,6 +1,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 public class LevelSelection : MonoBehaviour
 {
@@ -46,6 +47,28 @@ public class LevelSelection : MonoBehaviour
         else
         {
             startButton.SetActive(true);
+        }
+    }
+
+    public void ResetProgress()
+    {
+        foreach (var key in PlayFabPlayerData.levelsCompleted.Keys.ToList())
+        {
+            if (key == "Level1")
+            {
+                PlayFabPlayerData.levelsCompleted[key] = 0;
+            }
+            else
+            {
+
+                PlayFabPlayerData.levelsCompleted[key] = -1;
+            }
+        }
+        if (GameData.Instance.DataFetched == true)
+        {
+
+            PlayFabPlayerData playerData = new PlayFabPlayerData();
+            playerData.SavePlayerData(PlayFabPlayerData.levelsCompleted, PlayFabPlayerData.carData);
         }
     }
 

@@ -17,9 +17,18 @@ public class TempSaveData : MonoBehaviour
     }
     private void OnEnable()
     {
-        PlayFabPlayerData playerData = new PlayFabPlayerData();
-        playerData.SavePlayerData(PlayFabPlayerData.levelsCompleted, PlayFabPlayerData.carData);
-        Debug.Log("saved");
 
+        StartCoroutine(Test());
+    }
+
+    IEnumerator Test()
+    {
+        yield return new WaitForSeconds(2);
+        if (GameData.Instance.DataFetched == true)
+        {
+
+            PlayFabPlayerData playerData = new PlayFabPlayerData();
+            playerData.SavePlayerData(PlayFabPlayerData.levelsCompleted, PlayFabPlayerData.carData);
+        }
     }
 }

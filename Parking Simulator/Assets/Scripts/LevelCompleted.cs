@@ -27,7 +27,7 @@ public class LevelCompleted : MonoBehaviour
     {
         if (GameData.Instance.LevelFinished)
         {
-            GameData.Instance.LevelFinished = false;
+
             GameData.Instance.MenuOpen = true;
             wheel.SetActive(false);
             gears.SetActive(false);

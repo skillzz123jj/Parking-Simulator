@@ -6,6 +6,7 @@ public class VehicleController : MonoBehaviour
     public float maxMotorTorque = 1500f;
     public float maxSteeringAngle = 30f;
     public float brakeTorque = 3000f;
+    float verticalInput;
 
     public WheelCollider frontLeftWheel;
     public WheelCollider frontRightWheel;
@@ -32,24 +33,31 @@ public class VehicleController : MonoBehaviour
     }
         private void FixedUpdate()
     {
-        if (CarStates.currentState == "R")
+        if (LogitechGSDK.LogiIsConnected(0))
         {
-            ApplyReverse();
+            if (CarStates.currentState == "R")
+            {
+                ApplyReverse();
 
-        }
-        else if (CarStates.currentState == "D")
-        {
-             ApplyDrive();
+            }
+            else if (CarStates.currentState == "D")
+            {
+                ApplyDrive();
 
-        }
-        else if (CarStates.currentState == "P" || CarStates.currentState == "N")
-        {
-            RevCar();
-        }
+            }
+            else if (CarStates.currentState == "P" || CarStates.currentState == "N")
+            {
+                RevCar();
+            }
 
-        ApplyBrake();
-        ApplySteering();
-        UpdateWheelPoses();
+            ApplyBrake();
+            ApplySteering();
+            UpdateWheelPoses();
+            verticalInput = Input.GetAxis("Vertical");
+        }
+       
+
+
     }
 
     private void RevCar()
@@ -73,7 +81,7 @@ public class VehicleController : MonoBehaviour
     }
     private void ApplyReverse()
     {
-        if (WheelInteraction.GasInput > 0)
+        if (WheelInteraction.GasInput > 0 || verticalInput < 0)
         {
             float motor = maxMotorTorque * WheelInteraction.GasInput;
             frontLeftWheel.motorTorque = -motor;
@@ -89,7 +97,7 @@ public class VehicleController : MonoBehaviour
 
     private void ApplyDrive()
     {
-        if (WheelInteraction.GasInput > 0)
+        if (WheelInteraction.GasInput > 0 || verticalInput > 0)
         {
             float motor = maxMotorTorque * WheelInteraction.GasInput;
             if (engineSound.clip != accelerating || !engineSound.isPlaying)
@@ -114,7 +122,7 @@ public class VehicleController : MonoBehaviour
 
     private void ApplyBrake()
     {
-        if (WheelInteraction.BrakeInput > 0)
+        if (WheelInteraction.BrakeInput > 0 || verticalInput < 0)
         {
             float brakeForce = brakeTorque * WheelInteraction.BrakeInput;
             frontLeftWheel.brakeTorque = brakeForce;
