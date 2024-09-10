@@ -40,7 +40,7 @@ public class MoveCamera : MonoBehaviour
     {
         previousCamera = cameraBack;
         playerTransform = player.transform;
-        offset = new Vector3(0, yOffset, zOffset);
+        offset = new Vector3(0, yOffset, -zOffset);
 
         // Set initial camera offsets
         SetCameraOffset(cameraFront, offset);
@@ -52,6 +52,11 @@ public class MoveCamera : MonoBehaviour
 
     void FixedUpdate()
     {
+        float mouseX = Input.GetAxis("Mouse X");
+        if (Mathf.Abs(mouseX) > 0.1f) 
+        {
+            SwitchCamera(rotateCamera);
+        }
         offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
         rotateCamera.transform.position = playerTransform.position + offset;
         rotateCamera.transform.LookAt(playerTransform.position);
@@ -70,7 +75,7 @@ public class MoveCamera : MonoBehaviour
     // Allows free camera movement vertically and horizontally
     void Update()
     {
-        // Debugging key input to ensure the fallback still works
+
         if (Input.GetKeyDown(KeyCode.Y))
         {
             SwitchCamera(cameraFront);

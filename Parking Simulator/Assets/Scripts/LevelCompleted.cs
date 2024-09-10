@@ -35,7 +35,11 @@ public class LevelCompleted : MonoBehaviour
             levelFinished.SetActive(true);
             Destroy(instruction);
             wonSource.PlayOneShot(levelFinishedClip);
+            if (nextLevelButton)
+            {
+
             nextLevelButton.Select();
+            }
 
         }
     }
