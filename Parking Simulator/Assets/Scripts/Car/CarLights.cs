@@ -65,6 +65,10 @@ public class CarLights : MonoBehaviour
         Brakelights();
         ReverseLights();
         verticalInput = Input.GetAxis("Vertical");
+        if (GameData.Instance.LevelFinished)
+        {
+            this.enabled = false;
+        }
 
     }
     private void LeftIndicator(InputAction.CallbackContext context)

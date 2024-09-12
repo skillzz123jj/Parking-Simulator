@@ -33,7 +33,11 @@ public class VehicleController : MonoBehaviour
     }
         private void FixedUpdate()
     {
-        if (LogitechGSDK.LogiIsConnected(0))
+        if (GameData.Instance.LevelFinished)
+        {
+            this.enabled = false;
+        }
+        if (LogitechGSDK.LogiIsConnected(0) && !GameData.Instance.MenuOpen)
         {
             if (CarStates.currentState == "R")
             {
@@ -145,14 +149,6 @@ public class VehicleController : MonoBehaviour
         frontLeftWheel.steerAngle = steering;
         frontRightWheel.steerAngle = steering;
     }
-
-    //private void UpdateWheelPoses()
-    //{
-    //    UpdateWheelPose(frontLeftWheel, frontLeftTransform);
-    //    UpdateWheelPose(frontRightWheel, frontRightTransform);
-    //    UpdateWheelPose(rearLeftWheel, rearLeftTransform);
-    //    UpdateWheelPose(rearRightWheel, rearRightTransform);
-    //}
 
     private void UpdateWheelPose(WheelCollider collider, Transform trans)
     {

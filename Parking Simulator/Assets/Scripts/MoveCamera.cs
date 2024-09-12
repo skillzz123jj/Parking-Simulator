@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
-using UnityEngine.InputSystem;
+
 
 public class MoveCamera : MonoBehaviour
 {
@@ -33,7 +32,6 @@ public class MoveCamera : MonoBehaviour
         inputActions.SteeringWheel.Cross.performed += ctx => SwitchCamera(cameraBack);
         inputActions.SteeringWheel.Square.performed += ctx => SwitchCamera(cameraLeft);
         inputActions.SteeringWheel.Circle.performed += ctx => SwitchCamera(cameraRight);
-        inputActions.SteeringWheel.R2.performed += ctx => FlipCar();
     }
 
     void Start()
@@ -42,17 +40,17 @@ public class MoveCamera : MonoBehaviour
         playerTransform = player.transform;
         offset = new Vector3(0, yOffset, -zOffset);
 
-        // Set initial camera offsets
-        SetCameraOffset(cameraFront, offset);
-        SetCameraOffset(cameraBack, offset);
-        SetCameraOffset(cameraLeft, offset);
-        SetCameraOffset(cameraRight, offset);
-        SetCameraOffset(rotateCamera, offset);
     }
 
     void FixedUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X");
+        if (GameData.Instance.LevelFinished)
+        {
+            this.enabled = false;
+        }
+        if (!GameData.Instance.MenuOpen)
+        {
+                  float mouseX = Input.GetAxis("Mouse X");
         if (Mathf.Abs(mouseX) > 0.1f) 
         {
             SwitchCamera(rotateCamera);
@@ -60,6 +58,8 @@ public class MoveCamera : MonoBehaviour
         offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
         rotateCamera.transform.position = playerTransform.position + offset;
         rotateCamera.transform.LookAt(playerTransform.position);
+        }
+  
     }
 
     void OnEnable()
@@ -111,12 +111,6 @@ public class MoveCamera : MonoBehaviour
         {
             transposer.m_FollowOffset = offset;
         }
-    }
-
-    private void FlipCar()
-    {
-        Vector3 currentRotation = car.transform.rotation.eulerAngles;
-        car.transform.rotation = Quaternion.Euler(currentRotation.x, currentRotation.y, 0);
     }
 }
 

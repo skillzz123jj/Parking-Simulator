@@ -14,13 +14,21 @@ public class KeyboardCarController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GetInput();
-        HandleMotor();
-        if (!LogitechGSDK.LogiIsConnected(0))
+        if (GameData.Instance.LevelFinished)
         {
-            HandleSteering();
+            this.enabled = false;
         }
-        UpdateWheels();
+        if (!GameData.Instance.MenuOpen)
+        {
+            GetInput();
+            HandleMotor();
+            if (!LogitechGSDK.LogiIsConnected(0))
+            {
+                HandleSteering();
+            }
+            UpdateWheels();
+        }
+      
     }
 
     private void GetInput()

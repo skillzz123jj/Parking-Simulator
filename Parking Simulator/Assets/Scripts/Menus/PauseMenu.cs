@@ -14,15 +14,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject UIWheel;
     [SerializeField] GameObject gears;
 
-
-    [SerializeField] VehicleController vehicleController;
     [SerializeField] GameObject radio;
     [SerializeField] GameObject carRadio;
     [SerializeField] GameObject carEngineSound;
     [SerializeField] GameObject indicatorSound;
     [SerializeField] GameObject instruction;
-
-
 
     [SerializeField] Button continueButton;
 
@@ -69,12 +65,11 @@ public class PauseMenu : MonoBehaviour
                 UIWheel.SetActive(false);
             gears.SetActive(false);
             carEngineSound.SetActive(false);
-          //  carLights.enabled = false;
             indicatorSound.SetActive(false);
             instruction.SetActive(false);
             radio.SetActive(false);
             carRadio.SetActive(false);
-            vehicleController.enabled = false;
+            Time.timeScale = 0;
                 UpdateFocusDistance(); 
             
         }
@@ -87,14 +82,12 @@ public class PauseMenu : MonoBehaviour
             GameData.Instance.MenuOpen = false;
             radio.SetActive(true);
             carRadio.SetActive(true);
-            vehicleController.enabled = true;
             indicatorSound.SetActive(true);
             carEngineSound.SetActive(true);
             pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
-
-
+            Time.timeScale = 1;
             UpdateFocusDistance();            
         }
     }
@@ -110,6 +103,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ChangeScene(int scene)
     {
+        Time.timeScale = 1;
+
         StartCoroutine(LoadSceneCoroutine(scene));
     }
 
