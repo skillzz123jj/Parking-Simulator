@@ -92,7 +92,8 @@ public class CarCustomization : MonoBehaviour
     {
         ChangeCar(carModel);
         ChangeCarMaterial(carTexture);
-        carBodyMaterial.color = carBody;
+        metallicMaterial.color = carBody;
+        matteMaterial.color = carBody;
         wheelMaterial.color = wheelColor;
         carLight.GetComponent<Light>().color = lightColor;
         ChangeUnderLight isRainbowEnabled = carLight.GetComponent<ChangeUnderLight>();
