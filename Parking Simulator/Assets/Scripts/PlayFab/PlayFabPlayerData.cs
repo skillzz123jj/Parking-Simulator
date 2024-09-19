@@ -14,7 +14,9 @@ public class PlayFabPlayerData
         {"Level2", -1},
         {"Level3", -1},
         {"Level4", -1},
-        {"Level5", -1}
+        {"Level5", -1},
+        {"Level6", -1}
+
 
     };
 
@@ -64,6 +66,10 @@ public class PlayFabPlayerData
             // Deserialize the JSON string back to a dictionary
             string levelsCompletedJson = result.Data["LevelsCompleted"].Value;
             levelsCompleted = JsonUtility.FromJson<Serialization<string, int>>(levelsCompletedJson).ToDictionary();
+            if (!levelsCompleted.ContainsKey("Level6"))
+            {
+                levelsCompleted.Add("Level6", -1); 
+            }
 
         }
         else

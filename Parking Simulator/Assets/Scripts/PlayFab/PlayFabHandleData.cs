@@ -108,10 +108,6 @@ public class PlayFabHandleData : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            SaveGameData();
-        }
         if (IsInternetConnected())
         {
             if (!wasConnected)
