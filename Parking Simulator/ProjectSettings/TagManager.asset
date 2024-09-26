@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wheel
   - ParkingSpace
+  - Car
   layers:
   - Default
   - TransparentFX

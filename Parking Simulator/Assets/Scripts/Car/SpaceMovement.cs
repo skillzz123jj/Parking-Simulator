@@ -12,6 +12,9 @@ public class SpaceMovement : MonoBehaviour
     // Rotation smoothing factor
     public float rotationSmoothing = 5f;
 
+    // Damping factor for slowing down the object gradually
+    public float decelerationRate = 2f;  // How fast the object slows down (higher is faster)
+
     // Rigidbody reference
     private Rigidbody rb;
 
@@ -20,13 +23,8 @@ public class SpaceMovement : MonoBehaviour
 
     void Start()
     {
-        // Get the Rigidbody component
         rb = GetComponent<Rigidbody>();
-
-        // Disable gravity (optional for space-like movement)
         rb.useGravity = false;
-
-        // Optional: Freeze Z rotation to prevent rolling
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
     }
 
@@ -54,18 +52,20 @@ public class SpaceMovement : MonoBehaviour
             transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
         }
 
-        // Move the object forward when spacebar is pressed, stop when released
-        if (Input.GetKey(KeyCode.Space))
+
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
             // Move forward using Rigidbody (adding force in the forward direction)
             rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
         }
         else
         {
-            // Stop forward movement by setting velocity to zero when spacebar is not pressed
-            rb.velocity = Vector3.zero;
+            // Gradually slow down by reducing the velocity over time
+            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
         }
     }
 }
+
+
 
 
