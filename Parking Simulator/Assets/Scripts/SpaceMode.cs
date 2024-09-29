@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpaceMode : MonoBehaviour
@@ -8,18 +6,11 @@ public class SpaceMode : MonoBehaviour
     bool flymodeActivated = true;
     [SerializeField] GameObject gears;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
-    }
+            gears.SetActive(false);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Car"))
@@ -30,7 +21,7 @@ public class SpaceMode : MonoBehaviour
                 other.gameObject.GetComponent<SpaceMovement>().enabled = false;
                 other.gameObject.GetComponent<CarRotation>().enabled = true;
                 other.gameObject.GetComponent<CarLights>().enabled = true;
-            other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+                other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
                 gears.SetActive(true);      
  
         }

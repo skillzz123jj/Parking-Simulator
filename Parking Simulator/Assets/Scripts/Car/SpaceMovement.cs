@@ -21,6 +21,8 @@ public class SpaceMovement : MonoBehaviour
     // Variable to store the target X rotation (pitch)
     private float targetRotationX = 0f;
 
+    [SerializeField] ParticleSystem particle;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,9 +32,8 @@ public class SpaceMovement : MonoBehaviour
 
     void Update()
     {
-        // Get input for rotation (based on vertical and horizontal input)
-        float rotateVertical = Input.GetAxis("Vertical");    // W/S or Up/Down Arrow keys for pitch
-        float rotateHorizontal = Input.GetAxis("Horizontal"); // A/D or Left/Right Arrow keys for yaw
+        float rotateVertical = Input.GetAxis("Vertical");    
+        float rotateHorizontal = Input.GetAxis("Horizontal"); 
 
         // Constrain X-axis (pitch) rotation between -20 and 20 degrees based on vertical input
         targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
@@ -52,17 +53,27 @@ public class SpaceMovement : MonoBehaviour
             transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
         }
 
-
         if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
-            // Move forward using Rigidbody (adding force in the forward direction)
             rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
+            var emission = particle.emission;
+            emission.enabled = true;
+      
+
         }
         else
         {
-            // Gradually slow down by reducing the velocity over time
             rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
+            var emission = particle.emission;
+            emission.enabled = false;
+
         }
+    }
+
+    private void OnDisable()
+    {
+        var emission = particle.emission;
+        emission.enabled = false;
     }
 }
 
