@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.6771295, g: 0.77146876, b: 0.87563455, a: 1}
+  m_IndirectSpecularColor: {r: 0.6771294, g: 0.7714684, b: 0.8756356, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -39378,6 +39378,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftIndicatorLightMesh: {fileID: 895399720}
   rightIndicatorLightMesh: {fileID: 628441701}
+  horizontalInput: 0
   indicatorSound: {fileID: 1733475977}
   carHornSource: {fileID: 742995279}
   carHorn: {fileID: 8300000, guid: 14bf6b10af9fecd4880946958d45d313, type: 3}
@@ -41804,7 +41805,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046584036}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17842466, y: -0.000000059604645, z: 0.000000022351742, w: 0.98395365}
+  m_LocalRotation: {x: 0.17842463, y: -0, z: -0.0000000074505797, w: 0.9839536}
   m_LocalPosition: {x: 3.773734, y: 2.4119027, z: -4.0094438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -42735,6 +42736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftIndicatorLightMesh: {fileID: 905466429}
   rightIndicatorLightMesh: {fileID: 929181110}
+  horizontalInput: 0
   indicatorSound: {fileID: 1733475977}
   carHornSource: {fileID: 742995279}
   carHorn: {fileID: 8300000, guid: 14bf6b10af9fecd4880946958d45d313, type: 3}
