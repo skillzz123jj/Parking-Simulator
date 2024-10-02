@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpaceMovement : MonoBehaviour
@@ -15,11 +16,14 @@ public class SpaceMovement : MonoBehaviour
     // Damping factor for slowing down the object gradually
     public float decelerationRate = 2f;  // How fast the object slows down (higher is faster)
 
+    bool allowMovement = true;
     // Rigidbody reference
     private Rigidbody rb;
 
     // Variable to store the target X rotation (pitch)
     private float targetRotationX = 0f;
+
+    Coroutine vehicleHitCoroutine;
 
     [SerializeField] ParticleSystem particle;
 
@@ -30,44 +34,49 @@ public class SpaceMovement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        float rotateVertical = Input.GetAxis("Vertical");    
-        float rotateHorizontal = Input.GetAxis("Horizontal"); 
-
-        // Constrain X-axis (pitch) rotation between -20 and 20 degrees based on vertical input
-        targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
-
-        // Get the current Y rotation (yaw, free rotation around the Y axis)
-        float currentRotationY = rb.rotation.eulerAngles.y;
-
-        // Create a target rotation with the constrained X rotation and free Y rotation
-        Quaternion targetRotation = Quaternion.Euler(targetRotationX, currentRotationY, 0f);
-
-        // Smoothly rotate towards the target rotation for the X-axis (pitch)
-        rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
-
-        // Rotate freely around the Y-axis (yaw) using Transform.Rotate only while key is pressed
-        if (rotateHorizontal != 0f)
+        if (allowMovement)
         {
-            transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
-        }
+            float rotateVertical = Input.GetAxis("Vertical");
+            float rotateHorizontal = Input.GetAxis("Horizontal");
 
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
-        {
-            rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
-            var emission = particle.emission;
-            emission.enabled = true;
-      
+            // Constrain X-axis (pitch) rotation between -20 and 20 degrees based on vertical input
+            targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
 
-        }
-        else
-        {
-            rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
-            var emission = particle.emission;
-            emission.enabled = false;
+            // Get the current Y rotation (yaw, free rotation around the Y axis)
+            float currentRotationY = rb.rotation.eulerAngles.y;
 
+            // Create a target rotation with the constrained X rotation and free Y rotation
+            Quaternion targetRotation = Quaternion.Euler(targetRotationX, currentRotationY, 0f);
+
+            // Smoothly rotate towards the target rotation for the X-axis (pitch)
+            rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
+
+            // Rotate freely around the Y-axis (yaw) using Transform.Rotate only while key is pressed
+            if (rotateHorizontal != 0f)
+            {
+                transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
+            }
+
+
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            {
+                rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
+                var emission = particle.emission;
+                emission.enabled = true;
+
+
+            }
+            else
+            {
+                rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
+                var emission = particle.emission;
+                emission.enabled = false;
+
+            }
         }
+        
     }
 
     private void OnDisable()
@@ -75,6 +84,39 @@ public class SpaceMovement : MonoBehaviour
         var emission = particle.emission;
         emission.enabled = false;
     }
+
+    IEnumerator RecoverVehicle(float recoveryTime)
+    {
+        allowMovement = false;
+        gameObject.GetComponent<FlashingLight>().enabled = true;
+
+        rb.constraints = RigidbodyConstraints.FreezeRotationY;
+
+        yield return new WaitForSeconds(recoveryTime);
+
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+
+        yield return new WaitForSeconds(1.0f);  
+
+        gameObject.GetComponent<FlashingLight>().enabled = false;
+        allowMovement = true;
+        vehicleHitCoroutine = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Meteorite"))
+        {
+            if (vehicleHitCoroutine == null)
+            {
+            vehicleHitCoroutine = StartCoroutine(RecoverVehicle(10));
+
+            }
+        }
+    }
+
+
 }
 
 
