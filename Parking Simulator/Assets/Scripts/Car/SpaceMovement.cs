@@ -89,16 +89,20 @@ public class SpaceMovement : MonoBehaviour
     {
         allowMovement = false;
         gameObject.GetComponent<FlashingLight>().enabled = true;
-
-        rb.constraints = RigidbodyConstraints.FreezeRotationY;
+        var emission = particle.emission;
+        emission.enabled = false;
 
         yield return new WaitForSeconds(recoveryTime);
+        rb.constraints = RigidbodyConstraints.FreezeAll;
 
+     
+
+        yield return new WaitForSeconds(2.0f);
+
+
+      
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
-
-        yield return new WaitForSeconds(1.0f);  
-
         gameObject.GetComponent<FlashingLight>().enabled = false;
         allowMovement = true;
         vehicleHitCoroutine = null;
@@ -108,6 +112,7 @@ public class SpaceMovement : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Meteorite"))
         {
+            Debug.Log("Hit");
             if (vehicleHitCoroutine == null)
             {
             vehicleHitCoroutine = StartCoroutine(RecoverVehicle(10));

@@ -9,7 +9,8 @@ public class Barriers : MonoBehaviour
     [SerializeField] TMP_Text warning;
     [SerializeField] TMP_Text timer;
     Collider areaCollider;
-    [SerializeField] Transform player;
+    [SerializeField] Transform familyCar;
+    [SerializeField] Transform pickupTruck;
     Coroutine restartLevel;
     [SerializeField] int currentLevel;
 
@@ -22,7 +23,7 @@ public class Barriers : MonoBehaviour
   
         void Update()
         {
-            if (areaCollider.bounds.Contains(player.transform.position))
+            if (areaCollider.bounds.Contains(familyCar.transform.position) && areaCollider.bounds.Contains(pickupTruck.transform.position))
             {
                 warning.enabled = false;
             timer.enabled = false;
