@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpaceMovement : MonoBehaviour
 {
@@ -27,13 +28,37 @@ public class SpaceMovement : MonoBehaviour
 
     [SerializeField] ParticleSystem particle;
 
-    void Start()
+    private Inputs inputActions;
+
+
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+        inputActions = new Inputs();
+
     }
 
+    void OnEnable()
+    {
+
+        inputActions.Enable();
+        inputActions.SteeringWheel.R1.performed += VerticalMovementWheelUp;
+        inputActions.SteeringWheel.L1.performed += VerticalMovementWheelDown;
+
+
+    }
+
+    void OnDisable()
+    {
+        inputActions.SteeringWheel.R1.performed -= VerticalMovementWheelUp;
+        inputActions.SteeringWheel.L1.performed -= VerticalMovementWheelDown;
+        inputActions.Disable();
+        var emission = particle.emission;
+        emission.enabled = false;
+    }
     void FixedUpdate()
     {
         if (allowMovement)
@@ -42,8 +67,8 @@ public class SpaceMovement : MonoBehaviour
             float rotateHorizontal = Input.GetAxis("Horizontal");
 
             // Constrain X-axis (pitch) rotation between -20 and 20 degrees based on vertical input
-            targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
-
+           targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
+     
             // Get the current Y rotation (yaw, free rotation around the Y axis)
             float currentRotationY = rb.rotation.eulerAngles.y;
 
@@ -54,13 +79,15 @@ public class SpaceMovement : MonoBehaviour
             rb.rotation = Quaternion.Slerp(rb.rotation, targetRotation, rotationSmoothing * Time.deltaTime);
 
             // Rotate freely around the Y-axis (yaw) using Transform.Rotate only while key is pressed
-            if (rotateHorizontal != 0f)
+            if (rotateHorizontal != 0f || WheelInteraction.xAxes != 0f)
             {
                 transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
+                transform.Rotate(Vector3.up, WheelInteraction.xAxes * rotationSpeed * Time.deltaTime);
+
             }
 
 
-            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+            if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || WheelInteraction.GasInput > 0)
             {
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
                 var emission = particle.emission;
@@ -79,10 +106,19 @@ public class SpaceMovement : MonoBehaviour
         
     }
 
-    private void OnDisable()
+    private void VerticalMovementWheelDown(InputAction.CallbackContext context)
     {
-        var emission = particle.emission;
-        emission.enabled = false;
+        // Rotate down (increase pitch) but clamp to maxRotationX
+        targetRotationX = Mathf.Clamp(targetRotationX + 20f, -maxRotationX, maxRotationX);
+        Debug.Log("Rotating Down: " + targetRotationX);
+    }
+
+ 
+    private void VerticalMovementWheelUp(InputAction.CallbackContext context)
+    {
+  
+        targetRotationX = Mathf.Clamp(targetRotationX - 20f, -maxRotationX, maxRotationX);
+        Debug.Log("Rotating Up: " + targetRotationX);
     }
 
     IEnumerator RecoverVehicle(float recoveryTime)
