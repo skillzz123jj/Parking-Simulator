@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.70704263, g: 0.40122154, b: 0.2258979, a: 1}
+  m_IndirectSpecularColor: {r: 0.7070595, g: 0.40122655, b: 0.22589849, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7078,7 +7078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: -10}
+  m_FollowOffset: {x: 0, y: 5, z: 10}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -17997,7 +17997,7 @@ GameObject:
   - component: {fileID: 1261752921}
   m_Layer: 0
   m_Name: GameBounds
-  m_TagString: Untagged
+  m_TagString: ParkingSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18038,8 +18038,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 128.31734, y: 64.89111, z: 158.74301}
-  m_Center: {x: 303.13077, y: 326.94135, z: -158.82463}
+  m_Size: {x: 142.69987, y: 64.89111, z: 158.74301}
+  m_Center: {x: 310.32217, y: 326.94135, z: -158.82463}
 --- !u!4 &1261752923
 Transform:
   m_ObjectHideFlags: 0

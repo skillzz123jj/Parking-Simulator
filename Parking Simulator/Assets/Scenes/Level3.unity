@@ -23024,7 +23024,7 @@ GameObject:
   - component: {fileID: 1161049077}
   m_Layer: 0
   m_Name: GameBounds
-  m_TagString: Untagged
+  m_TagString: ParkingSpace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23065,8 +23065,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 94.47803, y: 64.89111, z: 99.181335}
-  m_Center: {x: 364.9054, y: 326.94135, z: -229.40674}
+  m_Size: {x: 113.84082, y: 64.89111, z: 138.5881}
+  m_Center: {x: 355.224, y: 326.94135, z: -209.70335}
 --- !u!4 &1161049079
 Transform:
   m_ObjectHideFlags: 0
@@ -42146,7 +42146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046584036}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.17842464, y: -0.000000029802322, z: -0, w: 0.98395365}
+  m_LocalRotation: {x: 0.17842463, y: -0, z: -0.0000000074505797, w: 0.9839536}
   m_LocalPosition: {x: 3.773734, y: 2.4119027, z: -4.0094438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
