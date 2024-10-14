@@ -5,6 +5,8 @@ public class SpaceMode : MonoBehaviour
     [SerializeField] private SpaceMovement spaceMovement;
     bool flymodeActivated = true;
     [SerializeField] GameObject gears;
+    [SerializeField] private CarAudio carAudio;
+    [SerializeField] private GameObject carEngine;
 
     private void Start()
     {
@@ -17,6 +19,8 @@ public class SpaceMode : MonoBehaviour
         {
             
                 flymodeActivated = false;
+                carAudio.enabled = true;
+            carEngine.SetActive(true);
                 other.gameObject.GetComponent<Rigidbody>().useGravity = true;
                 other.gameObject.GetComponent<SpaceMovement>().enabled = false;
                 other.gameObject.GetComponent<CarRotation>().enabled = true;
@@ -32,7 +36,8 @@ public class SpaceMode : MonoBehaviour
         if (other.gameObject.CompareTag("Car"))
         {
             flymodeActivated = true;
-            //transform.position += new Vector3(0, 10 * Time.deltaTime, 0);
+            carAudio.enabled = false;
+            carEngine.SetActive(false);
             other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;
             other.gameObject.GetComponent<Rigidbody>().useGravity = false;
             other.gameObject.GetComponent<SpaceMovement>().enabled = true;

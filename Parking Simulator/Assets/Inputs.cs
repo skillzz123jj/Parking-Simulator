@@ -539,6 +539,51 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""VolumeUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""af54dde3-2166-4ccd-a88d-79e142c0efb8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""VolumeDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f8213e4-236e-4006-9164-44f3eff307fb"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeStationRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""297458c7-36e3-4729-9ad4-5b89c6fbfbad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeStationLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""05350fa7-1763-46bd-b3cb-127719e712c4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Honk"",
+                    ""type"": ""Button"",
+                    ""id"": ""d1d5e628-c915-408f-b967-0d142b554eee"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -618,6 +663,61 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
                     ""action"": ""RightIndicator"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8ddf68a8-ab3b-45e5-a270-59c7e80225c9"",
+                    ""path"": ""<Keyboard>/pageUp"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VolumeUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3335df9f-e0c3-43ee-9dd2-f3dd800af6f4"",
+                    ""path"": ""<Keyboard>/pageDown"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""VolumeDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""022610f5-ccf5-4366-9095-4f28dd70c525"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeStationRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13df85cd-1383-4a9c-9693-b46349b7192c"",
+                    ""path"": ""<Keyboard>/comma"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeStationLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70c1b0e2-bef2-419b-bb7d-aa4a1644b069"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Honk"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -656,6 +756,11 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         m_Keyboard_Scroll = m_Keyboard.FindAction("Scroll", throwIfNotFound: true);
         m_Keyboard_LeftIndicator = m_Keyboard.FindAction("LeftIndicator", throwIfNotFound: true);
         m_Keyboard_RightIndicator = m_Keyboard.FindAction("RightIndicator", throwIfNotFound: true);
+        m_Keyboard_VolumeUp = m_Keyboard.FindAction("VolumeUp", throwIfNotFound: true);
+        m_Keyboard_VolumeDown = m_Keyboard.FindAction("VolumeDown", throwIfNotFound: true);
+        m_Keyboard_ChangeStationRight = m_Keyboard.FindAction("ChangeStationRight", throwIfNotFound: true);
+        m_Keyboard_ChangeStationLeft = m_Keyboard.FindAction("ChangeStationLeft", throwIfNotFound: true);
+        m_Keyboard_Honk = m_Keyboard.FindAction("Honk", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -930,6 +1035,11 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Keyboard_Scroll;
     private readonly InputAction m_Keyboard_LeftIndicator;
     private readonly InputAction m_Keyboard_RightIndicator;
+    private readonly InputAction m_Keyboard_VolumeUp;
+    private readonly InputAction m_Keyboard_VolumeDown;
+    private readonly InputAction m_Keyboard_ChangeStationRight;
+    private readonly InputAction m_Keyboard_ChangeStationLeft;
+    private readonly InputAction m_Keyboard_Honk;
     public struct KeyboardActions
     {
         private @Inputs m_Wrapper;
@@ -941,6 +1051,11 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         public InputAction @Scroll => m_Wrapper.m_Keyboard_Scroll;
         public InputAction @LeftIndicator => m_Wrapper.m_Keyboard_LeftIndicator;
         public InputAction @RightIndicator => m_Wrapper.m_Keyboard_RightIndicator;
+        public InputAction @VolumeUp => m_Wrapper.m_Keyboard_VolumeUp;
+        public InputAction @VolumeDown => m_Wrapper.m_Keyboard_VolumeDown;
+        public InputAction @ChangeStationRight => m_Wrapper.m_Keyboard_ChangeStationRight;
+        public InputAction @ChangeStationLeft => m_Wrapper.m_Keyboard_ChangeStationLeft;
+        public InputAction @Honk => m_Wrapper.m_Keyboard_Honk;
         public InputActionMap Get() { return m_Wrapper.m_Keyboard; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -971,6 +1086,21 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @RightIndicator.started += instance.OnRightIndicator;
             @RightIndicator.performed += instance.OnRightIndicator;
             @RightIndicator.canceled += instance.OnRightIndicator;
+            @VolumeUp.started += instance.OnVolumeUp;
+            @VolumeUp.performed += instance.OnVolumeUp;
+            @VolumeUp.canceled += instance.OnVolumeUp;
+            @VolumeDown.started += instance.OnVolumeDown;
+            @VolumeDown.performed += instance.OnVolumeDown;
+            @VolumeDown.canceled += instance.OnVolumeDown;
+            @ChangeStationRight.started += instance.OnChangeStationRight;
+            @ChangeStationRight.performed += instance.OnChangeStationRight;
+            @ChangeStationRight.canceled += instance.OnChangeStationRight;
+            @ChangeStationLeft.started += instance.OnChangeStationLeft;
+            @ChangeStationLeft.performed += instance.OnChangeStationLeft;
+            @ChangeStationLeft.canceled += instance.OnChangeStationLeft;
+            @Honk.started += instance.OnHonk;
+            @Honk.performed += instance.OnHonk;
+            @Honk.canceled += instance.OnHonk;
         }
 
         private void UnregisterCallbacks(IKeyboardActions instance)
@@ -996,6 +1126,21 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
             @RightIndicator.started -= instance.OnRightIndicator;
             @RightIndicator.performed -= instance.OnRightIndicator;
             @RightIndicator.canceled -= instance.OnRightIndicator;
+            @VolumeUp.started -= instance.OnVolumeUp;
+            @VolumeUp.performed -= instance.OnVolumeUp;
+            @VolumeUp.canceled -= instance.OnVolumeUp;
+            @VolumeDown.started -= instance.OnVolumeDown;
+            @VolumeDown.performed -= instance.OnVolumeDown;
+            @VolumeDown.canceled -= instance.OnVolumeDown;
+            @ChangeStationRight.started -= instance.OnChangeStationRight;
+            @ChangeStationRight.performed -= instance.OnChangeStationRight;
+            @ChangeStationRight.canceled -= instance.OnChangeStationRight;
+            @ChangeStationLeft.started -= instance.OnChangeStationLeft;
+            @ChangeStationLeft.performed -= instance.OnChangeStationLeft;
+            @ChangeStationLeft.canceled -= instance.OnChangeStationLeft;
+            @Honk.started -= instance.OnHonk;
+            @Honk.performed -= instance.OnHonk;
+            @Honk.canceled -= instance.OnHonk;
         }
 
         public void RemoveCallbacks(IKeyboardActions instance)
@@ -1046,5 +1191,10 @@ public partial class @Inputs: IInputActionCollection2, IDisposable
         void OnScroll(InputAction.CallbackContext context);
         void OnLeftIndicator(InputAction.CallbackContext context);
         void OnRightIndicator(InputAction.CallbackContext context);
+        void OnVolumeUp(InputAction.CallbackContext context);
+        void OnVolumeDown(InputAction.CallbackContext context);
+        void OnChangeStationRight(InputAction.CallbackContext context);
+        void OnChangeStationLeft(InputAction.CallbackContext context);
+        void OnHonk(InputAction.CallbackContext context);
     }
 }

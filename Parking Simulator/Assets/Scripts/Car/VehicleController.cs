@@ -18,13 +18,6 @@ public class VehicleController : MonoBehaviour
     public Transform rearLeftTransform;
     public Transform rearRightTransform;
 
-
-    [SerializeField] AudioSource engineSound;
-    [SerializeField] AudioClip accelerating;
-    [SerializeField] AudioClip idle;
-    [SerializeField] AudioClip revving;
-
-
     private Rigidbody rb;
 
     void Start()
@@ -49,10 +42,6 @@ public class VehicleController : MonoBehaviour
                 ApplyDrive();
 
             }
-            else if (CarStates.currentState == "P" || CarStates.currentState == "N")
-            {
-                RevCar();
-            }
 
             ApplyBrake();
             ApplySteering();
@@ -64,25 +53,7 @@ public class VehicleController : MonoBehaviour
 
     }
 
-    private void RevCar()
-    {
-        if (WheelInteraction.GasInput > 0)
-        {
-            if (engineSound.clip != revving || !engineSound.isPlaying)
-            {
-                engineSound.clip = revving;
-                engineSound.Play();
-            }
-        }
-        else
-        {
-            if (engineSound.clip != idle || !engineSound.isPlaying)
-            {
-                engineSound.clip = idle;
-                engineSound.Play();
-            }
-        }
-    }
+   
     private void ApplyReverse()
     {
         if (WheelInteraction.GasInput > 0 || verticalInput < 0)
@@ -104,21 +75,12 @@ public class VehicleController : MonoBehaviour
         if (WheelInteraction.GasInput > 0 || verticalInput > 0)
         {
             float motor = maxMotorTorque * WheelInteraction.GasInput;
-            if (engineSound.clip != accelerating || !engineSound.isPlaying)
-            {
-                engineSound.clip = accelerating;
-                engineSound.Play();
-            }
             frontLeftWheel.motorTorque = motor;
             frontRightWheel.motorTorque = motor;
         }
         else
         {
-            if (engineSound.clip != idle || !engineSound.isPlaying)
-            {
-                engineSound.clip = idle;
-                engineSound.Play();
-            }
+    
             frontLeftWheel.motorTorque = 0;
             frontRightWheel.motorTorque = 0;
         }

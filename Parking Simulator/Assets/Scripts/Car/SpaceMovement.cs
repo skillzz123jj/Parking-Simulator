@@ -30,6 +30,11 @@ public class SpaceMovement : MonoBehaviour
 
     private Inputs inputActions;
 
+    [SerializeField] AudioSource spaceEngineSource;
+    [SerializeField] AudioClip spaceEngineIdle;
+    [SerializeField] AudioClip spaceEngineMove;
+
+
 
 
     void Awake()
@@ -38,6 +43,8 @@ public class SpaceMovement : MonoBehaviour
         rb.useGravity = false;
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;
         inputActions = new Inputs();
+     
+
 
     }
 
@@ -47,7 +54,6 @@ public class SpaceMovement : MonoBehaviour
         inputActions.Enable();
         inputActions.SteeringWheel.R1.performed += VerticalMovementWheelUp;
         inputActions.SteeringWheel.L1.performed += VerticalMovementWheelDown;
-
 
     }
 
@@ -92,6 +98,7 @@ public class SpaceMovement : MonoBehaviour
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
                 var emission = particle.emission;
                 emission.enabled = true;
+                spaceEngineSource.clip = spaceEngineMove;
 
 
             }
@@ -100,6 +107,8 @@ public class SpaceMovement : MonoBehaviour
                 rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, decelerationRate * Time.deltaTime);
                 var emission = particle.emission;
                 emission.enabled = false;
+                spaceEngineSource.clip = spaceEngineIdle;
+
 
             }
         }
@@ -108,7 +117,6 @@ public class SpaceMovement : MonoBehaviour
 
     private void VerticalMovementWheelDown(InputAction.CallbackContext context)
     {
-        // Rotate down (increase pitch) but clamp to maxRotationX
         targetRotationX = Mathf.Clamp(targetRotationX + 20f, -maxRotationX, maxRotationX);
         Debug.Log("Rotating Down: " + targetRotationX);
     }
@@ -116,7 +124,6 @@ public class SpaceMovement : MonoBehaviour
  
     private void VerticalMovementWheelUp(InputAction.CallbackContext context)
     {
-  
         targetRotationX = Mathf.Clamp(targetRotationX - 20f, -maxRotationX, maxRotationX);
         Debug.Log("Rotating Up: " + targetRotationX);
     }
@@ -131,11 +138,7 @@ public class SpaceMovement : MonoBehaviour
         yield return new WaitForSeconds(recoveryTime);
         rb.constraints = RigidbodyConstraints.FreezeAll;
 
-     
-
         yield return new WaitForSeconds(2.0f);
-
-
       
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotationZ;

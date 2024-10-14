@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 using TMPro;
 using System.Collections;
 
@@ -20,7 +19,7 @@ public class CarRadio : MonoBehaviour
     [SerializeField] private float idleTimeToFadeOut = 5.0f;
 
     private Coroutine fadeOutSliderCoroutine;
-    [SerializeField] private float sliderFadeOutTime = 5.0f; // Time to wait before fading out the slider
+    [SerializeField] private float sliderFadeOutTime = 5.0f; 
 
     private int currentSongIndex = 0;
 
@@ -67,6 +66,11 @@ public class CarRadio : MonoBehaviour
         inputActions.SteeringWheel.Minus.performed += ctx => DecreaseVolume();
         inputActions.SteeringWheel.DpadLeft.performed += ctx => ToggleRadio();
         inputActions.SteeringWheel.DpadRight.performed += ctx => ToggleRadio();
+
+        inputActions.Keyboard.VolumeUp.performed += ctx => IncreaseVolume();
+        inputActions.Keyboard.VolumeDown.performed += ctx => DecreaseVolume();
+        inputActions.Keyboard.ChangeStationRight.performed += ctx => ToggleRadio();
+        inputActions.Keyboard.ChangeStationLeft.performed += ctx => ToggleRadio();
     }
 
     void OnDisable()
