@@ -12,7 +12,7 @@ public class LevelCompleted : MonoBehaviour
     [SerializeField] AudioSource wonSource;
     [SerializeField] GameObject instruction;
 
-    private bool audioPlayed = false;  
+    private bool audioPlayed = false;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class LevelCompleted : MonoBehaviour
 
     void Update()
     {
-        if (GameData.Instance.LevelFinished && !audioPlayed) 
+        if (GameData.Instance.LevelFinished && !audioPlayed)
         {
             GameData.Instance.MenuOpen = true;
             wheel.SetActive(false);
@@ -35,13 +35,14 @@ public class LevelCompleted : MonoBehaviour
             levelFinished.SetActive(true);
             Destroy(instruction);
 
-            wonSource.PlayOneShot(levelFinishedClip); 
-            audioPlayed = true; 
+            wonSource.PlayOneShot(levelFinishedClip);
+            audioPlayed = true;
 
-            //if (nextLevelButton)
-            //{
-            //    nextLevelButton.Select();
+            if (nextLevelButton)
+            {
+                nextLevelButton.Select();
             }
         }
-    }
 
+    }
+}

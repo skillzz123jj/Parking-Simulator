@@ -19,6 +19,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject carEngineSound;
     [SerializeField] GameObject indicatorSound;
     [SerializeField] GameObject instruction;
+    [SerializeField] GameObject carAudio;
+
 
     [SerializeField] Button continueButton;
 
@@ -64,11 +66,14 @@ public class PauseMenu : MonoBehaviour
             continueButton.Select();
                 UIWheel.SetActive(false);
             gears.SetActive(false);
-            carEngineSound.SetActive(false);
+        //   carEngineSound.SetActive(false);
             indicatorSound.SetActive(false);
             instruction.SetActive(false);
             radio.SetActive(false);
             carRadio.SetActive(false);
+            carAudio.SetActive(false);
+            var test = carEngineSound.GetComponent<AudioSource>();
+            test.Pause();
             Time.timeScale = 0;
                 UpdateFocusDistance(); 
             
@@ -83,10 +88,13 @@ public class PauseMenu : MonoBehaviour
             radio.SetActive(true);
             carRadio.SetActive(true);
             indicatorSound.SetActive(true);
-            carEngineSound.SetActive(true);
+        //    carEngineSound.SetActive(true);
             pauseMenu.SetActive(false);
             UIWheel.SetActive(true);
             gears.SetActive(true);
+            carAudio.SetActive(true);
+            var test = carEngineSound.GetComponent<AudioSource>();
+            test.Play();
             Time.timeScale = 1;
             UpdateFocusDistance();            
         }

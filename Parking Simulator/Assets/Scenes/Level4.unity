@@ -6356,11 +6356,12 @@ MonoBehaviour:
   pauseMenu: {fileID: 555629466}
   UIWheel: {fileID: 898123486}
   gears: {fileID: 2125651291}
-  radio: {fileID: 0}
-  carRadio: {fileID: 0}
+  radio: {fileID: 129301970}
+  carRadio: {fileID: 1863018696}
   carEngineSound: {fileID: 1644845888}
   indicatorSound: {fileID: 281799263}
   instruction: {fileID: 709937906}
+  carAudio: {fileID: 1652000363}
   continueButton: {fileID: 1588387246}
   blackOutSquare: {fileID: 2128933483}
 --- !u!4 &447506713
