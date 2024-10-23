@@ -2,58 +2,48 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using System.Collections;
 
 public class ScrollButtonActivator : MonoBehaviour
 {
-    public ScrollRect scrollRect; // Reference to the ScrollRect component
-    public List<Button> buttons; // List of buttons to manage
+    [SerializeField]
+    private float m_lerpTime;
+    private ScrollRect m_scrollRect;
+    private Button[] m_buttons;
+    private int m_index;
+    private float m_verticalPosition;
+    private bool m_up;
+    private bool m_down;
 
-    private int activeButtonIndex = 0; // Index of the currently active button
-    private EventSystem eventSystem;
-
-    void Start()
+    public void Start()
     {
-        eventSystem = EventSystem.current;
+        m_scrollRect = GetComponent<ScrollRect>();
+        m_buttons = GetComponentsInChildren<Button>();
+        m_buttons[m_index].Select();
+        //m_verticalPosition = 1f - ((float)m_index / (m_buttons.Length - 1));
+        m_verticalPosition = (float)m_index / (m_buttons.Length - 1);
 
-        // Initialize all buttons to be non-interactable except the first one
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            buttons[i].interactable = (i == activeButtonIndex);
-        }
-
-        // Select the first button
-        eventSystem.SetSelectedGameObject(buttons[activeButtonIndex].gameObject);
     }
 
-    void Update()
+    public void Update()
     {
-        // Calculate the scroll position and update the active button index accordingly
-        float scrollPosition = scrollRect.horizontalNormalizedPosition;
-        int newActiveButtonIndex = Mathf.RoundToInt(scrollPosition * (buttons.Count - 1));
+        m_up = Input.GetKeyDown(KeyCode.LeftArrow);
+        m_down = Input.GetKeyDown(KeyCode.RightArrow);
 
-        if (newActiveButtonIndex != activeButtonIndex)
+        if (m_up ^ m_down)
         {
-            SetActiveButton(newActiveButtonIndex);
+            if (m_up)
+                m_index = Mathf.Clamp(m_index - 1, 0, m_buttons.Length - 1);
+            else
+                m_index = Mathf.Clamp(m_index + 1, 0, m_buttons.Length - 1);
+
+            m_buttons[m_index].Select();
+            //m_verticalPosition = 1f - ((float)m_index / (m_buttons.Length - 1));
+            m_verticalPosition = (float)m_index / (m_buttons.Length - 1);
+
         }
-    }
 
-    void SetActiveButton(int index)
-    {
-        // Ensure the index is within bounds
-        if (index < 0 || index >= buttons.Count)
-            return;
-
-        // Deactivate the current active button
-        buttons[activeButtonIndex].interactable = false;
-
-        // Activate the new button
-        buttons[index].interactable = true;
-
-        // Update the active button index
-        activeButtonIndex = index;
-
-        // Select the new active button
-        eventSystem.SetSelectedGameObject(buttons[activeButtonIndex].gameObject);
+        m_scrollRect.horizontalNormalizedPosition = Mathf.Lerp(m_scrollRect.horizontalNormalizedPosition, m_verticalPosition, Time.deltaTime / m_lerpTime);
     }
 }
 

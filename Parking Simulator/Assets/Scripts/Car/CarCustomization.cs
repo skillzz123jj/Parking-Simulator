@@ -62,7 +62,7 @@ public class CarCustomization : MonoBehaviour
         rainbowLight.enabled = false;
         GameData.Instance.RainbowOn = "Disabled";
 
-        yield return null;
+        yield return new WaitForSeconds(0.5f);
 
         GameData.Instance.LightsOn = true;
         Color color = colorImage.color;
