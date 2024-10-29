@@ -15,7 +15,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] GameObject gears;
 
     [SerializeField] GameObject radio;
-    [SerializeField] GameObject carRadio;
+    [SerializeField] AudioSource carRadio;
     [SerializeField] GameObject carEngineSound;
     [SerializeField] GameObject indicatorSound;
     [SerializeField] GameObject instruction;
@@ -70,7 +70,7 @@ public class PauseMenu : MonoBehaviour
             indicatorSound.SetActive(false);
             instruction.SetActive(false);
             radio.SetActive(false);
-            carRadio.SetActive(false);
+            carRadio.mute = true;
             carAudio.SetActive(false);
             var test = carEngineSound.GetComponent<AudioSource>();
             test.Pause();
@@ -86,7 +86,7 @@ public class PauseMenu : MonoBehaviour
         {
             GameData.Instance.MenuOpen = false;
             radio.SetActive(true);
-            carRadio.SetActive(true);
+            carRadio.mute = false;
             indicatorSound.SetActive(true);
         //    carEngineSound.SetActive(true);
             pauseMenu.SetActive(false);

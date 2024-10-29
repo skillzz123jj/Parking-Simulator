@@ -24,7 +24,7 @@ public class CarRadio : MonoBehaviour
     private int currentSongIndex = 0;
 
     [SerializeField] CanvasGroup sliderCanvasGroup;
-
+    int currentSong;
     void Awake()
     {
         inputActions = new Inputs();
@@ -33,10 +33,11 @@ public class CarRadio : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        audioSource.clip = soundtrack[currentSongIndex];
-        audioSource.mute = true; // Mute the audio on startup
-        isRadioOn = false; // Set radio off on startup
-        radioStatus.text = "Radio Off"; // Display "Radio Off" text
+        currentSong = Random.Range(0, soundtrack.Length);
+        audioSource.clip = soundtrack[currentSong];
+        audioSource.mute = true; 
+        isRadioOn = false;
+        radioStatus.text = "Radio Off"; 
 
         volumeSlider.value = audioSource.volume;
         lastInputTime = Time.time;
@@ -49,7 +50,6 @@ public class CarRadio : MonoBehaviour
             PlayNextSong();
         }
 
-        // Check for idle time to start fade out
         if (Time.time - lastInputTime >= idleTimeToFadeOut)
         {
             StartFadeOut();
@@ -125,7 +125,7 @@ public class CarRadio : MonoBehaviour
 
         lastInputTime = Time.time;
         StopFadeOut();
-        radioStatus.alpha = 1.0f; // Reset text alpha
+        radioStatus.alpha = 1.0f; 
     }
 
     private void UpdateSongName()
@@ -181,12 +181,21 @@ public class CarRadio : MonoBehaviour
         songName.alpha = 0;
     }
 
+    
+
     private void PlayNextSong()
     {
-        currentSongIndex = (currentSongIndex + 1) % soundtrack.Length;
-        audioSource.clip = soundtrack[currentSongIndex];
+        int songIndex;
+
+        do
+        {
+            songIndex = Random.Range(0, soundtrack.Length);
+        } while (songIndex == currentSong);
+
+        audioSource.clip = soundtrack[songIndex];
         audioSource.Play();
-       // UpdateSongName();
+
+        currentSong = songIndex;
     }
 
     private void StartFadeOutSlider()

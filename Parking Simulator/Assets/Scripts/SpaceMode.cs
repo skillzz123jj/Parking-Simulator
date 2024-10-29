@@ -3,7 +3,6 @@ using UnityEngine;
 public class SpaceMode : MonoBehaviour
 {
     [SerializeField] private SpaceMovement spaceMovement;
-    bool flymodeActivated = true;
     [SerializeField] GameObject gears;
     [SerializeField] private CarAudio carAudio;
     [SerializeField] private GameObject carEngine;
@@ -17,8 +16,6 @@ public class SpaceMode : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car"))
         {
-            
-                flymodeActivated = false;
                 carAudio.enabled = true;
             carEngine.SetActive(true);
                 other.gameObject.GetComponent<Rigidbody>().useGravity = true;
@@ -35,7 +32,6 @@ public class SpaceMode : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Car"))
         {
-            flymodeActivated = true;
             carAudio.enabled = false;
             carEngine.SetActive(false);
             other.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationZ;

@@ -6726,6 +6726,9 @@ MonoBehaviour:
   soundtrack:
   - {fileID: 8300000, guid: 8e7bb6e009fade74493187a7abd2944c, type: 3}
   - {fileID: 8300000, guid: aa3d7ec5a297ae243844b36add0ff2b9, type: 3}
+  - {fileID: 8300000, guid: a489932d8d09d9c40975469a7a132448, type: 3}
+  - {fileID: 8300000, guid: 9079ad391de54234b9a06c3c59dd018b, type: 3}
+  - {fileID: 8300000, guid: 1557cf53ab56a044ba7f1ad231e1181a, type: 3}
   volumeSlider: {fileID: 1436520983}
   isRadioOn: 0
   radioStatus: {fileID: 1117452589}
@@ -23106,7 +23109,7 @@ MonoBehaviour:
   UIWheel: {fileID: 1746707975}
   gears: {fileID: 219814324}
   radio: {fileID: 370206265}
-  carRadio: {fileID: 299021291}
+  carRadio: {fileID: 299021292}
   carEngineSound: {fileID: 1587378354}
   indicatorSound: {fileID: 1733475976}
   instruction: {fileID: 68755364}
@@ -42157,7 +42160,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2046584036}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000014901159, y: 0.973249, z: -0.22975285, w: -0.000000059604638}
+  m_LocalRotation: {x: -0, y: 0.973249, z: -0.22975284, w: -0.000000059604638}
   m_LocalPosition: {x: 3.7737362, y: 4.634125, z: 15.99057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
