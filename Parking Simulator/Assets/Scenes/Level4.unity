@@ -7020,7 +7020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: 0, y: 5, z: 10}
+  m_FollowOffset: {x: 0, y: 3, z: -10}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -14565,7 +14565,7 @@ MonoBehaviour:
   - {fileID: 1840388004}
   starSprite: {fileID: 21300000, guid: b447d2b4455c436439035ab7e5f3acf8, type: 3}
   starOutlineSprite: {fileID: 21300000, guid: f32a16b0f4d237e438df77d35611d39f, type: 3}
-  timeToFinishLevel: 30
+  timeToFinishLevel: 120
   score: 3
 --- !u!65 &1031969294
 BoxCollider:
@@ -29118,7 +29118,7 @@ MonoBehaviour:
   - {fileID: 1840388004}
   starSprite: {fileID: 21300000, guid: b447d2b4455c436439035ab7e5f3acf8, type: 3}
   starOutlineSprite: {fileID: 21300000, guid: f32a16b0f4d237e438df77d35611d39f, type: 3}
-  timeToFinishLevel: 30
+  timeToFinishLevel: 120
   score: 3
 --- !u!65 &2080021197
 BoxCollider:

@@ -8391,7 +8391,7 @@ MonoBehaviour:
   - {fileID: 142496886}
   starSprite: {fileID: 21300000, guid: b447d2b4455c436439035ab7e5f3acf8, type: 3}
   starOutlineSprite: {fileID: 21300000, guid: f32a16b0f4d237e438df77d35611d39f, type: 3}
-  timeToFinishLevel: 30
+  timeToFinishLevel: 90
   score: 3
 --- !u!65 &582995160
 BoxCollider:
@@ -27320,7 +27320,7 @@ MonoBehaviour:
   - {fileID: 142496886}
   starSprite: {fileID: 21300000, guid: b447d2b4455c436439035ab7e5f3acf8, type: 3}
   starOutlineSprite: {fileID: 21300000, guid: f32a16b0f4d237e438df77d35611d39f, type: 3}
-  timeToFinishLevel: 30
+  timeToFinishLevel: 90
   score: 3
 --- !u!65 &1842326896
 BoxCollider:
