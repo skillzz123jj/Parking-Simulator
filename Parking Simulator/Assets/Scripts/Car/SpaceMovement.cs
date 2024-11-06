@@ -18,6 +18,8 @@ public class SpaceMovement : MonoBehaviour
     public float decelerationRate = 2f;  // How fast the object slows down (higher is faster)
 
     bool allowMovement = true;
+    public bool rotatingUp;
+    public bool rotatingDown;
     // Rigidbody reference
     private Rigidbody rb;
 
@@ -50,31 +52,53 @@ public class SpaceMovement : MonoBehaviour
 
     void OnEnable()
     {
-
         inputActions.Enable();
-        inputActions.SteeringWheel.R1.performed += VerticalMovementWheelUp;
-        inputActions.SteeringWheel.L1.performed += VerticalMovementWheelDown;
 
+        // Subscribe to both performed and canceled phases for each action
+        inputActions.SteeringWheel.R1.performed += VerticalMovementWheelUp;
+        inputActions.SteeringWheel.R1.canceled += VerticalMovementWheelUp;
+        inputActions.SteeringWheel.L1.performed += VerticalMovementWheelDown;
+        inputActions.SteeringWheel.L1.canceled += VerticalMovementWheelDown;
+
+        inputActions.Keyboard.VolumeUp.performed += VerticalMovementWheelUp;
+        inputActions.Keyboard.VolumeUp.canceled += VerticalMovementWheelUp;
+        inputActions.Keyboard.VolumeDown.performed += VerticalMovementWheelDown;
+        inputActions.Keyboard.VolumeDown.canceled += VerticalMovementWheelDown;
     }
 
     void OnDisable()
     {
         inputActions.SteeringWheel.R1.performed -= VerticalMovementWheelUp;
+        inputActions.SteeringWheel.R1.canceled -= VerticalMovementWheelUp;
         inputActions.SteeringWheel.L1.performed -= VerticalMovementWheelDown;
+        inputActions.SteeringWheel.L1.canceled -= VerticalMovementWheelDown;
+
+        inputActions.Keyboard.VolumeUp.performed -= VerticalMovementWheelUp;
+        inputActions.Keyboard.VolumeUp.canceled -= VerticalMovementWheelUp;
+        inputActions.Keyboard.VolumeDown.performed -= VerticalMovementWheelDown;
+        inputActions.Keyboard.VolumeDown.canceled -= VerticalMovementWheelDown;
+
         inputActions.Disable();
         var emission = particle.emission;
         emission.enabled = false;
     }
+    float rotateVertical = 0f;
+
     void FixedUpdate()
     {
         if (allowMovement)
         {
-            float rotateVertical = Input.GetAxis("Vertical");
+            // Reset vertical rotation if neither up nor down are active
+            if (!rotatingUp && !rotatingDown)
+            {
+                rotateVertical = 0f;
+            }
+
             float rotateHorizontal = Input.GetAxis("Horizontal");
 
             // Constrain X-axis (pitch) rotation between -20 and 20 degrees based on vertical input
-           targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
-     
+            targetRotationX = Mathf.Lerp(maxRotationX, -maxRotationX, (rotateVertical + 1f) / 2f);
+
             // Get the current Y rotation (yaw, free rotation around the Y axis)
             float currentRotationY = rb.rotation.eulerAngles.y;
 
@@ -89,18 +113,15 @@ public class SpaceMovement : MonoBehaviour
             {
                 transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
                 transform.Rotate(Vector3.up, WheelInteraction.xAxes * rotationSpeed * Time.deltaTime);
-
             }
 
-
+            // Forward movement using Left Ctrl, Right Ctrl, or Wheel Interaction
             if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || WheelInteraction.GasInput > 0)
             {
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
                 var emission = particle.emission;
                 emission.enabled = true;
                 spaceEngineSource.clip = spaceEngineMove;
-
-
             }
             else
             {
@@ -108,24 +129,36 @@ public class SpaceMovement : MonoBehaviour
                 var emission = particle.emission;
                 emission.enabled = false;
                 spaceEngineSource.clip = spaceEngineIdle;
-
-
             }
         }
-        
     }
+
+
 
     private void VerticalMovementWheelDown(InputAction.CallbackContext context)
     {
-        targetRotationX = Mathf.Clamp(targetRotationX + 20f, -maxRotationX, maxRotationX);
-        Debug.Log("Rotating Down: " + targetRotationX);
+        if (context.performed)
+        {
+            rotateVertical = -1f; // Move down
+            rotatingDown = true;
+        }
+        else if (context.canceled)
+        {
+            rotatingDown = false;
+        }
     }
 
- 
     private void VerticalMovementWheelUp(InputAction.CallbackContext context)
     {
-        targetRotationX = Mathf.Clamp(targetRotationX - 20f, -maxRotationX, maxRotationX);
-        Debug.Log("Rotating Up: " + targetRotationX);
+        if (context.performed)
+        {
+            rotateVertical = 1f; // Move up
+            rotatingUp = true;
+        }
+        else if (context.canceled)
+        {
+            rotatingUp = false;
+        }
     }
 
     IEnumerator RecoverVehicle(float recoveryTime)

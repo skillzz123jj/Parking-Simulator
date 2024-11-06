@@ -10751,6 +10751,8 @@ MonoBehaviour:
   maxRotationX: 20
   rotationSmoothing: 5
   decelerationRate: 2
+  rotatingUp: 0
+  rotatingDown: 0
   particle: {fileID: 1902834913}
   spaceEngineSource: {fileID: 1816583841}
   spaceEngineIdle: {fileID: 8300000, guid: 8d44e35eccc3b194585f5cb91e359f44, type: 3}
@@ -25665,6 +25667,8 @@ MonoBehaviour:
   maxRotationX: 20
   rotationSmoothing: 5
   decelerationRate: 2
+  rotatingUp: 0
+  rotatingDown: 0
   particle: {fileID: 102110547}
   spaceEngineSource: {fileID: 1804251972}
   spaceEngineIdle: {fileID: 8300000, guid: 8d44e35eccc3b194585f5cb91e359f44, type: 3}
