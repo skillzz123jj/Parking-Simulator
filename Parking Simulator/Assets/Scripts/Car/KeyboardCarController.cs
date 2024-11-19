@@ -37,7 +37,8 @@ public class KeyboardCarController : MonoBehaviour
 
         verticalInput = Input.GetAxis("Vertical");
 
-        isBraking = Input.GetKey(KeyCode.Space);
+        GameData.Instance.VehicleBraking = isBraking = Input.GetKey(KeyCode.Space);
+
     }
 
     private void HandleMotor()
@@ -46,7 +47,23 @@ public class KeyboardCarController : MonoBehaviour
         {
             frontLeftWheelCollider.motorTorque = verticalInput * motorForce;
             frontRightWheelCollider.motorTorque = verticalInput * motorForce;
-       
+            if (verticalInput > 0)
+            {
+                GameData.Instance.VehicleMoving = true;
+            }
+            else
+            {
+                GameData.Instance.VehicleMoving = false;
+            }
+            if (verticalInput < 0)
+            {
+                GameData.Instance.VehicleReversing = true;
+            }
+            else
+            {
+                GameData.Instance.VehicleReversing = false;
+            }
+
         }
         else
         {

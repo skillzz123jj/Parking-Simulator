@@ -20,6 +20,12 @@ public class GameData
     public bool LevelFinished { get; set; }
     public bool MenuOpen { get; set; }
 
+    public bool VehicleBraking { get; set; }
+    public bool VehicleMoving { get; set; }
+    public bool VehicleReversing { get; set; }
+
+
+
     // Private constructor to prevent instantiation
     private GameData() { }
 
