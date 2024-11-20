@@ -7,6 +7,7 @@ public class GameTutorial : MonoBehaviour
 {
     [SerializeField] GameObject arrowD;
     [SerializeField] GameObject arrowR;
+    [SerializeField] GameObject arrowP;
     [SerializeField] GameObject instructionText;
 
     void Start()
@@ -37,14 +38,16 @@ public class GameTutorial : MonoBehaviour
             case 5:
                 StartCoroutine(Reverse());
                 break;
-
         }
     }
 
     IEnumerator ChangeToDrive()
     {
+        instructionText.SetActive(true);
+        instructionText.GetComponent<TMP_Text>().text = "Change gear: 4/Scroll";
         yield return new WaitUntil(() => CarStates.currentState == "D");
         arrowD.GetComponent<Animator>().SetTrigger("Completed");
+        instructionText.GetComponent<Animator>().SetTrigger("Completed");
         TutorialStates(2);
     }
 
@@ -52,7 +55,7 @@ public class GameTutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         instructionText.SetActive(true);
-        instructionText.GetComponent<TMP_Text>().text = "Accelerate W/Gas";
+        instructionText.GetComponent<TMP_Text>().text = "Accelerate: W/Gas";
         yield return new WaitUntil(() => CarStates.currentState == "D" && GameData.Instance.VehicleMoving);
         instructionText.GetComponent<Animator>().SetTrigger("Completed");
         TutorialStates(3);
@@ -63,7 +66,7 @@ public class GameTutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         instructionText.SetActive(true);
-        instructionText.GetComponent<TMP_Text>().text = "Brake Space/Brake";
+        instructionText.GetComponent<TMP_Text>().text = "Brake: Space/Brake";
         yield return new WaitUntil(() => GameData.Instance.VehicleBraking);
         instructionText.GetComponent<Animator>().SetTrigger("Completed");
         TutorialStates(4);
@@ -73,9 +76,12 @@ public class GameTutorial : MonoBehaviour
     IEnumerator ChangeToReverse()
     {
         yield return new WaitForSeconds(2);
+        instructionText.SetActive(true);
+        instructionText.GetComponent<TMP_Text>().text = "Change gear: 2/Scroll";
         arrowR.SetActive(true);
         yield return new WaitUntil(() => CarStates.currentState == "R");
         arrowR.GetComponent<Animator>().SetTrigger("Completed");
+        instructionText.GetComponent<Animator>().SetTrigger("Completed");
         TutorialStates(5);
     }
 
@@ -83,10 +89,10 @@ public class GameTutorial : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         instructionText.SetActive(true);
-        instructionText.GetComponent<TMP_Text>().text = "Reverse S/Gas";
+        instructionText.GetComponent<TMP_Text>().text = "Reverse: S/Gas";
         yield return new WaitUntil(() => CarStates.currentState == "R" && GameData.Instance.VehicleReversing);
         instructionText.GetComponent<Animator>().SetTrigger("Completed");
+        TutorialStates(6);
     }
-
 }
 
