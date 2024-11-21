@@ -88,12 +88,7 @@ public class SpaceMovement : MonoBehaviour
     {
         if (allowMovement)
         {
-            // Reset vertical rotation if neither up nor down are active
-            if (!rotatingUp && !rotatingDown)
-            {
-                rotateVertical = 0f;
-            }
-
+            float rotateVertical = Input.GetAxis("Vertical");
             float rotateHorizontal = Input.GetAxis("Horizontal");
 
             // Constrain X-axis (pitch) rotation between -20 and 20 degrees based on vertical input
@@ -113,15 +108,18 @@ public class SpaceMovement : MonoBehaviour
             {
                 transform.Rotate(Vector3.up, rotateHorizontal * rotationSpeed * Time.deltaTime);
                 transform.Rotate(Vector3.up, WheelInteraction.xAxes * rotationSpeed * Time.deltaTime);
+
             }
 
-            // Forward movement using Left Ctrl, Right Ctrl, or Wheel Interaction
+
             if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) || WheelInteraction.GasInput > 0)
             {
                 rb.AddForce(transform.forward * moveSpeed, ForceMode.Acceleration);
                 var emission = particle.emission;
                 emission.enabled = true;
                 spaceEngineSource.clip = spaceEngineMove;
+
+
             }
             else
             {
@@ -129,6 +127,8 @@ public class SpaceMovement : MonoBehaviour
                 var emission = particle.emission;
                 emission.enabled = false;
                 spaceEngineSource.clip = spaceEngineIdle;
+
+
             }
         }
     }

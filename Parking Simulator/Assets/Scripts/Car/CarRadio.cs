@@ -40,7 +40,7 @@ public class CarRadio : MonoBehaviour
         radioStatus.text = "Radio Off"; 
 
         volumeSlider.value = audioSource.volume;
-        lastInputTime = Time.time;
+       // lastInputTime = Time.time;
     }
 
     void Update()
@@ -50,10 +50,10 @@ public class CarRadio : MonoBehaviour
             PlayNextSong();
         }
 
-        if (Time.time - lastInputTime >= idleTimeToFadeOut)
-        {
-            StartFadeOut();
-        }
+        //if (Time.time - lastInputTime >= idleTimeToFadeOut)
+        //{
+        //    StartFadeOut();
+        //}
     }
 
     void OnEnable()
@@ -87,7 +87,9 @@ public class CarRadio : MonoBehaviour
     void ChangeVolume(float value)
     {
         audioSource.volume = value;
-        StartFadeOutSlider(); // Start fading out the slider after it is used
+        Invoke("FadeOutSlider", 3);
+ 
+
     }
 
     void IncreaseVolume()
@@ -95,7 +97,7 @@ public class CarRadio : MonoBehaviour
         volumeSlider.value = Mathf.Clamp(volumeSlider.value + 0.1f, 0, 1);
         sliderCanvasGroup.alpha = 1;
 
-        StartFadeOutSlider(); // Start fading out the slider after it is used
+        Invoke("FadeOutSlider", 3); 
     }
 
     void DecreaseVolume()
@@ -103,7 +105,8 @@ public class CarRadio : MonoBehaviour
         volumeSlider.value = Mathf.Clamp(volumeSlider.value - 0.1f, 0, 1);
         sliderCanvasGroup.alpha = 1;
 
-        StartFadeOutSlider(); // Start fading out the slider after it is used
+        Invoke("FadeOutSlider", 3);
+
     }
 
     private void ToggleRadio()
@@ -123,9 +126,11 @@ public class CarRadio : MonoBehaviour
             audioSource.Pause();
         }
 
-        lastInputTime = Time.time;
-        StopFadeOut();
-        radioStatus.alpha = 1.0f; 
+        //lastInputTime = Time.time;
+        //StopFadeOut();
+
+        radioStatus.alpha = 1.0f;
+        Invoke("FadeOutText", 3);
     }
 
     private void UpdateSongName()
@@ -134,49 +139,49 @@ public class CarRadio : MonoBehaviour
         {
             songName.text = audioSource.clip.name;
             songName.alpha = 1.0f;
-            StartCoroutine(FadeOutSongName());
+            Invoke("FadeOutSongName", 3);
         }
     }
 
-    private void StartFadeOut()
-    {
-        if (fadeOutCoroutine == null)
-        {
-            fadeOutCoroutine = StartCoroutine(FadeOutText());
-        }
-    }
+    //private void StartFadeOut()
+    //{
+    //    if (fadeOutCoroutine == null)
+    //    {
+    //        fadeOutCoroutine = StartCoroutine(FadeOutText());
+    //    }
+    //}
 
-    private void StopFadeOut()
-    {
-        if (fadeOutCoroutine != null)
-        {
-            StopCoroutine(fadeOutCoroutine);
-            fadeOutCoroutine = null;
-        }
-    }
+    //private void StopFadeOut()
+    //{
+    //    if (fadeOutCoroutine != null)
+    //    {
+    //        StopCoroutine(fadeOutCoroutine);
+    //        fadeOutCoroutine = null;
+    //    }
+    //}
 
-    private IEnumerator FadeOutText()
+    private void FadeOutText()
     {
-        float startAlpha = radioStatus.alpha;
-        for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
-        {
-            radioStatus.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
-            yield return null;
-        }
+        //float startAlpha = radioStatus.alpha;
+        //for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
+        //{
+        //    radioStatus.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
+        //    yield return null;
+        //}
 
         radioStatus.alpha = 0;
-        fadeOutCoroutine = null;
+        //fadeOutCoroutine = null;
     }
 
-    private IEnumerator FadeOutSongName()
+    private void FadeOutSongName()
     {
-        float startAlpha = songName.alpha;
-        yield return new WaitForSeconds(idleTimeToFadeOut); // Wait for the idle time
-        for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
-        {
-            songName.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
-            yield return null;
-        }
+        //float startAlpha = songName.alpha;
+        //yield return new WaitForSeconds(idleTimeToFadeOut); // Wait for the idle time
+        //for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
+        //{
+        //    songName.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
+        //    yield return null;
+        //}
 
         songName.alpha = 0;
     }
@@ -198,27 +203,27 @@ public class CarRadio : MonoBehaviour
         currentSong = songIndex;
     }
 
-    private void StartFadeOutSlider()
-    {
-        lastInputTime = Time.time; // Reset the last input time to now
-        if (fadeOutSliderCoroutine != null)
-        {
-            StopCoroutine(fadeOutSliderCoroutine);
-        }
-        fadeOutSliderCoroutine = StartCoroutine(FadeOutSlider());
-    }
+    //private void StartFadeOutSlider()
+    //{
+    //    lastInputTime = Time.time; // Reset the last input time to now
+    //    if (fadeOutSliderCoroutine != null)
+    //    {
+    //        StopCoroutine(fadeOutSliderCoroutine);
+    //    }
+    //    fadeOutSliderCoroutine = StartCoroutine(FadeOutSlider());
+    //}
 
-    private IEnumerator FadeOutSlider()
+    private void FadeOutSlider()
     {
-        yield return new WaitForSeconds(sliderFadeOutTime); // Wait for the idle time
-        float startAlpha = volumeSlider.GetComponent<CanvasGroup>().alpha;
-        //sliderCanvasGroup = volumeSlider.GetComponent<CanvasGroup>();
+        //yield return new WaitForSeconds(sliderFadeOutTime); // Wait for the idle time
+        //float startAlpha = volumeSlider.GetComponent<CanvasGroup>().alpha;
+        ////sliderCanvasGroup = volumeSlider.GetComponent<CanvasGroup>();
 
-        for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
-        {
-            sliderCanvasGroup.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
-            yield return null;
-        }
+        //for (float t = 0; t < fadeOutTime; t += Time.deltaTime)
+        //{
+        //    sliderCanvasGroup.alpha = Mathf.Lerp(startAlpha, 0, t / fadeOutTime);
+        //    yield return null;
+        //}
 
         sliderCanvasGroup.alpha = 0;
     }

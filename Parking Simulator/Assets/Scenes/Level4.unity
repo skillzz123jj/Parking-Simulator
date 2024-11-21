@@ -26325,11 +26325,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundtrack:
-  - {fileID: 8300000, guid: 8e7bb6e009fade74493187a7abd2944c, type: 3}
-  - {fileID: 8300000, guid: aa3d7ec5a297ae243844b36add0ff2b9, type: 3}
-  - {fileID: 8300000, guid: a489932d8d09d9c40975469a7a132448, type: 3}
-  - {fileID: 8300000, guid: 9079ad391de54234b9a06c3c59dd018b, type: 3}
+  - {fileID: 8300000, guid: 4c7f5a70d0579454e907dc65678737d0, type: 3}
   - {fileID: 8300000, guid: 1557cf53ab56a044ba7f1ad231e1181a, type: 3}
+  - {fileID: 8300000, guid: a489932d8d09d9c40975469a7a132448, type: 3}
+  - {fileID: 8300000, guid: 198db4affc78f8242b9c45d0c78dd62f, type: 3}
+  - {fileID: 8300000, guid: bb94983acfcc1794f8f5d6bb2e11440d, type: 3}
   volumeSlider: {fileID: 1957499210}
   isRadioOn: 0
   radioStatus: {fileID: 1641398998}

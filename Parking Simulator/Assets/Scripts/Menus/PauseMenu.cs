@@ -118,14 +118,24 @@ public class PauseMenu : MonoBehaviour
 
     private IEnumerator LoadSceneCoroutine(int sceneIndex)
     {
-        // Start the fade-to-black transition
-        yield return StartCoroutine(SceneTransition(true));
+        //// Start the fade-to-black transition
+        //yield return StartCoroutine(SceneTransition(true));
 
-        // Load the new scene
-        SceneManager.LoadScene(sceneIndex);
+        //// Load the new scene
+        //SceneManager.LoadScene(sceneIndex);
 
-        // Start the fade-from-black transition
-        yield return StartCoroutine(SceneTransition(false));
+        //// Start the fade-from-black transition
+        //yield return StartCoroutine(SceneTransition(false));
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
+
+        while (!asyncLoad.isDone)
+
+        {
+
+            yield return null;
+
+        }
     }
 
     public IEnumerator SceneTransition(bool fadeToBlack = true, int fadeSpeed = 5)
